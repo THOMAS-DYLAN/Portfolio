@@ -596,8 +596,6 @@ section { position: relative; }
   background: var(--bg2);
   border: 1px solid var(--border);
   transition: border-color 0.3s;
-  cursor: pointer;
-  text-decoration: none;
   display: block;
   color: inherit;
 }
@@ -606,21 +604,20 @@ section { position: relative; }
 /* iframe portal window */
 .project-thumb {
   width: 100%;
-  height: 240px;
+  height: 320px;
   position: relative;
   overflow: hidden;
   background: var(--bg3);
+  border-bottom: 1px solid var(--border);
 }
 .project-thumb iframe {
   position: absolute;
   top: 0; left: 0;
-  width: 200%;
-  height: 200%;
+  width: 100%;
+  height: 100%;
   border: none;
-  transform: scale(0.5);
-  transform-origin: top left;
-  pointer-events: none;
   display: block;
+  pointer-events: auto;
 }
 
 .project-thumb-label {
@@ -636,6 +633,7 @@ section { position: relative; }
   text-transform: uppercase;
   z-index: 2;
   backdrop-filter: blur(4px);
+  pointer-events: none;
 }
 
 .project-info {
@@ -1034,53 +1032,53 @@ footer {
     </div>
     <div class="project-cards">
 
-      <a class="project-card reveal" href="https://thomas-dylan.github.io/Web-Draft-Basic/" target="_blank" rel="noopener">
+      <div class="project-card reveal">
         <div class="project-thumb">
-          <iframe src="https://thomas-dylan.github.io/Web-Draft-Basic/" tabindex="-1" aria-hidden="true" loading="lazy"></iframe>
-          <div class="project-thumb-label">Basic</div>
+          <iframe id="idx-if-basic" src="https://thomas-dylan.github.io/Web-Draft-Basic/" loading="lazy" title="Basic bakery website"></iframe>
+          <div class="project-thumb-label">Basic — $50</div>
         </div>
         <div class="project-info">
           <div class="project-name">Basic Package</div>
-          <div class="project-desc">A single-page bakery site — hero, menu, story, reviews, and order form. Everything a bakery needs to launch professionally.</div>
+          <div class="project-desc">A single-page site built for small businesses, entrepreneurs, and anyone who needs a clean, professional presence fast. One page, everything essential, nothing wasted. <strong style="color:var(--amber)">$50.</strong></div>
           <div class="project-tags">
-            <span class="tag">Single Page</span>
-            <span class="tag">Order Form</span>
-            <span class="tag">Mobile-First</span>
+            <span class="tag">1 Page</span>
+            <span class="tag">$50</span>
+            <span class="tag">Small Business</span>
           </div>
         </div>
-      </a>
+      </div>
 
-      <a class="project-card reveal reveal-delay-1" href="https://thomas-dylan.github.io/Web-Draft-Pro/" target="_blank" rel="noopener">
+      <div class="project-card reveal reveal-delay-1">
         <div class="project-thumb">
-          <iframe src="https://thomas-dylan.github.io/Web-Draft-Pro/" tabindex="-1" aria-hidden="true" loading="lazy"></iframe>
-          <div class="project-thumb-label">Professional</div>
-        </div>
-        <div class="project-info">
-          <div class="project-name">Professional Package</div>
-          <div class="project-desc">A multi-page site with dedicated pages for menu, story, craft, events, wholesale, and contact. Full brand presence.</div>
-          <div class="project-tags">
-            <span class="tag">7 Pages</span>
-            <span class="tag">Full Menu</span>
-            <span class="tag">Events</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="project-card reveal reveal-delay-2" href="https://thomas-dylan.github.io/Web-Draft-Business/" target="_blank" rel="noopener">
-        <div class="project-thumb">
-          <iframe src="https://thomas-dylan.github.io/Web-Draft-Business/" tabindex="-1" aria-hidden="true" loading="lazy"></iframe>
-          <div class="project-thumb-label">Business</div>
+          <iframe id="idx-if-business" src="https://thomas-dylan.github.io/Web-Draft-Business/" loading="lazy" title="Business bakery website"></iframe>
+          <div class="project-thumb-label">Business — $150</div>
         </div>
         <div class="project-info">
           <div class="project-name">Business Package</div>
-          <div class="project-desc">The premium experience — rich animations, deep storytelling, photo galleries, and a site that makes your bakery a destination.</div>
+          <div class="project-desc">3 pages, fully tailored — pulling from your social media, embedding Google Maps, and designed with strong visual accents that make your brand impossible to ignore. <strong style="color:var(--amber)">$150.</strong></div>
           <div class="project-tags">
-            <span class="tag">Premium</span>
-            <span class="tag">Animations</span>
-            <span class="tag">Full Brand</span>
+            <span class="tag">3 Pages</span>
+            <span class="tag">$150</span>
+            <span class="tag">Social &amp; Maps</span>
           </div>
         </div>
-      </a>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-thumb">
+          <iframe id="idx-if-pro" src="https://thomas-dylan.github.io/Web-Draft-Pro/" loading="lazy" title="Professional bakery website"></iframe>
+          <div class="project-thumb-label">Professional — $500+</div>
+        </div>
+        <div class="project-info">
+          <div class="project-name">Professional Package</div>
+          <div class="project-desc">5+ pages of a fully designed experience — smooth animations, styled cursors, refined UI/UX, and every detail considered. Feels less like a website, more like a world. <strong style="color:var(--amber)">$500 + $25/page over 10.</strong></div>
+          <div class="project-tags">
+            <span class="tag">5+ Pages</span>
+            <span class="tag">$500+</span>
+            <span class="tag">Full Experience</span>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -1165,6 +1163,22 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.12 });
 reveals.forEach(r => observer.observe(r));
+
+// Hide scrollbars inside all project iframes
+function hideIframeScrollbar(iframe) {
+  try {
+    const style = iframe.contentDocument.createElement('style');
+    style.textContent = '::-webkit-scrollbar{display:none!important}html,body{scrollbar-width:none!important;-ms-overflow-style:none!important;overflow-x:hidden}';
+    iframe.contentDocument.head.appendChild(style);
+  } catch(e) {}
+}
+document.querySelectorAll('.project-thumb iframe').forEach(iframe => {
+  iframe.addEventListener('load', () => hideIframeScrollbar(iframe));
+  // If already loaded
+  if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
+    hideIframeScrollbar(iframe);
+  }
+});
 </script>
 </body>
 </html>
