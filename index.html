@@ -586,7 +586,7 @@ section { position: relative; }
 
 .project-cards {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
@@ -597,40 +597,45 @@ section { position: relative; }
   border: 1px solid var(--border);
   transition: border-color 0.3s;
   cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
 }
 .project-card:hover { border-color: var(--amber); }
 
+/* iframe portal window */
 .project-thumb {
   width: 100%;
-  height: 280px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 4rem;
+  height: 240px;
   position: relative;
   overflow: hidden;
+  background: var(--bg3);
 }
-.project-card:nth-child(1) .project-thumb { background: linear-gradient(135deg, #1a1612 0%, #2a2018 100%); }
-.project-card:nth-child(2) .project-thumb { background: linear-gradient(135deg, #121618 0%, #181e22 100%); }
-
-.project-thumb-icon {
-  opacity: 0.4;
-  transition: opacity 0.3s, transform 0.4s;
-  font-size: 5rem;
+.project-thumb iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 200%;
+  height: 200%;
+  border: none;
+  transform: scale(0.5);
+  transform-origin: top left;
+  pointer-events: none;
+  display: block;
 }
-.project-card:hover .project-thumb-icon { opacity: 0.7; transform: scale(1.08); }
 
 .project-thumb-label {
   position: absolute;
-  top: 16px; right: 16px;
-  background: rgba(232,160,32,0.15);
-  border: 1px solid rgba(232,160,32,0.3);
+  top: 12px; right: 12px;
+  background: rgba(12,11,9,0.8);
+  border: 1px solid rgba(232,160,32,0.35);
   color: var(--amber);
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  padding: 5px 10px;
+  font-size: 0.62rem;
+  padding: 4px 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  z-index: 2;
+  backdrop-filter: blur(4px);
 }
 
 .project-info {
@@ -848,6 +853,7 @@ footer {
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="work.html">Work</a></li>
+    <li><a href="projects.html">Projects</a></li>
     <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
   </ul>
   <div class="hamburger" id="hamburger">
@@ -861,6 +867,7 @@ footer {
   <a href="index.html" onclick="closeMobile()">Home</a>
   <a href="about.html" onclick="closeMobile()">About</a>
   <a href="work.html" onclick="closeMobile()">Work</a>
+  <a href="projects.html" onclick="closeMobile()">Projects</a>
   <a href="contact.html" onclick="closeMobile()">Contact</a>
 </div>
 
@@ -1026,38 +1033,55 @@ footer {
       <a href="work.html" class="btn-ghost reveal reveal-delay-2">All Projects <span class="arrow">→</span></a>
     </div>
     <div class="project-cards">
-      <div class="project-card reveal" onclick="window.location='work.html'">
+
+      <a class="project-card reveal" href="https://thomas-dylan.github.io/Web-Draft-Basic/" target="_blank" rel="noopener">
         <div class="project-thumb">
-          <span class="project-thumb-icon">🎂</span>
-          <div class="project-thumb-label">Bakery Project</div>
+          <iframe src="https://thomas-dylan.github.io/Web-Draft-Basic/" tabindex="-1" aria-hidden="true" loading="lazy"></iframe>
+          <div class="project-thumb-label">Basic</div>
         </div>
         <div class="project-info">
-          <div class="project-name">Lily Anne's Cookies & Cakes</div>
-          <div class="project-desc">A warm, mouthwatering bakery site — product showcases, custom order forms, a photo gallery, and a brand experience that drives custom cake enquiries.</div>
+          <div class="project-name">Basic Package</div>
+          <div class="project-desc">A single-page bakery site — hero, menu, story, reviews, and order form. Everything a bakery needs to launch professionally.</div>
           <div class="project-tags">
-            <span class="tag">HTML/CSS</span>
-            <span class="tag">JavaScript</span>
+            <span class="tag">Single Page</span>
             <span class="tag">Order Form</span>
-            <span class="tag">Gallery</span>
+            <span class="tag">Mobile-First</span>
           </div>
         </div>
-      </div>
-      <div class="project-card reveal reveal-delay-1" onclick="window.location='work.html'">
+      </a>
+
+      <a class="project-card reveal reveal-delay-1" href="https://thomas-dylan.github.io/Web-Draft-Pro/" target="_blank" rel="noopener">
         <div class="project-thumb">
-          <span class="project-thumb-icon">🥐</span>
-          <div class="project-thumb-label">Food Business</div>
+          <iframe src="https://thomas-dylan.github.io/Web-Draft-Pro/" tabindex="-1" aria-hidden="true" loading="lazy"></iframe>
+          <div class="project-thumb-label">Professional</div>
         </div>
         <div class="project-info">
-          <div class="project-name">Your Bakery Here</div>
-          <div class="project-desc">Ready to give your bakery a website it deserves? I'm currently taking on new bakery and food business clients.</div>
+          <div class="project-name">Professional Package</div>
+          <div class="project-desc">A multi-page site with dedicated pages for menu, story, craft, events, wholesale, and contact. Full brand presence.</div>
           <div class="project-tags">
-            <span class="tag">Custom Design</span>
-            <span class="tag">Mobile-First</span>
-            <span class="tag">Order Forms</span>
-            <span class="tag">Fast Turnaround</span>
+            <span class="tag">7 Pages</span>
+            <span class="tag">Full Menu</span>
+            <span class="tag">Events</span>
           </div>
         </div>
-      </div>
+      </a>
+
+      <a class="project-card reveal reveal-delay-2" href="https://thomas-dylan.github.io/Web-Draft-Business/" target="_blank" rel="noopener">
+        <div class="project-thumb">
+          <iframe src="https://thomas-dylan.github.io/Web-Draft-Business/" tabindex="-1" aria-hidden="true" loading="lazy"></iframe>
+          <div class="project-thumb-label">Business</div>
+        </div>
+        <div class="project-info">
+          <div class="project-name">Business Package</div>
+          <div class="project-desc">The premium experience — rich animations, deep storytelling, photo galleries, and a site that makes your bakery a destination.</div>
+          <div class="project-tags">
+            <span class="tag">Premium</span>
+            <span class="tag">Animations</span>
+            <span class="tag">Full Brand</span>
+          </div>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
@@ -1088,6 +1112,7 @@ footer {
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="work.html">Work</a></li>
+    <li><a href="projects.html">Projects</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>

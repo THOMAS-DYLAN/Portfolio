@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Work — Dylan Thomas</title>
+<title>Work — Dylan Thomas | Bakery Website Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -15,155 +15,235 @@
   --font-display:'Playfair Display',Georgia,serif;
   --font-body:'DM Sans',sans-serif;
   --font-mono:'DM Mono',monospace;
+  --nav-h:72px;
+  --tab-h:52px;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--cream);font-family:var(--font-body);font-weight:300;line-height:1.7;overflow-x:hidden;cursor:none}
 .cursor{position:fixed;width:8px;height:8px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
-.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(232,160,32,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .18s ease}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(232,160,32,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s ease,top .12s ease}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;background:rgba(12,11,9,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;height:var(--nav-h);
+  background:rgba(12,11,9,.95);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
 .nav-logo{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--cream);text-decoration:none}
 .nav-logo span{color:var(--amber)}
 .nav-links{display:flex;align-items:center;gap:40px;list-style:none}
 .nav-links a{color:var(--muted2);text-decoration:none;font-size:.82rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover{color:var(--cream)}
 .nav-links a.active{color:var(--amber)}
-.nav-cta{background:var(--amber);color:#0c0b09 !important;padding:10px 24px;font-weight:500 !important}
+.nav-cta{background:var(--amber);color:#0c0b09 !important;padding:10px 24px;font-weight:500 !important;transition:background .2s !important}
 .nav-cta:hover{background:var(--cream) !important}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .hamburger span{display:block;width:24px;height:1px;background:var(--cream)}
-.mobile-nav{display:none;position:fixed;inset:0;background:var(--bg);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--bg);z-index:299;flex-direction:column;align-items:center;justify-content:center;gap:32px}
 .mobile-nav.open{display:flex}
 .mobile-nav a{font-family:var(--font-display);font-size:2.5rem;font-weight:700;color:var(--cream);text-decoration:none;transition:color .2s}
 .mobile-nav a:hover{color:var(--amber)}
 .mobile-close{position:absolute;top:24px;right:48px;font-size:2rem;color:var(--muted2);cursor:pointer;background:none;border:none}
 
-/* PAGE HERO */
-.page-hero{padding:160px 48px 80px;max-width:1200px;margin:0 auto}
-.page-eyebrow{font-family:var(--font-mono);font-size:.72rem;color:var(--amber);letter-spacing:.2em;text-transform:uppercase;margin-bottom:24px;opacity:0;animation:fadeUp .7s .2s forwards}
-.page-title{font-family:var(--font-display);font-size:clamp(3rem,7vw,6.5rem);font-weight:900;line-height:.95;letter-spacing:-.02em;margin-bottom:32px;opacity:0;animation:fadeUp .8s .35s forwards}
+/* ── PAGE HERO ── */
+.page-hero{padding:148px 48px 64px;max-width:1200px;margin:0 auto}
+.page-eyebrow{font-family:var(--font-mono);font-size:.72rem;color:var(--amber);letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px}
+.page-title{font-family:var(--font-display);font-size:clamp(3rem,7vw,6.5rem);font-weight:900;line-height:.95;letter-spacing:-.02em;margin-bottom:24px}
 .page-title em{font-style:italic;color:var(--amber)}
-.page-intro{font-size:1.05rem;color:var(--muted2);max-width:560px;line-height:1.75;opacity:0;animation:fadeUp .8s .5s forwards}
+.page-intro{font-size:1.05rem;color:var(--muted2);max-width:600px;line-height:1.75}
+
+/* ── TIER TABS — sticky ── */
+.tier-tabs{
+  position:sticky;top:var(--nav-h);z-index:290;
+  background:rgba(12,11,9,.97);backdrop-filter:blur(12px);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  display:flex;
+}
+.tier-tab{
+  flex:1;
+  background:none;border:none;
+  border-right:1px solid var(--border);
+  color:var(--muted2);
+  font-family:var(--font-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:0 24px;height:var(--tab-h);
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  position:relative;
+}
+.tier-tab:last-child{border-right:none}
+.tier-tab::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:2px;background:var(--amber);
+  transform:scaleX(0);transition:transform .25s;
+}
+.tier-tab:hover{color:var(--cream);background:rgba(255,255,255,.02)}
+.tier-tab.active{color:var(--amber)}
+.tier-tab.active::after{transform:scaleX(1)}
+.tier-tab-num{
+  font-size:.6rem;color:var(--muted);
+  border:1px solid var(--border);
+  padding:2px 7px;border-radius:2px;
+  transition:all .2s;
+}
+.tier-tab.active .tier-tab-num{color:var(--amber);border-color:rgba(232,160,32,.4)}
+
+/* ── PROJECT PANELS ── */
+/* Each panel = full iframe on left, info sidebar on right */
+.project-panel{display:none}
+.project-panel.active{display:grid;grid-template-columns:1fr 400px}
+
+/* THE IFRAME PORTAL — fills its column, tall enough to feel like a real site */
+.portal-col{
+  position:sticky;
+  top:calc(var(--nav-h) + var(--tab-h));
+  height:calc(100vh - var(--nav-h) - var(--tab-h));
+  border-right:1px solid var(--border);
+  overflow:hidden;
+  background:var(--bg2);
+}
+.portal-col iframe{
+  width:100%;
+  height:100%;
+  border:none;
+  display:block;
+}
+
+/* Spinner while loading */
+.portal-loader{
+  position:absolute;inset:0;
+  background:var(--bg2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  z-index:5;transition:opacity .5s;
+}
+.portal-loader.gone{opacity:0;pointer-events:none}
+.spin{width:36px;height:36px;border:2px solid var(--border);border-top-color:var(--amber);border-radius:50%;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin-label{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+
+/* ── INFO SIDEBAR ── */
+.info-col{
+  padding:52px 44px;
+  border-left:1px solid var(--border);
+  min-height:calc(100vh - var(--nav-h) - var(--tab-h));
+}
+.info-tier{font-family:var(--font-mono);font-size:.65rem;color:var(--amber);letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px}
+.info-name{font-family:var(--font-display);font-size:clamp(1.8rem,2.4vw,2.4rem);font-weight:700;line-height:1.1;margin-bottom:14px}
+.info-name em{font-style:italic;color:var(--amber)}
+.info-desc{font-size:.92rem;color:var(--muted2);line-height:1.78;margin-bottom:28px}
+
+.info-features{list-style:none;border-top:1px solid var(--border);margin-bottom:28px}
+.info-feature{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);font-size:.86rem;color:var(--cream);line-height:1.5}
+.fdot{width:5px;height:5px;background:var(--amber);border-radius:50%;flex-shrink:0;margin-top:6px}
+
+.info-price-label{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+.info-price{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--cream);margin-bottom:6px}
+.info-price small{font-size:.78rem;font-family:var(--font-body);font-weight:300;color:var(--muted2)}
+.info-open{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.08em;margin-bottom:22px;display:block}
+.info-open a{color:var(--amber);text-decoration:none;transition:color .2s}
+.info-open a:hover{color:var(--cream)}
+
+.btn-cta{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--amber);color:#0c0b09;
+  padding:16px 24px;
+  font-family:var(--font-body);font-size:.83rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;transition:background .25s;width:100%;margin-bottom:12px;
+}
+.btn-cta:hover{background:var(--cream)}
+.btn-open{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:none;border:1px solid var(--border);color:var(--muted2);
+  padding:13px 24px;
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;transition:all .2s;width:100%;
+}
+.btn-open:hover{color:var(--amber);border-color:var(--amber)}
+
+/* ── BELOW PANELS — services / process / cta ── */
+.below{border-top:1px solid var(--border)}
 
 .section-wrapper{max-width:1200px;margin:0 auto;padding:0 48px}
-.section-label{font-family:var(--font-mono);font-size:.72rem;color:var(--amber);letter-spacing:.2em;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.section-label{font-family:var(--font-mono);font-size:.72rem;color:var(--amber);letter-spacing:.2em;text-transform:uppercase;margin-bottom:36px;display:flex;align-items:center;gap:12px}
 .section-label::before{content:'';display:block;width:32px;height:1px;background:var(--amber)}
 
-/* PROJECTS */
-.projects-section{padding:60px 0 120px;border-top:1px solid var(--border)}
-.projects-note{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:8px 16px;margin-bottom:56px;letter-spacing:.06em}
-.projects-note span{color:var(--amber)}
-
-.project-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-bottom:1px}
-.project-row:last-child{margin-bottom:0}
-
-.project-big{grid-column:1/-1;background:var(--bg2);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;transition:background .3s}
-.project-big:hover{background:var(--bg3)}
-
-.project-visual{background:linear-gradient(145deg,#181410,#241e18);display:flex;align-items:center;justify-content:center;font-size:6rem;min-height:360px;position:relative;overflow:hidden}
-.project-visual-2{background:linear-gradient(145deg,#121618,#181e24)}
-.project-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 40% 40%,rgba(232,160,32,.08) 0%,transparent 60%)}
-.project-visual-icon{opacity:.35;transition:opacity .4s,transform .5s;font-size:7rem}
-.project-big:hover .project-visual-icon{opacity:.6;transform:scale(1.05) rotate(-3deg)}
-
-.project-content{padding:56px 52px;display:flex;flex-direction:column;justify-content:center}
-.project-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:.65rem;color:var(--amber);border:1px solid rgba(232,160,32,.3);padding:5px 12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:28px;width:fit-content}
-.project-title{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;line-height:1.15;margin-bottom:16px}
-.project-desc{font-size:.95rem;color:var(--muted2);line-height:1.75;margin-bottom:28px}
-.project-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
-.tag{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);border:1px solid var(--border);padding:5px 12px;letter-spacing:.06em;text-transform:uppercase;transition:all .2s}
-.project-big:hover .tag{border-color:rgba(232,160,32,.25);color:var(--muted2)}
-.project-highlights{list-style:none;display:flex;flex-direction:column;gap:8px}
-.project-highlights li{font-size:.85rem;color:var(--muted2);display:flex;align-items:flex-start;gap:10px}
-.project-highlights li::before{content:'→';color:var(--amber);flex-shrink:0;margin-top:2px}
-
-/* SERVICES */
-.services-section{padding:100px 0;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.services-intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:64px;align-items:end}
-.services-headline{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1}
-.services-sub{font-size:1rem;color:var(--muted2);line-height:1.75}
-
-.service-rows{display:flex;flex-direction:column;gap:0;border:1px solid var(--border)}
-.service-row{display:grid;grid-template-columns:80px 1fr auto;align-items:start;gap:32px;padding:36px 40px;border-bottom:1px solid var(--border);transition:background .3s;position:relative;overflow:hidden}
+.services-section{padding:80px 0;background:var(--bg2);border-bottom:1px solid var(--border)}
+.services-intro{display:grid;grid-template-columns:1fr 1fr;gap:72px;margin-bottom:48px;align-items:end}
+.services-headline{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.7rem);font-weight:700;line-height:1.1}
+.services-sub{font-size:.93rem;color:var(--muted2);line-height:1.78}
+.service-rows{border:1px solid var(--border)}
+.service-row{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:26px 36px;border-bottom:1px solid var(--border);transition:background .25s;position:relative;overflow:hidden}
 .service-row:last-child{border-bottom:none}
-.service-row::after{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--amber);transition:width .35s}
+.service-row::after{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--amber);transition:width .3s}
 .service-row:hover{background:var(--bg3)}
 .service-row:hover::after{width:3px}
-.service-row-num{font-family:var(--font-mono);font-size:.72rem;color:var(--amber);letter-spacing:.1em;padding-top:4px}
-.service-row-main{}
-.service-row-name{font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:8px}
-.service-row-desc{font-size:.88rem;color:var(--muted2);line-height:1.65}
-.service-row-tech{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;padding-top:6px}
+.snum{font-family:var(--font-mono);font-size:.68rem;color:var(--amber);letter-spacing:.08em;padding-top:3px}
+.sname{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:5px}
+.sdesc{font-size:.86rem;color:var(--muted2);line-height:1.62}
 
-/* PROCESS */
-.process-section{padding:100px 0}
-.process-headline{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;margin-bottom:64px}
+.process-section{padding:88px 0}
+.ph{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.7rem);font-weight:700;line-height:1.1;margin-bottom:52px}
 .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
-.process-step{background:var(--bg);padding:40px 32px}
-.process-step-num{font-family:var(--font-mono);font-size:2.5rem;font-weight:500;color:rgba(232,160,32,.2);margin-bottom:20px;line-height:1}
-.process-step-title{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:10px;color:var(--cream)}
-.process-step-text{font-size:.85rem;color:var(--muted2);line-height:1.65}
+.pstep{background:var(--bg);padding:34px 26px}
+.pnum{font-family:var(--font-mono);font-size:2rem;color:rgba(232,160,32,.18);margin-bottom:14px;line-height:1}
+.ptitle{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:7px}
+.ptext{font-size:.82rem;color:var(--muted2);line-height:1.62}
 
-/* CTA */
-.cta-section{padding:120px 0;text-align:center;border-top:1px solid var(--border)}
-.cta-inner{max-width:640px;margin:0 auto;padding:0 48px}
-.cta-label{font-family:var(--font-mono);font-size:.72rem;color:var(--amber);letter-spacing:.2em;text-transform:uppercase;margin-bottom:24px}
-.cta-headline{font-family:var(--font-display);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.05;margin-bottom:20px}
-.cta-headline em{font-style:italic;color:var(--amber)}
-.cta-sub{color:var(--muted2);margin-bottom:44px}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#0c0b09;padding:16px 36px;font-family:var(--font-body);font-size:.85rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all .25s}
+.cta-section{padding:108px 0;text-align:center;border-top:1px solid var(--border)}
+.cta-inner{max-width:620px;margin:0 auto;padding:0 48px}
+.cta-lbl{font-family:var(--font-mono);font-size:.72rem;color:var(--amber);letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
+.cta-h{font-family:var(--font-display);font-size:clamp(2.1rem,4.5vw,3.3rem);font-weight:700;line-height:1.05;margin-bottom:16px}
+.cta-h em{font-style:italic;color:var(--amber)}
+.cta-sub{color:var(--muted2);margin-bottom:38px;font-size:.93rem}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#0c0b09;padding:16px 36px;font-family:var(--font-body);font-size:.85rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .25s}
 .btn-primary:hover{background:var(--cream)}
-.btn-ghost{display:inline-flex;align-items:center;gap:10px;color:var(--cream);padding:16px 0;font-size:.85rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--border);transition:all .25s}
-.btn-ghost:hover{color:var(--amber);border-bottom-color:var(--amber)}
-.btn-ghost .arrow{transition:transform .25s}
-.btn-ghost:hover .arrow{transform:translateX(6px)}
 
-footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px 40px}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px 36px}
 .footer-inner{max-width:1200px;margin:0 auto}
-.footer-top{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:60px;padding-bottom:48px;border-bottom:1px solid var(--border);margin-bottom:40px}
-.footer-brand-name{font-family:var(--font-display);font-size:1.4rem;font-weight:700;margin-bottom:12px}
+.footer-top{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:56px;padding-bottom:40px;border-bottom:1px solid var(--border);margin-bottom:36px}
+.footer-brand-name{font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:10px}
 .footer-brand-name span{color:var(--amber)}
-.footer-tagline{font-size:.88rem;color:var(--muted);line-height:1.6;max-width:260px}
-.footer-col-title{font-family:var(--font-mono);font-size:.68rem;color:var(--amber);letter-spacing:.18em;text-transform:uppercase;margin-bottom:20px}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
-.footer-links a{color:var(--muted2);text-decoration:none;font-size:.9rem;transition:color .2s}
+.footer-tagline{font-size:.85rem;color:var(--muted);line-height:1.6;max-width:240px}
+.footer-col-title{font-family:var(--font-mono);font-size:.65rem;color:var(--amber);letter-spacing:.18em;text-transform:uppercase;margin-bottom:18px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{color:var(--muted2);text-decoration:none;font-size:.88rem;transition:color .2s}
 .footer-links a:hover{color:var(--cream)}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.footer-copy{font-size:.78rem;color:var(--muted);font-family:var(--font-mono)}
-.footer-email a{color:var(--amber);text-decoration:none;font-family:var(--font-mono);font-size:.82rem;transition:color .2s}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.footer-copy{font-size:.75rem;color:var(--muted);font-family:var(--font-mono)}
+.footer-email a{color:var(--amber);text-decoration:none;font-family:var(--font-mono);font-size:.78rem}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-delay-1{transition-delay:.1s}
-.reveal-delay-2{transition-delay:.2s}
-.reveal-delay-3{transition-delay:.3s}
-
+/* ── RESPONSIVE ── */
+@media(max-width:1000px){
+  .project-panel.active{grid-template-columns:1fr}
+  .portal-col{position:relative;top:0;height:80vh}
+  .info-col{border-left:none;border-top:1px solid var(--border)}
+}
 @media(max-width:900px){
   nav{padding:0 24px}
   .nav-links{display:none}
   .hamburger{display:flex}
-  .page-hero,.section-wrapper{padding-left:24px;padding-right:24px}
-  .project-big{grid-template-columns:1fr}
-  .project-visual{min-height:220px}
-  .project-content{padding:36px 28px}
-  .services-intro-grid{grid-template-columns:1fr;gap:24px}
-  .service-row{grid-template-columns:1fr;gap:12px}
-  .service-row-tech{display:none}
+  .page-hero,.section-wrapper,.cta-inner{padding-left:24px;padding-right:24px}
+  .tier-tab span.tier-tab-num{display:none}
+  .services-intro{grid-template-columns:1fr;gap:18px}
+  .service-row{grid-template-columns:1fr}
+  .snum{display:none}
   .process-steps{grid-template-columns:1fr 1fr}
-  .footer-top{grid-template-columns:1fr;gap:32px}
-  footer{padding:40px 24px 28px}
-  .cta-inner{padding:0 24px}
+  .footer-top{grid-template-columns:1fr;gap:28px}
+  footer{padding:36px 24px 24px}
 }
 @media(max-width:600px){
   .process-steps{grid-template-columns:1fr}
+  .portal-col{height:60vh}
 }
 </style>
 </head>
 <body>
+
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">Dylan<span>.</span>Thomas</a>
   <ul class="nav-links">
@@ -176,207 +256,257 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
 </nav>
 <div class="mobile-nav" id="mobileNav">
   <button class="mobile-close" id="mobileClose">✕</button>
-  <a href="index.html">Home</a><a href="about.html">About</a><a href="work.html">Work</a><a href="contact.html">Contact</a>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="work.html">Work</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a>
 </div>
 
-<!-- PAGE HERO -->
+<!-- HERO -->
 <div class="page-hero">
-  <p class="page-eyebrow">// Selected Projects & Services</p>
-  <h1 class="page-title">Things I've<br><em>built.</em></h1>
-  <p class="page-intro">A look at my work — mock projects built to demonstrate real-world development skills across different industries and use cases.</p>
+  <p class="page-eyebrow">// Live Bakery Website Demos</p>
+  <h1 class="page-title">Three tiers.<br>One <em>standard.</em></h1>
+  <p class="page-intro">Each example below is the real, live website — not a screenshot. Scroll through it, click around, explore. Then pick the tier that fits your bakery.</p>
 </div>
 
-<!-- PROJECTS -->
-<section class="projects-section">
-  <div class="section-wrapper">
-    <div class="section-label reveal">Portfolio</div>
-    <div class="projects-note reveal"><span>⚠</span> These are example/mock projects — not real businesses</div>
+<!-- STICKY TIER TABS -->
+<div class="tier-tabs">
+  <button class="tier-tab active" onclick="switchTier('basic')" id="tab-basic">
+    <span class="tier-tab-num">01</span> Basic
+  </button>
+  <button class="tier-tab" onclick="switchTier('professional')" id="tab-professional">
+    <span class="tier-tab-num">02</span> Professional
+  </button>
+  <button class="tier-tab" onclick="switchTier('business')" id="tab-business">
+    <span class="tier-tab-num">03</span> Business
+  </button>
+</div>
 
-    <div class="project-row reveal">
-      <div class="project-big">
-        <div class="project-visual">
-          <span class="project-visual-icon">🏗️</span>
+<!-- ═══ BASIC ═══ -->
+<div class="project-panel active" id="panel-basic">
+
+  <!-- LIVE SITE PORTAL -->
+  <div class="portal-col" style="position:relative">
+    <div class="portal-loader" id="loader-basic">
+      <div class="spin"></div>
+      <div class="spin-label">Loading live site…</div>
+    </div>
+    <iframe
+      id="if-basic"
+      src="https://thomas-dylan.github.io/Web-Draft-Basic/"
+      title="Basic bakery website demo"
+      onload="loaded('basic')"
+    ></iframe>
+  </div>
+
+  <!-- INFO -->
+  <div class="info-col">
+    <div class="info-tier">// Tier 01 — Basic</div>
+    <h2 class="info-name">Single-page<br><em>starter site.</em></h2>
+    <p class="info-desc">Everything a bakery needs to look professional online, on one beautifully crafted page. Scroll through the live site on the left — that's exactly what your customers would see.</p>
+    <ul class="info-features">
+      <li class="info-feature"><span class="fdot"></span>Single-page — fast, focused, elegant</li>
+      <li class="info-feature"><span class="fdot"></span>Hero section with your brand story</li>
+      <li class="info-feature"><span class="fdot"></span>Full menu with photos &amp; prices</li>
+      <li class="info-feature"><span class="fdot"></span>Customer reviews section</li>
+      <li class="info-feature"><span class="fdot"></span>Custom order / enquiry form</li>
+      <li class="info-feature"><span class="fdot"></span>Fully mobile responsive</li>
+    </ul>
+    <div class="info-price-label">Starting from</div>
+    <div class="info-price">$299 <small>/ one-time</small></div>
+    <span class="info-open">Live example: <a href="https://thomas-dylan.github.io/Web-Draft-Basic/" target="_blank" rel="noopener">Web-Draft-Basic ↗</a></span>
+    <a href="contact.html" class="btn-cta">Get This Package →</a>
+    <a href="https://thomas-dylan.github.io/Web-Draft-Basic/" target="_blank" rel="noopener" class="btn-open">Open in Full Tab ↗</a>
+  </div>
+
+</div>
+
+<!-- ═══ PROFESSIONAL ═══ -->
+<div class="project-panel" id="panel-professional">
+
+  <div class="portal-col" style="position:relative">
+    <div class="portal-loader" id="loader-professional">
+      <div class="spin"></div>
+      <div class="spin-label">Loading live site…</div>
+    </div>
+    <iframe
+      id="if-professional"
+      src="about:blank"
+      data-src="https://thomas-dylan.github.io/Web-Draft-Pro/"
+      title="Professional bakery website demo"
+      onload="loaded('professional')"
+    ></iframe>
+  </div>
+
+  <div class="info-col">
+    <div class="info-tier">// Tier 02 — Professional</div>
+    <h2 class="info-name">Multi-page<br><em>full presence.</em></h2>
+    <p class="info-desc">A multi-page website with dedicated pages for menu, story, craft, events, wholesale, and contact. Navigate freely in the live site on the left — every page is real and working.</p>
+    <ul class="info-features">
+      <li class="info-feature"><span class="fdot"></span>7 dedicated pages, shared nav &amp; footer</li>
+      <li class="info-feature"><span class="fdot"></span>Full menu page with category tabs</li>
+      <li class="info-feature"><span class="fdot"></span>Brand story &amp; craft/process pages</li>
+      <li class="info-feature"><span class="fdot"></span>Events &amp; catering page</li>
+      <li class="info-feature"><span class="fdot"></span>Wholesale &amp; trade enquiries</li>
+      <li class="info-feature"><span class="fdot"></span>Contact page with order form</li>
+    </ul>
+    <div class="info-price-label">Starting from</div>
+    <div class="info-price">$599 <small>/ one-time</small></div>
+    <span class="info-open">Live example: <a href="https://thomas-dylan.github.io/Web-Draft-Pro/" target="_blank" rel="noopener">Web-Draft-Pro ↗</a></span>
+    <a href="contact.html" class="btn-cta">Get This Package →</a>
+    <a href="https://thomas-dylan.github.io/Web-Draft-Pro/" target="_blank" rel="noopener" class="btn-open">Open in Full Tab ↗</a>
+  </div>
+
+</div>
+
+<!-- ═══ BUSINESS ═══ -->
+<div class="project-panel" id="panel-business">
+
+  <div class="portal-col" style="position:relative">
+    <div class="portal-loader" id="loader-business">
+      <div class="spin"></div>
+      <div class="spin-label">Loading live site…</div>
+    </div>
+    <iframe
+      id="if-business"
+      src="about:blank"
+      data-src="https://thomas-dylan.github.io/Web-Draft-Business/"
+      title="Business bakery website demo"
+      onload="loaded('business')"
+    ></iframe>
+  </div>
+
+  <div class="info-col">
+    <div class="info-tier">// Tier 03 — Business</div>
+    <h2 class="info-name">Premium<br><em>brand experience.</em></h2>
+    <p class="info-desc">The full treatment — rich visuals, deep brand storytelling, animations, and a polished experience that makes your bakery feel like a destination. Scroll through it on the left.</p>
+    <ul class="info-features">
+      <li class="info-feature"><span class="fdot"></span>Everything in Professional, elevated</li>
+      <li class="info-feature"><span class="fdot"></span>Enhanced animations &amp; scroll effects</li>
+      <li class="info-feature"><span class="fdot"></span>Rich photo galleries &amp; product showcases</li>
+      <li class="info-feature"><span class="fdot"></span>In-depth founder story &amp; brand feature</li>
+      <li class="info-feature"><span class="fdot"></span>Awards, press &amp; trust signals</li>
+      <li class="info-feature"><span class="fdot"></span>Priority turnaround &amp; revisions</li>
+    </ul>
+    <div class="info-price-label">Starting from</div>
+    <div class="info-price">$999 <small>/ one-time</small></div>
+    <span class="info-open">Live example: <a href="https://thomas-dylan.github.io/Web-Draft-Business/" target="_blank" rel="noopener">Web-Draft-Business ↗</a></span>
+    <a href="contact.html" class="btn-cta">Get This Package →</a>
+    <a href="https://thomas-dylan.github.io/Web-Draft-Business/" target="_blank" rel="noopener" class="btn-open">Open in Full Tab ↗</a>
+  </div>
+
+</div>
+
+<!-- BELOW PANELS -->
+<div class="below">
+
+  <section class="services-section">
+    <div class="section-wrapper">
+      <div class="services-intro">
+        <div>
+          <div class="section-label">What's Always Included</div>
+          <h2 class="services-headline">Every bakery website<br>comes with this.</h2>
         </div>
-        <div class="project-content">
-          <div class="project-badge">⚠ Mock Project</div>
-          <h2 class="project-title">Johnny Boy's Construction</h2>
-          <p class="project-desc">A full construction company website built to demonstrate B2B design patterns — trust-building layouts, service showcases, project portfolio sections, and lead-capture contact forms. Designed to convert visitors into clients.</p>
-          <div class="project-tags">
-            <span class="tag">React</span>
-            <span class="tag">Tailwind CSS</span>
-            <span class="tag">Responsive</span>
-            <span class="tag">Contact Form</span>
-          </div>
-          <ul class="project-highlights">
-            <li>Service showcase with detailed offerings</li>
-            <li>Project portfolio gallery</li>
-            <li>Lead-capture contact & quote forms</li>
-            <li>Trust signals: reviews, credentials, years in business</li>
+        <p class="services-sub">No hidden extras, no agency fluff. Every package covers the essentials so your site actually works from day one.</p>
+      </div>
+      <div class="service-rows">
+        <div class="service-row"><div class="snum">01</div><div><div class="sname">Custom Design, Zero Templates</div><div class="sdesc">Built around your bakery's brand, colours, and personality — not a theme someone else is already using.</div></div></div>
+        <div class="service-row"><div class="snum">02</div><div><div class="sname">Mobile-First &amp; Fully Responsive</div><div class="sdesc">Most customers find you on their phones. Every site is built mobile-first and tested across all screen sizes.</div></div></div>
+        <div class="service-row"><div class="snum">03</div><div><div class="sname">Order &amp; Enquiry Forms</div><div class="sdesc">Custom cake order forms, catering enquiries, and contact — delivered straight to your inbox.</div></div></div>
+        <div class="service-row"><div class="snum">04</div><div><div class="sname">Photo Galleries &amp; Menus</div><div class="sdesc">Showcase your bakes beautifully — interactive galleries, tabbed menus, and product cards that make mouths water.</div></div></div>
+        <div class="service-row"><div class="snum">05</div><div><div class="sname">SEO-Ready &amp; Fast Loading</div><div class="sdesc">Semantic HTML, optimised images, and proper meta tags — so search engines find you and customers click through.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="section-wrapper">
+      <div class="section-label">How It Works</div>
+      <h2 class="ph">From first message<br>to going live.</h2>
+      <div class="process-steps">
+        <div class="pstep"><div class="pnum">01</div><div class="ptitle">We Chat</div><div class="ptext">Tell me about your bakery — your vibe, your products, your customers. I ask the right questions before writing a line of code.</div></div>
+        <div class="pstep"><div class="pnum">02</div><div class="ptitle">I Design</div><div class="ptext">I build a design tailored to your brand. You see a preview before anything is finalised — no surprises.</div></div>
+        <div class="pstep"><div class="pnum">03</div><div class="ptitle">We Refine</div><div class="ptext">Two rounds of revisions included. Your feedback shapes the final result until it's exactly right.</div></div>
+        <div class="pstep"><div class="pnum">04</div><div class="ptitle">You Launch</div><div class="ptext">Deployment-ready files, walk-through included. Done within 1–2 weeks.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-inner">
+      <p class="cta-lbl">// Let's get started</p>
+      <h2 class="cta-h">Not sure which tier<br>fits your <em>bakery?</em></h2>
+      <p class="cta-sub">Message me and we'll figure it out together. No pressure, no jargon.</p>
+      <a href="contact.html" class="btn-primary">Let's Talk →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-name">Dylan<span>.</span>Thomas</div>
+          <p class="footer-tagline">Websites for bakeries &amp; food businesses — beautiful, fast, and built to bring in more orders.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+            <li><a href="work.html">Work</a></li>
+    <li><a href="projects.html">Projects</a></li><li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Get In Touch</div>
+          <ul class="footer-links">
+            <li><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></li>
+            <li><a href="contact.html">Send a Message</a></li>
           </ul>
         </div>
       </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2026 Dylan Thomas · West-Mec Central Campus Graduate</div>
+        <div class="footer-email"><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></div>
+      </div>
     </div>
+  </footer>
 
-    <div class="project-row reveal reveal-delay-1">
-      <div class="project-big">
-        <div class="project-content" style="padding:56px 52px;background:var(--bg2)">
-          <div class="project-badge">⚠ Mock Project</div>
-          <h2 class="project-title">Lily Anne's Cookies & Cakes</h2>
-          <p class="project-desc">An e-commerce-style bakery website demonstrating consumer brand design — warm product photography layouts, custom order forms, gallery sections, and a memorable brand experience. Built to drive online orders.</p>
-          <div class="project-tags">
-            <span class="tag">HTML5</span>
-            <span class="tag">CSS3</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">Order Form</span>
-            <span class="tag">Gallery</span>
-          </div>
-          <ul class="project-highlights">
-            <li>Product display with descriptions & pricing</li>
-            <li>Custom order request form</li>
-            <li>Photo gallery with lightbox</li>
-            <li>Consumer-first brand experience</li>
-          </ul>
-        </div>
-        <div class="project-visual project-visual-2">
-          <span class="project-visual-icon">🎂</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services-section">
-  <div class="section-wrapper">
-    <div class="services-intro-grid">
-      <div>
-        <div class="section-label reveal">Services</div>
-        <h2 class="services-headline reveal reveal-delay-1">What I can<br>build for you.</h2>
-      </div>
-      <p class="services-sub reveal reveal-delay-2">Certified in both front-end and back-end development, I handle the full scope of a web project — design, development, and deployment-ready code.</p>
-    </div>
-    <div class="service-rows reveal">
-      <div class="service-row">
-        <div class="service-row-num">01</div>
-        <div class="service-row-main">
-          <div class="service-row-name">Front End Development</div>
-          <div class="service-row-desc">Modern, interactive user interfaces built with React, TypeScript, HTML5, and CSS3. Certified by West-Mec, built to perform on every device.</div>
-        </div>
-        <div class="service-row-tech">React · TypeScript · CSS3</div>
-      </div>
-      <div class="service-row">
-        <div class="service-row-num">02</div>
-        <div class="service-row-main">
-          <div class="service-row-name">Back End Development</div>
-          <div class="service-row-desc">Server-side architecture, database design, REST APIs, and authentication systems. Scalable, secure, and maintainable by design.</div>
-        </div>
-        <div class="service-row-tech">Node.js · APIs · Databases</div>
-      </div>
-      <div class="service-row">
-        <div class="service-row-num">03</div>
-        <div class="service-row-main">
-          <div class="service-row-name">Responsive Design</div>
-          <div class="service-row-desc">Pixel-perfect on mobile, tablet, and desktop. Every layout tested, every breakpoint intentional — no device left behind.</div>
-        </div>
-        <div class="service-row-tech">Mobile-First · CSS Grid</div>
-      </div>
-      <div class="service-row">
-        <div class="service-row-num">04</div>
-        <div class="service-row-main">
-          <div class="service-row-name">Full-Stack Applications</div>
-          <div class="service-row-desc">End-to-end web applications — from UI to server to database. I bridge both worlds to deliver complete, production-ready products.</div>
-        </div>
-        <div class="service-row-tech">Full Stack · End-to-End</div>
-      </div>
-      <div class="service-row">
-        <div class="service-row-num">05</div>
-        <div class="service-row-main">
-          <div class="service-row-name">Small Business Websites</div>
-          <div class="service-row-desc">Professional websites for startups and small businesses. Brand-accurate, conversion-focused, and ready to launch — on time and on budget.</div>
-        </div>
-        <div class="service-row-tech">HTML · CSS · JS · React</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process-section">
-  <div class="section-wrapper">
-    <div class="section-label reveal">How It Works</div>
-    <h2 class="process-headline reveal reveal-delay-1">My process —<br>start to launch.</h2>
-    <div class="process-steps reveal reveal-delay-2">
-      <div class="process-step">
-        <div class="process-step-num">01</div>
-        <div class="process-step-title">Discovery</div>
-        <div class="process-step-text">We talk about your goals, audience, and what success looks like. I ask the right questions before writing a single line of code.</div>
-      </div>
-      <div class="process-step">
-        <div class="process-step-num">02</div>
-        <div class="process-step-title">Design</div>
-        <div class="process-step-text">I plan the architecture and visual direction. You see the concept before we commit — no surprises mid-build.</div>
-      </div>
-      <div class="process-step">
-        <div class="process-step-num">03</div>
-        <div class="process-step-title">Build</div>
-        <div class="process-step-text">Clean code, modern frameworks, real testing. I build with performance, accessibility, and maintainability in mind from day one.</div>
-      </div>
-      <div class="process-step">
-        <div class="process-step-num">04</div>
-        <div class="process-step-title">Launch</div>
-        <div class="process-step-text">Tested, refined, and ready to go live. I hand off deployment-ready code with documentation and ongoing support.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section">
-  <div class="cta-inner">
-    <p class="cta-label reveal">// Start a project</p>
-    <h2 class="cta-headline reveal reveal-delay-1">Have something in<br><em>mind?</em></h2>
-    <p class="cta-sub reveal reveal-delay-2">Let's discuss your project. I respond within 24 hours and I'm open to freelance and full-time roles right now.</p>
-    <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap" class="reveal reveal-delay-3">
-      <a href="contact.html" class="btn-primary">Start a Conversation →</a>
-      <a href="about.html" class="btn-ghost">About Me <span class="arrow">→</span></a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand-name">Dylan<span>.</span>Thomas</div>
-        <p class="footer-tagline">West-Mec certified full-stack web developer — building the web one project at a time.</p>
-      </div>
-      <div>
-        <div class="footer-col-title">Navigation</div>
-        <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="work.html">Work</a></li><li><a href="contact.html">Contact</a></li></ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Get In Touch</div>
-        <ul class="footer-links"><li><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></li><li><a href="contact.html">Send a Message</a></li></ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2026 Dylan Thomas · West-Mec Central Campus Graduate</div>
-      <div class="footer-email"><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></div>
-    </div>
-  </div>
-</footer>
+</div><!-- /below -->
 
 <script>
-const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-function animateCursor(){cursor.style.left=mx+'px';cursor.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animateCursor);}
-animateCursor();
+/* Cursor */
+const cur=document.getElementById('cursor'),rng=document.getElementById('cursorRing');
+document.addEventListener('mousemove',e=>{
+  cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px';
+  rng.style.left=e.clientX+'px'; rng.style.top=e.clientY+'px';
+});
+
+/* Mobile nav */
 document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.add('open'));
 document.getElementById('mobileClose').addEventListener('click',()=>document.getElementById('mobileNav').classList.remove('open'));
-const reveals=document.querySelectorAll('.reveal');
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.1});
-reveals.forEach(r=>obs.observe(r));
+
+/* Hide loader when iframe loads */
+function loaded(tier){
+  const ldr=document.getElementById('loader-'+tier);
+  if(ldr) ldr.classList.add('gone');
+}
+
+/* Tier switching */
+const tiers=['basic','professional','business'];
+function switchTier(t){
+  tiers.forEach(id=>{
+    document.getElementById('tab-'+id).classList.toggle('active',id===t);
+    document.getElementById('panel-'+id).classList.toggle('active',id===t);
+  });
+  /* Lazy-load iframe on first visit */
+  const iframe=document.getElementById('if-'+t);
+  if(iframe.dataset.src && iframe.src.includes('blank')){
+    iframe.src=iframe.dataset.src;
+  }
+  /* Scroll to top of panels area */
+  document.querySelector('.tier-tabs').scrollIntoView({behavior:'smooth',block:'start'});
+}
 </script>
 </body>
 </html>
