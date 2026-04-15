@@ -46,91 +46,26 @@ body {
 }
 
 /* CUSTOM CURSOR */
-/* 🧬 PARASITE CURSOR (REFINED) */
 .cursor {
   position: fixed;
-  width: 6px;
-  height: 6px;
-
-  background: radial-gradient(circle, #2b0033 0%, #6a00ff 60%, transparent 100%);
+  width: 8px; height: 8px;
+  background: var(--amber);
   border-radius: 50%;
-
   pointer-events: none;
   z-index: 9999;
-
   transform: translate(-50%,-50%);
-  transition:
-    transform 0.08s ease,
-    width 0.2s ease,
-    height 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
-
+  transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
   mix-blend-mode: normal;
-
-  /* subtle parasite glow */
-  box-shadow:
-    0 0 6px rgba(106, 0, 255, 0.6),
-    0 0 10px rgba(106, 0, 255, 0.25);
-
-  /* slight “alive” pulse */
-  animation: cursorPulse 1.8s ease-in-out infinite;
 }
-
-/* 🧿 CODE SCANNER RING (THINNER / MORE PREMIUM) */
 .cursor-ring {
   position: fixed;
-  width: 28px;   /* reduced size */
-  height: 28px;
-
+  width: 36px; height: 36px;
+  border: 1px solid rgba(232,160,32,0.4);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
-
   transform: translate(-50%,-50%);
-  transition:
-    transform 0.18s ease,
-    width 0.3s ease,
-    height 0.3s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    opacity 0.3s;
-
-  /* thinner + lighter ring (¼ visual weight) */
-  border: 0.6px solid rgba(160, 100, 255, 0.35);
-
-  /* subtle scan haze */
-  background:
-    radial-gradient(circle, rgba(120, 60, 255, 0.06) 0%, transparent 70%);
-
-  backdrop-filter: invert(1) contrast(1.05);
-
-  /* soft glow */
-  box-shadow:
-    0 0 10px rgba(120, 60, 255, 0.18),
-    inset 0 0 6px rgba(120, 60, 255, 0.08);
-}
-
-/* 🔥 HOVER LOCK-IN (OPTIONAL BUT STRONG) */
-.cursor-ring.active {
-  width: 42px;
-  height: 42px;
-
-  border-color: rgba(200, 120, 255, 0.65);
-
-  box-shadow:
-    0 0 18px rgba(200, 120, 255, 0.35),
-    inset 0 0 10px rgba(200, 120, 255, 0.18);
-}
-
-/* subtle “alive” motion */
-@keyframes cursorPulse {
-  0%, 100% {
-    transform: translate(-50%,-50%) scale(1);
-  }
-  50% {
-    transform: translate(-50%,-50%) scale(1.15);
-  }
+  transition: transform 0.18s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s;
 }
 body:hover .cursor { opacity: 1; }
 a:hover ~ .cursor, button:hover ~ .cursor { width: 16px; height: 16px; }
@@ -687,7 +622,7 @@ section { position: relative; }
 
 .project-thumb-label {
   position: absolute;
-  bottom: 12px; right: 12px;
+  top: 12px; right: 12px;
   background: rgba(12,11,9,0.8);
   border: 1px solid rgba(232,160,32,0.35);
   color: var(--amber);
