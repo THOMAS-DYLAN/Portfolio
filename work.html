@@ -418,7 +418,61 @@ body { cursor: none; }
     <a href="contact.html" class="btn-cta">Get This Package →</a>
     <a href="https://thomas-dylan.github.io/Web-Draft-Business/" target="_blank" rel="noopener" class="btn-open">Open in Full Tab ↗</a>
   </div>
+<script>
 
+
+/* Mobile nav */
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.add('open'));
+document.getElementById('mobileClose').addEventListener('click',()=>document.getElementById('mobileNav').classList.remove('open'));
+
+/* Hide loader when iframe loads */
+function loaded(tier){
+  const ldr=document.getElementById('loader-'+tier);
+  if(ldr) ldr.classList.add('gone');
+}
+
+/* Tier switching */
+const tiers=['basic','business','professional'];
+function switchTier(t){
+  tiers.forEach(id=>{
+    document.getElementById('tab-'+id).classList.toggle('active',id===t);
+    document.getElementById('panel-'+id).classList.toggle('active',id===t);
+  });
+  /* Lazy-load iframe on first visit */
+  const iframe=document.getElementById('if-'+t);
+  if(iframe.dataset.src && iframe.src.includes('blank')){
+    iframe.src=iframe.dataset.src;
+  }
+  /* Scroll to top of panels area */
+  document.querySelector('.tier-tabs').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* Hide scrollbars inside all panel iframes */
+function hideScrollbar(iframe) {
+  try {
+    const s = iframe.contentDocument.createElement('style');
+    s.textContent = '::-webkit-scrollbar{display:none!important}html,body{scrollbar-width:none!important;-ms-overflow-style:none!important}';
+    iframe.contentDocument.head.appendChild(s);
+  } catch(e) {}
+}
+document.querySelectorAll('.portal-col iframe').forEach(iframe => {
+  iframe.addEventListener('load', () => hideScrollbar(iframe));
+});
+</script>
+<script>
+// Cursor
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animateCursor() {
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  rx += (mx - rx) * 0.12;  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+</script>
 </div>
 
 <!-- BELOW PANELS -->
@@ -494,63 +548,6 @@ body { cursor: none; }
       </div>
     </div>
   </footer>
-
 </div><!-- /below -->
-
-<script>
-
-
-/* Mobile nav */
-document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.add('open'));
-document.getElementById('mobileClose').addEventListener('click',()=>document.getElementById('mobileNav').classList.remove('open'));
-
-/* Hide loader when iframe loads */
-function loaded(tier){
-  const ldr=document.getElementById('loader-'+tier);
-  if(ldr) ldr.classList.add('gone');
-}
-
-/* Tier switching */
-const tiers=['basic','business','professional'];
-function switchTier(t){
-  tiers.forEach(id=>{
-    document.getElementById('tab-'+id).classList.toggle('active',id===t);
-    document.getElementById('panel-'+id).classList.toggle('active',id===t);
-  });
-  /* Lazy-load iframe on first visit */
-  const iframe=document.getElementById('if-'+t);
-  if(iframe.dataset.src && iframe.src.includes('blank')){
-    iframe.src=iframe.dataset.src;
-  }
-  /* Scroll to top of panels area */
-  document.querySelector('.tier-tabs').scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-/* Hide scrollbars inside all panel iframes */
-function hideScrollbar(iframe) {
-  try {
-    const s = iframe.contentDocument.createElement('style');
-    s.textContent = '::-webkit-scrollbar{display:none!important}html,body{scrollbar-width:none!important;-ms-overflow-style:none!important}';
-    iframe.contentDocument.head.appendChild(s);
-  } catch(e) {}
-}
-document.querySelectorAll('.portal-col iframe').forEach(iframe => {
-  iframe.addEventListener('load', () => hideScrollbar(iframe));
-});
-</script>
-<script>
-// Cursor
-const cursor = document.getElementById('cursor');
-const ring   = document.getElementById('cursorRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-function animateCursor() {
-  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-  rx += (mx - rx) * 0.12;  ry += (my - ry) * 0.12;
-  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-  requestAnimationFrame(animateCursor);
-}
-animateCursor();
-</script>
 </body>
 </html>
