@@ -20,8 +20,7 @@
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--cream);font-family:var(--font-body);font-weight:300;line-height:1.7;overflow-x:hidden;cursor:none}
-.cursor{position:fixed;width:8px;height:8px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
-.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(232,160,32,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s ease,top .12s ease}
+
 
 /* ── NAV ── */
 nav{
@@ -236,6 +235,28 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
   .process-steps{grid-template-columns:1fr}
   .portal-col{height:60vh}
 }
+/* CUSTOM CURSOR */
+body { cursor: none; }
+.cursor {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--amber);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease;
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1px solid rgba(232,160,32,0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: left 0.12s ease, top 0.12s ease;
+}
 </style>
 </head>
 <body>
@@ -250,6 +271,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="work.html" class="active">Work</a></li>
+    <li><a href="projects.html">Projects</a></li>
     <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
   </ul>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
@@ -283,6 +305,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
   </button>
 </div>
 
+<script>function loaded(t){var l=document.getElementById('loader-'+t);if(l)l.classList.add('gone');}</script>
 <!-- ═══ BASIC ═══ -->
 <div class="project-panel active" id="panel-basic">
 
@@ -303,7 +326,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
   <!-- INFO -->
   <div class="info-col">
     <div class="info-tier">// Tier 01 — Basic</div>
-    <h2 class="info-name">One page.<br><em>$50.</em></h2>
+    <h2 class="info-name">One page.<br><em>$100.</em></h2>
     <p class="info-desc">Built for small businesses, entrepreneurs, and anyone who needs a professional online presence without the cost. A single beautifully crafted page — everything essential, nothing wasted. Scroll through it on the left.</p>
     <ul class="info-features">
       <li class="info-feature"><span class="fdot"></span>1 page — fast, clean, focused</li>
@@ -314,7 +337,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
       <li class="info-feature"><span class="fdot"></span>Fully mobile responsive</li>
     </ul>
     <div class="info-price-label">Flat rate</div>
-    <div class="info-price">$50 <small>/ one-time</small></div>
+    <div class="info-price">$100 <small>/ one-time</small></div>
     <span class="info-open">Live example: <a href="https://thomas-dylan.github.io/Web-Draft-Basic/" target="_blank" rel="noopener">Web-Draft-Basic ↗</a></span>
     <a href="contact.html" class="btn-cta">Get This Package →</a>
     <a href="https://thomas-dylan.github.io/Web-Draft-Basic/" target="_blank" rel="noopener" class="btn-open">Open in Full Tab ↗</a>
@@ -352,7 +375,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
       <li class="info-feature"><span class="fdot"></span>$25 per page beyond 10</li>
     </ul>
     <div class="info-price-label">Starting from</div>
-    <div class="info-price">$500 <small>+ $25/page over 10</small></div>
+    <div class="info-price">$750 <small>+ $25/page over 10</small></div>
     <span class="info-open">Live example: <a href="https://thomas-dylan.github.io/Web-Draft-Pro/" target="_blank" rel="noopener">Web-Draft-Pro ↗</a></span>
     <a href="contact.html" class="btn-cta">Get This Package →</a>
     <a href="https://thomas-dylan.github.io/Web-Draft-Pro/" target="_blank" rel="noopener" class="btn-open">Open in Full Tab ↗</a>
@@ -379,7 +402,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
 
   <div class="info-col">
     <div class="info-tier">// Tier 02 — Business</div>
-    <h2 class="info-name">Three pages.<br><em>$150.</em></h2>
+    <h2 class="info-name">Three pages.<br><em>$250.</em></h2>
     <p class="info-desc">Three fully tailored pages built around your real brand — pulling from your social media, embedding Google Maps, and designed with strong visual accents that make your business impossible to scroll past. Click around the live site on the left.</p>
     <ul class="info-features">
       <li class="info-feature"><span class="fdot"></span>3 custom pages — Home, Menu, Contact</li>
@@ -390,7 +413,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
       <li class="info-feature"><span class="fdot"></span>Mobile responsive &amp; fast</li>
     </ul>
     <div class="info-price-label">Flat rate</div>
-    <div class="info-price">$150 <small>/ one-time</small></div>
+    <div class="info-price">$250 <small>/ one-time</small></div>
     <span class="info-open">Live example: <a href="https://thomas-dylan.github.io/Web-Draft-Business/" target="_blank" rel="noopener">Web-Draft-Business ↗</a></span>
     <a href="contact.html" class="btn-cta">Get This Package →</a>
     <a href="https://thomas-dylan.github.io/Web-Draft-Business/" target="_blank" rel="noopener" class="btn-open">Open in Full Tab ↗</a>
@@ -475,12 +498,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
 </div><!-- /below -->
 
 <script>
-/* Cursor */
-const cur=document.getElementById('cursor'),rng=document.getElementById('cursorRing');
-document.addEventListener('mousemove',e=>{
-  cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px';
-  rng.style.left=e.clientX+'px'; rng.style.top=e.clientY+'px';
-});
+
 
 /* Mobile nav */
 document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.add('open'));
@@ -519,6 +537,20 @@ function hideScrollbar(iframe) {
 document.querySelectorAll('.portal-col iframe').forEach(iframe => {
   iframe.addEventListener('load', () => hideScrollbar(iframe));
 });
+</script>
+<script>
+// Cursor
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animateCursor() {
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  rx += (mx - rx) * 0.12;  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
 </script>
 </body>
 </html>

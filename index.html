@@ -42,33 +42,9 @@ body {
   font-weight: 300;
   line-height: 1.7;
   overflow-x: hidden;
-  cursor: none;
 }
 
-/* CUSTOM CURSOR */
-.cursor {
-  position: fixed;
-  width: 8px; height: 8px;
-  background: var(--amber);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%,-50%);
-  transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
-  mix-blend-mode: normal;
-}
-.cursor-ring {
-  position: fixed;
-  width: 36px; height: 36px;
-  border: 1px solid rgba(232,160,32,0.4);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%,-50%);
-  transition: transform 0.18s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s;
-}
-body:hover .cursor { opacity: 1; }
-a:hover ~ .cursor, button:hover ~ .cursor { width: 16px; height: 16px; }
+
 
 /* NAV */
 nav {
@@ -836,6 +812,28 @@ footer {
   .hero-stats { flex-wrap: wrap; gap: 20px; }
   .hero-footer { flex-direction: column; align-items: flex-start; gap: 20px; }
 }
+/* CUSTOM CURSOR */
+body { cursor: none; }
+.cursor {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--amber);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease;
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1px solid rgba(232,160,32,0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: left 0.12s ease, top 0.12s ease;
+}
 </style>
 </head>
 <body>
@@ -1035,14 +1033,14 @@ footer {
       <div class="project-card reveal">
         <div class="project-thumb">
           <iframe id="idx-if-basic" src="https://thomas-dylan.github.io/Web-Draft-Basic/" loading="lazy" title="Basic bakery website"></iframe>
-          <div class="project-thumb-label">Basic — $50</div>
+          <div class="project-thumb-label">Basic — $100</div>
         </div>
         <div class="project-info">
           <div class="project-name">Basic Package</div>
-          <div class="project-desc">A single-page site built for small businesses, entrepreneurs, and anyone who needs a clean, professional presence fast. One page, everything essential, nothing wasted. <strong style="color:var(--amber)">$50.</strong></div>
+          <div class="project-desc">A single-page site built for small businesses, entrepreneurs, and anyone who needs a clean, professional presence fast. One page, everything essential, nothing wasted. <strong style="color:var(--amber)">$100.</strong></div>
           <div class="project-tags">
             <span class="tag">1 Page</span>
-            <span class="tag">$50</span>
+            <span class="tag">$100</span>
             <span class="tag">Small Business</span>
           </div>
         </div>
@@ -1051,14 +1049,14 @@ footer {
       <div class="project-card reveal reveal-delay-1">
         <div class="project-thumb">
           <iframe id="idx-if-business" src="https://thomas-dylan.github.io/Web-Draft-Business/" loading="lazy" title="Business bakery website"></iframe>
-          <div class="project-thumb-label">Business — $150</div>
+          <div class="project-thumb-label">Business — $250</div>
         </div>
         <div class="project-info">
           <div class="project-name">Business Package</div>
-          <div class="project-desc">3 pages, fully tailored — pulling from your social media, embedding Google Maps, and designed with strong visual accents that make your brand impossible to ignore. <strong style="color:var(--amber)">$150.</strong></div>
+          <div class="project-desc">3 pages, fully tailored — pulling from your social media, embedding Google Maps, and designed with strong visual accents that make your brand impossible to ignore. <strong style="color:var(--amber)">$250.</strong></div>
           <div class="project-tags">
             <span class="tag">3 Pages</span>
-            <span class="tag">$150</span>
+            <span class="tag">$250</span>
             <span class="tag">Social &amp; Maps</span>
           </div>
         </div>
@@ -1067,14 +1065,14 @@ footer {
       <div class="project-card reveal reveal-delay-2">
         <div class="project-thumb">
           <iframe id="idx-if-pro" src="https://thomas-dylan.github.io/Web-Draft-Pro/" loading="lazy" title="Professional bakery website"></iframe>
-          <div class="project-thumb-label">Professional — $500+</div>
+          <div class="project-thumb-label">Professional — $750+</div>
         </div>
         <div class="project-info">
           <div class="project-name">Professional Package</div>
-          <div class="project-desc">5+ pages of a fully designed experience — smooth animations, styled cursors, refined UI/UX, and every detail considered. Feels less like a website, more like a world. <strong style="color:var(--amber)">$500 + $25/page over 10.</strong></div>
+          <div class="project-desc">5+ pages of a fully designed experience — smooth animations, styled cursors, refined UI/UX, and every detail considered. Feels less like a website, more like a world. <strong style="color:var(--amber)">$750 + $25/page over 10.</strong></div>
           <div class="project-tags">
             <span class="tag">5+ Pages</span>
-            <span class="tag">$500+</span>
+            <span class="tag">$750+</span>
             <span class="tag">Full Experience</span>
           </div>
         </div>
@@ -1131,18 +1129,9 @@ footer {
 </footer>
 
 <script>
-// Cursor
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-function animateCursor() {
-  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
-  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-  requestAnimationFrame(animateCursor);
-}
-animateCursor();
+
+
+
 
 // Nav scroll
 const nav = document.getElementById('nav');
@@ -1179,6 +1168,20 @@ document.querySelectorAll('.project-thumb iframe').forEach(iframe => {
     hideIframeScrollbar(iframe);
   }
 });
+</script>
+<script>
+// Cursor
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animateCursor() {
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  rx += (mx - rx) * 0.12;  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
 </script>
 </body>
 </html>

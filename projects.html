@@ -18,8 +18,7 @@
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--cream);font-family:var(--font-body);font-weight:300;line-height:1.7;overflow-x:hidden;cursor:none}
-.cursor{position:fixed;width:8px;height:8px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
-.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(232,160,32,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s ease,top .12s ease}
+
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;background:rgba(12,11,9,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
@@ -236,6 +235,28 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
   .footer-top{grid-template-columns:1fr;gap:28px}
   footer{padding:36px 24px 24px}
 }
+/* CUSTOM CURSOR */
+body { cursor: none; }
+.cursor {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--amber);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease;
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1px solid rgba(232,160,32,0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: left 0.12s ease, top 0.12s ease;
+}
 </style>
 </head>
 <body>
@@ -288,7 +309,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
     <div class="card-info">
       <div class="card-tier">// Tier 01</div>
       <div class="card-title">Basic</div>
-      <div class="card-subtitle">One page. $50.</div>
+      <div class="card-subtitle">One page. $100.</div>
       <p class="card-desc">Built for small businesses, entrepreneurs, and anyone who needs a professional presence fast. A single beautifully crafted page — everything essential, nothing wasted. Scroll through the live site on the left.</p>
       <ul class="card-features">
         <li class="card-feature"><span class="fdot"></span>1 page — fast, clean, focused</li>
@@ -299,7 +320,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
         <li class="card-feature"><span class="fdot"></span>Fully mobile responsive</li>
       </ul>
       <div class="card-price-label">Flat rate</div>
-      <div class="card-price">$50 <small>/ one-time</small></div>
+      <div class="card-price">$100 <small>/ one-time</small></div>
       <a href="contact.html" class="btn-cta">Get This Package →</a>
       <a href="https://thomas-dylan.github.io/Web-Draft-Basic/" target="_blank" rel="noopener" class="btn-ghost-sm">Open in Full Tab ↗</a>
     </div>
@@ -321,7 +342,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
     <div class="card-info">
       <div class="card-tier">// Tier 02</div>
       <div class="card-title">Business</div>
-      <div class="card-subtitle">Three pages. $150.</div>
+      <div class="card-subtitle">Three pages. $250.</div>
       <p class="card-desc">Three fully tailored pages built around your real brand — pulling from your social media, embedding Google Maps, and designed with strong visual accents. Scroll through it on the left, click the nav to explore all three pages.</p>
       <ul class="card-features">
         <li class="card-feature"><span class="fdot"></span>3 custom pages — Home, Menu, Contact</li>
@@ -332,7 +353,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
         <li class="card-feature"><span class="fdot"></span>Mobile responsive &amp; fast</li>
       </ul>
       <div class="card-price-label">Flat rate</div>
-      <div class="card-price">$150 <small>/ one-time</small></div>
+      <div class="card-price">$250 <small>/ one-time</small></div>
       <a href="contact.html" class="btn-cta">Get This Package →</a>
       <a href="https://thomas-dylan.github.io/Web-Draft-Business/" target="_blank" rel="noopener" class="btn-ghost-sm">Open in Full Tab ↗</a>
     </div>
@@ -383,11 +404,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
 </footer>
 
 <script>
-const cur=document.getElementById('cursor'),rng=document.getElementById('cursorRing');
-document.addEventListener('mousemove',e=>{
-  cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
-  rng.style.left=e.clientX+'px';rng.style.top=e.clientY+'px';
-});
+
 document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.add('open'));
 document.getElementById('mobileClose').addEventListener('click',()=>document.getElementById('mobileNav').classList.remove('open'));
 function gone(id){const el=document.getElementById(id);if(el)el.classList.add('gone');}
@@ -402,6 +419,20 @@ function hideScrollbar(iframe) {
 document.querySelectorAll('.card-window iframe').forEach(iframe => {
   iframe.addEventListener('load', () => hideScrollbar(iframe));
 });
+</script>
+<script>
+// Cursor
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animateCursor() {
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  rx += (mx - rx) * 0.12;  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
 </script>
 </body>
 </html>  <!-- ── PROFESSIONAL ── -->
@@ -431,7 +462,7 @@ document.querySelectorAll('.card-window iframe').forEach(iframe => {
         <li class="card-feature"><span class="fdot"></span>$25 per page beyond 10</li>
       </ul>
       <div class="card-price-label">Starting from</div>
-      <div class="card-price">$500 <small>+ $25/page over 10</small></div>
+      <div class="card-price">$750 <small>+ $25/page over 10</small></div>
       <a href="contact.html" class="btn-cta">Get This Package →</a>
       <a href="https://thomas-dylan.github.io/Web-Draft-Pro/" target="_blank" rel="noopener" class="btn-ghost-sm">Open in Full Tab ↗</a>
     </div>
