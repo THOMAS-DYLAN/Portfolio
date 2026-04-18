@@ -477,14 +477,10 @@ form.addEventListener("submit", async function(e){
     const message = data.get("message") || "";
 
     const telegramMessage =
-`🔥 New Form Request
-
-Name: ${firstName} ${lastName}
+`New ${projectType} request from ${firstName} ${lastName}
 Email: ${email}
-Project: ${projectType}
-Subject: ${subject}
 
-Message:
+They Said - ${subject}
 ${message}`;
 
     const telegramRes = await fetch("https://api.telegram.org/bot8680007726:AAGHbIcJVzwS_o-Utzc61bufv4gbU4nZTdY/sendMessage", {
