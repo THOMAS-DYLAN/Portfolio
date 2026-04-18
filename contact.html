@@ -1,90 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Contact — Dylan Thomas</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Dylan Thomas</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-<style>
-/* (ALL YOUR ORIGINAL CSS — unchanged) */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0c0b09;--bg2:#141210;--bg3:#1c1915;
-  --amber:#e8a020;--cream:#f0e8d8;--muted:#6b6358;--muted2:#9a9088;--border:#2a2520;
-  --font-display:'Playfair Display',Georgia,serif;
-  --font-body:'DM Sans',sans-serif;
-  --font-mono:'DM Mono',monospace;
-}
-body{background:var(--bg);color:var(--cream);font-family:var(--font-body);line-height:1.7}
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* keep rest of your CSS exactly the same */
-</style>
+    :root {
+      --bg: #0c0b09;
+      --bg2: #141210;
+      --bg3: #1c1915;
+      --amber: #e8a020;
+      --cream: #f0e8d8;
+      --muted: #6b6358;
+      --muted2: #9a9088;
+      --border: #2a2520;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    nav {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(12, 11, 9, 0.9);
+    }
+
+    .nav-logo {
+      color: var(--cream);
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .nav-logo span {
+      color: var(--amber);
+    }
+
+    .page-hero {
+      padding: 5rem 2rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .page-eyebrow {
+      color: var(--amber);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.05;
+      font-weight: 900;
+    }
+
+    .page-title em {
+      font-style: italic;
+      color: var(--amber);
+    }
+
+    .contact-section {
+      padding: 2rem;
+    }
+
+    .contact-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .contact-form-wrap {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .form-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-sub {
+      color: var(--muted2);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      background: var(--bg3);
+      color: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.95rem 1rem;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      outline: none;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      border-color: var(--amber);
+      transform: translateY(-1px);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--muted);
+    }
+
+    .form-select {
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .form-textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--amber);
+      color: #111;
+      border: none;
+      border-radius: 999px;
+      padding: 0.95rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    @media (max-width: 700px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .page-hero,
+      .contact-section,
+      nav {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .contact-form-wrap {
+        padding: 1.25rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <nav>
+    <a href="index.html" class="nav-logo">Dylan<span>.</span>Thomas</a>
+  </nav>
 
-<!-- NAV (unchanged) -->
-<nav>
-  <a href="index.html" class="nav-logo">Dylan<span>.</span>Thomas</a>
-</nav>
+  <div class="page-hero">
+    <p class="page-eyebrow">// Let's Connect</p>
+    <h1 class="page-title">Let's build<br />something <em>great.</em></h1>
+  </div>
 
-<!-- HERO -->
-<div class="page-hero">
-  <p class="page-eyebrow">// Let's Connect</p>
-  <h1 class="page-title">Let's build<br>something <em>great.</em></h1>
-</div>
+  <section class="contact-section">
+    <div class="contact-grid">
+      <div>
+        <div class="contact-form-wrap">
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-title">Send a Message</div>
+            <div class="form-sub">Tell me about your project and I'll get back to you.</div>
 
-<!-- CONTACT -->
-<section class="contact-section">
-  <div class="contact-grid">
+            <div class="form-row">
+              <input class="form-input" type="text" name="first_name" placeholder="First Name" required />
+              <input class="form-input" type="text" name="last_name" placeholder="Last Name" />
+            </div>
 
-    <!-- FORM -->
-    <div>
-      <div class="contact-form-wrap">
+            <input class="form-input" type="email" name="email" placeholder="Email" required />
 
-        <!-- ✅ REAL FORM START -->
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <select class="form-select form-input" name="project_type" required>
+              <option value="" disabled selected>Select project</option>
+              <option value="Website">Website</option>
+              <option value="App">App</option>
+              <option value="Full Stack">Full Stack</option>
+            </select>
 
-          <div class="form-title">Send a Message</div>
-          <div class="form-sub">Tell me about your project and I'll get back to you.</div>
+            <input class="form-input" type="text" name="subject" placeholder="Subject" />
 
-          <div class="form-row">
-            <input class="form-input" type="text" name="first_name" placeholder="First Name" required>
-            <input class="form-input" type="text" name="last_name" placeholder="Last Name">
-          </div>
+            <textarea class="form-textarea" name="message" placeholder="Your message..." required></textarea>
 
-          <input class="form-input" type="email" name="email" placeholder="Email" required>
+            <input type="hidden" name="_subject" value="New Contact Form Submission — Dylan Thomas" />
+            <input type="hidden" name="_to" value="deadwooddigital2026@gmail.com" />
 
-          <select class="form-select form-input" name="project_type">
-            <option disabled selected>Select project</option>
-            <option>Website</option>
-            <option>App</option>
-            <option>Full Stack</option>
-          </select>
-
-          <input class="form-input" type="text" name="subject" placeholder="Subject">
-
-          <textarea class="form-textarea" name="message" placeholder="Your message..." required></textarea>
-
-          <!-- SENDS TO YOUR EMAIL -->
-          <input type="hidden" name="_to" value="deadwooddigital2026@gmail.com">
-
-          <button type="submit" class="form-submit">
-            Send Message →
-          </button>
-
-        </form>
-        <!-- ✅ REAL FORM END -->
-
+            <button type="submit" class="form-submit">
+              Send Message →
+            </button>
+          </form>
+        </div>
       </div>
     </div>
-
-  </div>
-</section>
-
+  </section>
 </body>
 </html>
