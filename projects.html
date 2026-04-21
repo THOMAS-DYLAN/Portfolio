@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Projects — Dylan Thomas | Bakery Website Developer</title>
+<title>Projects — Dylan Thomas | Web Developer for Bakeries & Food Businesses</title>
+<meta name="description" content="Real websites built by Dylan Thomas — a West-Mec certified web developer based in Arizona. Projects include cafés, restaurants, bakeries, and service businesses."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -17,8 +18,12 @@
   --font-mono:'DM Mono',monospace;
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--cream);font-family:var(--font-body);font-weight:300;line-height:1.7;overflow-x:hidden;cursor:none}
+body{background:var(--bg);color:var(--cream);font-family:var(--font-body);font-weight:300;line-height:1.7;overflow-x:hidden;}
 
+/* CUSTOM CURSOR */
+body{cursor:none}
+.cursor{position:fixed;width:8px;height:8px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .08s ease,width .2s ease,height .2s ease}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(232,160,32,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s ease,top .12s ease}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;background:rgba(12,11,9,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
@@ -30,166 +35,222 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:cen
 .nav-links a.active{color:var(--amber)}
 .nav-cta{background:var(--amber);color:#0c0b09 !important;padding:10px 24px;font-weight:500 !important;transition:background .2s !important}
 .nav-cta:hover{background:var(--cream) !important}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px;background:none;border:none}
 .hamburger span{display:block;width:24px;height:1px;background:var(--cream)}
 .mobile-nav{display:none;position:fixed;inset:0;background:var(--bg);z-index:299;flex-direction:column;align-items:center;justify-content:center;gap:32px}
 .mobile-nav.open{display:flex}
 .mobile-nav a{font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--cream);text-decoration:none;transition:color .2s}
 .mobile-nav a:hover{color:var(--amber)}
-.mobile-close{position:absolute;top:24px;right:48px;font-size:2rem;color:var(--muted2);cursor:pointer;background:none;border:none}
+.mobile-close{position:absolute;top:24px;right:48px;font-size:2rem;color:var(--muted2);background:none;border:none}
 
-/* PAGE HERO */
-.page-hero{padding:148px 48px 80px;max-width:1400px;margin:0 auto}
+/* ── PAGE HERO ── */
+.page-hero{padding:148px 48px 72px;max-width:1400px;margin:0 auto}
 .page-eyebrow{font-family:var(--font-mono);font-size:.72rem;color:var(--amber);letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fadeUp .7s .2s forwards}
 .page-title{font-family:var(--font-display);font-size:clamp(3rem,7vw,6.5rem);font-weight:900;line-height:.95;letter-spacing:-.02em;margin-bottom:24px;opacity:0;animation:fadeUp .8s .35s forwards}
 .page-title em{font-style:italic;color:var(--amber)}
-.page-intro{font-size:1.05rem;color:var(--muted2);max-width:580px;line-height:1.75;opacity:0;animation:fadeUp .8s .5s forwards}
+.page-intro{font-size:1.05rem;color:var(--muted2);max-width:560px;line-height:1.75;opacity:0;animation:fadeUp .8s .5s forwards}
 
-/* ══════════════════════════════════════════
-   PROJECT CARDS — one per site, stacked full-width
-══════════════════════════════════════════ */
-.projects-section{
-  border-top:1px solid var(--border);
-  padding:0 0 80px;
-}
-
-.project-card{
-  max-width:1400px;
-  margin:0 auto;
-  padding:64px 48px;
-  display:grid;
-  grid-template-columns:1fr 360px;
-  gap:56px;
-  align-items:start;
+/* ── FILTER BAR ── */
+.filter-bar{
+  max-width:1400px;margin:0 auto;padding:0 48px 48px;
+  display:flex;gap:12px;flex-wrap:wrap;
   border-bottom:1px solid var(--border);
-  position:relative;
+}
+.filter-btn{
+  background:none;border:1px solid var(--border);
+  color:var(--muted2);font-family:var(--font-mono);font-size:.68rem;
+  letter-spacing:.12em;text-transform:uppercase;padding:8px 20px;
+  transition:all .2s;
+}
+.filter-btn:hover,.filter-btn.active{color:var(--amber);border-color:var(--amber);background:rgba(232,160,32,.04)}
+
+/* ══════════════════════════════════════════════════════
+   EDITORIAL GRID
+   Large feature cards + smaller accent cards
+   Different proportions per card give each its own moment
+══════════════════════════════════════════════════════ */
+.projects-grid{
+  max-width:1400px;margin:0 auto;padding:0 48px 80px;
 }
 
-/* alternating layout — even cards flip */
-.project-card:nth-child(even){
-  grid-template-columns:360px 1fr;
+/* ── Each project entry ── */
+.proj{
+  display:grid;
+  gap:0;
+  border-bottom:1px solid var(--border);
+  opacity:0;transform:translateY(32px);
+  transition:opacity .7s ease,transform .7s ease;
 }
-.project-card:nth-child(even) .card-window{ order:2 }
-.project-card:nth-child(even) .card-info  { order:1 }
+.proj.visible{opacity:1;transform:translateY(0)}
 
-/* accent bar on left edge */
-.project-card::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;
-  width:3px;height:0;
-  background:var(--amber);
-  transition:height .6s ease;
+/* Odd: iframe left (large), info right (narrow) */
+.proj-standard{
+  grid-template-columns:1fr 380px;
+  grid-template-rows:auto;
 }
-.project-card:hover::before{ height:100%; }
+/* Even: info left (narrow), iframe right (large) */
+.proj-flipped{
+  grid-template-columns:380px 1fr;
+}
+.proj-flipped .proj-window{order:2}
+.proj-flipped .proj-info{order:1}
+
+/* Wide feature: iframe takes 2/3, info 1/3 — used for standout cards */
+.proj-feature{
+  grid-template-columns:2fr 1fr;
+}
+
+/* Placeholder cards — no iframe, just a styled panel */
+.proj-placeholder{
+  grid-template-columns:1fr 1fr;
+  min-height:320px;
+}
 
 /* ── IFRAME WINDOW ── */
-.card-window{
+.proj-window{
   position:relative;
-  border:1px solid var(--border);
   overflow:hidden;
   background:var(--bg2);
-  transition:border-color .3s;
-  /* tall enough to feel like a real site view */
-  height:620px;
+  border-right:1px solid var(--border);
+  min-height:560px;
 }
-.project-card:hover .card-window{ border-color:rgba(232,160,32,.5); }
+.proj-flipped .proj-window{border-right:none;border-left:1px solid var(--border)}
+.proj-feature .proj-window{min-height:680px}
 
-.card-window iframe{
-  width:100%;
-  height:100%;
-  border:none;
-  display:block;
-  /* fully interactive — scroll, click, navigate */
+.proj-window iframe{
+  width:100%;height:100%;
+  border:none;display:block;
   pointer-events:auto;
 }
 
-/* spinner overlay while loading */
-.card-loader{
+/* Accent color bar — unique per project */
+.proj-window::before{
+  content:'';
   position:absolute;
-  inset:0;
-  background:var(--bg2);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:16px;
-  z-index:5;
+  top:0;left:0;right:0;
+  height:3px;
+  z-index:2;
+  transition:height .4s ease;
+}
+.proj:hover .proj-window::before{height:4px}
+
+/* Per-project accent colors */
+.proj-deadwood .proj-window::before    {background:linear-gradient(90deg,#5c3d2e,#8b5e3c,#c8956c)}
+.proj-doughnuts .proj-window::before   {background:linear-gradient(90deg,#ff6b9d,#ff9a56,#ffce56)}
+.proj-harbor .proj-window::before      {background:linear-gradient(90deg,#1a3a4a,#2d6a7a,#4ecdc4)}
+.proj-clearstone .proj-window::before  {background:linear-gradient(90deg,#1e3a5f,#2e6db4,#7eb8f7)}
+.proj-maisonvale .proj-window::before  {background:linear-gradient(90deg,#5c3d2e,#b87c18,#e8a020)}
+.proj-blackthorne .proj-window::before {background:linear-gradient(90deg,#1a1a2e,#2d2d4e,#4a4a7a)}
+
+/* Loading spinner */
+.proj-loader{
+  position:absolute;inset:0;background:var(--bg2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;z-index:5;
   transition:opacity .5s;
 }
-.card-loader.gone{opacity:0;pointer-events:none}
-.spin{width:32px;height:32px;border:2px solid var(--border);border-top-color:var(--amber);border-radius:50%;animation:spin .9s linear infinite}
+.proj-loader.gone{opacity:0;pointer-events:none}
+.spin{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--amber);border-radius:50%;animation:spin .9s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.spin-label{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.spin-label{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
 
-/* ── CARD INFO ── */
-.card-info{
-  padding-top:8px;
+/* Placeholder panel (no iframe) */
+.proj-placeholder-panel{
+  position:relative;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:16px;
+  text-align:center;
+  padding:48px;
+  min-height:400px;
+}
+.proj-placeholder-panel::before{
+  content:'';position:absolute;inset:0;
+  opacity:.04;background-size:40px 40px;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+}
+.placeholder-icon{font-size:3.5rem;margin-bottom:8px}
+.placeholder-label{font-family:var(--font-mono);font-size:.68rem;color:var(--amber);letter-spacing:.18em;text-transform:uppercase}
+.placeholder-note{font-size:.88rem;color:var(--muted2);max-width:280px;line-height:1.6}
+
+/* ── INFO PANEL ── */
+.proj-info{
+  padding:48px 44px;
+  display:flex;flex-direction:column;
+  justify-content:center;
+  border-left:1px solid var(--border);
   position:sticky;
-  top:calc(72px + 24px);
+  top:72px;
+  align-self:start;
 }
+.proj-flipped .proj-info{border-left:none;border-right:1px solid var(--border)}
+.proj-placeholder .proj-info{border:none;border-left:1px solid var(--border);justify-content:center}
 
-.card-tier{
-  font-family:var(--font-mono);font-size:.65rem;
-  color:var(--amber);letter-spacing:.2em;text-transform:uppercase;
+.proj-tag{
+  font-family:var(--font-mono);font-size:.62rem;
+  letter-spacing:.18em;text-transform:uppercase;
   margin-bottom:14px;
-  display:flex;align-items:center;gap:10px;
+  display:flex;align-items:center;gap:8px;
 }
-.card-tier::before{content:'';display:block;width:24px;height:1px;background:var(--amber)}
+.proj-tag::before{content:'';display:block;width:20px;height:1px;background:currentColor}
 
-.card-title{
+.proj-name{
   font-family:var(--font-display);
-  font-size:clamp(2rem,3.5vw,3rem);
-  font-weight:700;line-height:1.05;
+  font-size:clamp(1.6rem,2.8vw,2.4rem);
+  font-weight:700;line-height:1.1;
   margin-bottom:6px;
 }
-.card-subtitle{
+.proj-type{
   font-family:var(--font-display);
-  font-size:clamp(1.2rem,2vw,1.6rem);
-  font-weight:700;font-style:italic;
-  color:var(--amber);
-  margin-bottom:20px;
+  font-size:1rem;font-style:italic;
+  color:var(--amber);margin-bottom:18px;
 }
+.proj-desc{
+  font-size:.88rem;color:var(--muted2);
+  line-height:1.78;margin-bottom:24px;
+}
+.proj-pills{
+  display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;
+}
+.pill{
+  font-family:var(--font-mono);font-size:.62rem;
+  letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid var(--border);
+  padding:4px 10px;color:var(--muted);
+  transition:all .2s;
+}
+.proj:hover .pill{border-color:rgba(232,160,32,.25);color:var(--muted2)}
 
-.card-desc{
-  font-size:.95rem;color:var(--muted2);
-  line-height:1.8;margin-bottom:28px;
+.proj-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-mono);font-size:.72rem;
+  color:var(--amber);letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;border-bottom:1px solid rgba(232,160,32,.3);
+  padding-bottom:2px;transition:all .2s;width:fit-content;
 }
+.proj-link:hover{color:var(--cream);border-bottom-color:var(--cream)}
 
-.card-features{
-  list-style:none;
-  border-top:1px solid var(--border);
-  margin-bottom:28px;
-}
-.card-feature{
-  display:flex;align-items:flex-start;gap:12px;
-  padding:11px 0;border-bottom:1px solid var(--border);
-  font-size:.86rem;color:var(--cream);line-height:1.5;
-}
-.fdot{width:5px;height:5px;background:var(--amber);border-radius:50%;flex-shrink:0;margin-top:6px}
+/* Per-project tag color */
+.proj-deadwood .proj-tag    {color:#c8956c}
+.proj-doughnuts .proj-tag   {color:#ff9a56}
+.proj-harbor .proj-tag      {color:#4ecdc4}
+.proj-clearstone .proj-tag  {color:#7eb8f7}
+.proj-maisonvale .proj-tag  {color:var(--amber)}
+.proj-blackthorne .proj-tag {color:#8888cc}
 
-.card-price-label{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
-.card-price{font-family:var(--font-display);font-size:1.6rem;font-weight:700;margin-bottom:20px}
-.card-price small{font-size:.78rem;font-family:var(--font-body);font-weight:300;color:var(--muted2)}
-
-.btn-cta{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  background:var(--amber);color:#0c0b09;
-  padding:15px 24px;font-family:var(--font-body);font-size:.83rem;
-  font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  text-decoration:none;transition:background .25s;margin-bottom:10px;
+/* Divider between sections */
+.section-divider{
+  max-width:1400px;margin:0 auto;padding:0 48px;
+  border-bottom:1px solid var(--border);
 }
-.btn-cta:hover{background:var(--cream)}
-.btn-ghost-sm{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  border:1px solid var(--border);color:var(--muted2);
-  padding:12px 24px;font-family:var(--font-mono);font-size:.7rem;
-  letter-spacing:.1em;text-transform:uppercase;
-  text-decoration:none;transition:all .2s;
+.section-divider-label{
+  font-family:var(--font-mono);font-size:.68rem;color:var(--muted);
+  letter-spacing:.2em;text-transform:uppercase;
+  padding:20px 0 20px;display:flex;align-items:center;gap:16px;
 }
-.btn-ghost-sm:hover{color:var(--amber);border-color:var(--amber)}
+.section-divider-label::after{content:'';flex:1;height:1px;background:var(--border)}
 
-/* CTA SECTION */
+/* ── CTA ── */
 .cta-section{padding:100px 48px;text-align:center;border-top:1px solid var(--border)}
 .cta-inner{max-width:600px;margin:0 auto}
 .cta-lbl{font-family:var(--font-mono);font-size:.72rem;color:var(--amber);letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
@@ -199,6 +260,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:cen
 .btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#0c0b09;padding:16px 36px;font-family:var(--font-body);font-size:.85rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .25s}
 .btn-primary:hover{background:var(--cream)}
 
+/* ── FOOTER ── */
 footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px 36px}
 .footer-inner{max-width:1200px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:56px;padding-bottom:40px;border-bottom:1px solid var(--border);margin-bottom:36px}
@@ -215,51 +277,28 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 48px
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
+/* ── RESPONSIVE ── */
 @media(max-width:1060px){
-  .project-card,
-  .project-card:nth-child(even){
-    grid-template-columns:1fr;
-    gap:32px;
-  }
-  .project-card:nth-child(even) .card-window{ order:1 }
-  .project-card:nth-child(even) .card-info  { order:2 }
-  .card-info{ position:static }
-  .card-window{ height:480px }
+  .proj-standard,.proj-flipped,.proj-feature,.proj-placeholder{grid-template-columns:1fr}
+  .proj-window,.proj-flipped .proj-window{border-right:none;border-left:none;border-bottom:1px solid var(--border);min-height:440px}
+  .proj-info,.proj-flipped .proj-info{position:static;border-left:none;border-right:none}
+  .proj-flipped .proj-window,.proj-flipped .proj-info{order:unset}
+  .proj-feature .proj-window{min-height:440px}
 }
 @media(max-width:768px){
   nav{padding:0 24px}
   .nav-links{display:none}
   .hamburger{display:flex}
-  .page-hero,.project-card,.cta-section{padding-left:24px;padding-right:24px}
-  .card-window{height:360px}
+  .page-hero,.filter-bar,.projects-grid,.cta-section,.section-divider{padding-left:24px;padding-right:24px}
+  .proj-window{min-height:320px}
   .footer-top{grid-template-columns:1fr;gap:28px}
   footer{padding:36px 24px 24px}
-}
-/* CUSTOM CURSOR */
-body { cursor: none; }
-.cursor {
-  position: fixed;
-  width: 8px; height: 8px;
-  background: var(--amber);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%,-50%);
-  transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease;
-}
-.cursor-ring {
-  position: fixed;
-  width: 36px; height: 36px;
-  border: 1px solid rgba(232,160,32,0.4);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%,-50%);
-  transition: left 0.12s ease, top 0.12s ease;
 }
 </style>
 </head>
 <body>
+
+<!-- CURSOR -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
@@ -285,120 +324,165 @@ body { cursor: none; }
 
 <!-- HERO -->
 <div class="page-hero">
-  <p class="page-eyebrow">// Live Demo Projects</p>
-  <h1 class="page-title">The work,<br><em>live.</em></h1>
-  <p class="page-intro">Three packages, three live websites. Scroll through each one right here, click around, explore — then decide which fits your bakery.</p>
+  <p class="page-eyebrow">// Six Live Websites</p>
+  <h1 class="page-title">Real work.<br><em>Real clients.</em></h1>
+  <p class="page-intro">Every site below is live and scrollable — built from scratch, tailored to the business. Scroll through each one right here.</p>
 </div>
 
-<!-- PROJECTS -->
-<section class="projects-section">
+<!-- FILTER -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filter('all',this)">All</button>
+  <button class="filter-btn" onclick="filter('food',this)">Food &amp; Drink</button>
+  <button class="filter-btn" onclick="filter('business',this)">Business</button>
+  <button class="filter-btn" onclick="filter('coming',this)">Coming Soon</button>
+</div>
 
-  <!-- ── DEADWOOD CAFE ── -->
-  <div class="project-card">
-    <div class="card-window">
-      <div class="card-loader" id="loader-basic">
-        <div class="spin"></div>
-        <div class="spin-label">Loading…</div>
-      </div>
-      <iframe
-        src="https://thomas-dylan.github.io/DeadWood-Cafe/"
-        title="Restaurant website — Deadwood Cafe"
-        onload="gone('loader-basic')"
-      ></iframe>
+<!-- ════════════════════════════════
+     PROJECTS
+════════════════════════════════ -->
+<div class="projects-grid">
+
+  <!-- 1. DEADWOOD CAFÉ — feature size, full left -->
+  <div class="proj proj-standard proj-deadwood reveal" data-cat="food">
+    <div class="proj-window">
+      <div class="proj-loader" id="l-deadwood"><div class="spin"></div><div class="spin-label">Loading…</div></div>
+      <iframe src="https://thomas-dylan.github.io/DeadWood-Cafe/" title="Deadwood Café" onload="gone('l-deadwood')"></iframe>
     </div>
-    <div class="card-info">
-      <div class="card-tier">// Project 01</div>
-      <div class="card-title">Deadwood Cafe</div>
-      <div class="card-subtitle">Restaurant / café website concept.</div>
-      <p class="card-desc">A warm, atmospheric restaurant website built around mood, branding, and a strong first impression. Designed for cafés, casual restaurants, and local food businesses that want something more memorable than a basic menu page. Scroll through the live site on the left.</p>
-      <ul class="card-features">
-        <li class="card-feature"><span class="fdot"></span>Strong branded landing experience</li>
-        <li class="card-feature"><span class="fdot"></span>Menu presentation built for readability</li>
-        <li class="card-feature"><span class="fdot"></span>Warm, immersive visual style</li>
-        <li class="card-feature"><span class="fdot"></span>Business info and contact flow</li>
-        <li class="card-feature"><span class="fdot"></span>Built for local food brands</li>
-        <li class="card-feature"><span class="fdot"></span>Fully mobile responsive</li>
-      </ul>
-      <div class="card-price-label">Live demo</div>
-      <div class="card-price">Restaurant <small>/ café concept</small></div>
-      <a href="contact.html" class="btn-cta">Build Something Like This →</a>
-      <a href="https://thomas-dylan.github.io/DeadWood-Cafe/" target="_blank" rel="noopener" class="btn-ghost-sm">Open in Full Tab ↗</a>
+    <div class="proj-info">
+      <div class="proj-tag">Food &amp; Drink · Café</div>
+      <div class="proj-name">Deadwood Café</div>
+      <div class="proj-type">Where the coffee is serious.</div>
+      <p class="proj-desc">A moody, editorial café site for an in-house roastery. Dark tones, deliberate pacing, and copy that earns the customer's time — built for a place that takes its craft seriously.</p>
+      <div class="proj-pills">
+        <span class="pill">Single Page</span>
+        <span class="pill">HTML/CSS/JS</span>
+        <span class="pill">Scroll Animations</span>
+        <span class="pill">Menu Section</span>
+      </div>
+      <a href="https://thomas-dylan.github.io/DeadWood-Cafe/" target="_blank" rel="noopener" class="proj-link">Open Site ↗</a>
     </div>
   </div>
 
-  <!-- ── MR. DOUGHNUTS ── -->
-  <div class="project-card">
-    <div class="card-window">
-      <div class="card-loader" id="loader-biz">
-        <div class="spin"></div>
-        <div class="spin-label">Loading…</div>
-      </div>
-      <iframe
-        src="https://thomas-dylan.github.io/-Mr.-Doughnuts-Emporium-of-Sprinkles-and-Fun/"
-        title="Doughnut shop website — Mr. Doughnuts Emporium of Sprinkles and Fun"
-        onload="gone('loader-biz')"
-      ></iframe>
+  <!-- 2. MR. DOUGHNUTS — flipped, playful -->
+  <div class="proj proj-flipped proj-doughnuts reveal" data-cat="food">
+    <div class="proj-window">
+      <div class="proj-loader" id="l-doughnuts"><div class="spin"></div><div class="spin-label">Loading…</div></div>
+      <iframe src="https://thomas-dylan.github.io/-Mr.-Doughnuts-Emporium-of-Sprinkles-and-Fun/" title="Mr. Doughnuts" onload="gone('l-doughnuts')"></iframe>
     </div>
-    <div class="card-info">
-      <div class="card-tier">// Project 02</div>
-      <div class="card-title">Mr. Doughnuts</div>
-      <div class="card-subtitle">Playful bakery / dessert shop website concept.</div>
-      <p class="card-desc">A more energetic, character-driven website built for a dessert shop or playful food brand. This concept leans into color, personality, and charm while still keeping the business information clear and usable. Scroll through it on the left and open the full site for the full feel.</p>
-      <ul class="card-features">
-        <li class="card-feature"><span class="fdot"></span>Bold visual identity and tone</li>
-        <li class="card-feature"><span class="fdot"></span>Product-focused layout for sweets and treats</li>
-        <li class="card-feature"><span class="fdot"></span>Fun styling without losing usability</li>
-        <li class="card-feature"><span class="fdot"></span>Strong fit for bakeries and dessert brands</li>
-        <li class="card-feature"><span class="fdot"></span>Clear customer flow and inquiry path</li>
-        <li class="card-feature"><span class="fdot"></span>Responsive across devices</li>
-      </ul>
-      <div class="card-price-label">Live demo</div>
-      <div class="card-price">Bakery <small>/ dessert concept</small></div>
-      <a href="contact.html" class="btn-cta">Build Something Like This →</a>
-      <a href="https://thomas-dylan.github.io/-Mr.-Doughnuts-Emporium-of-Sprinkles-and-Fun/" target="_blank" rel="noopener" class="btn-ghost-sm">Open in Full Tab ↗</a>
+    <div class="proj-info">
+      <div class="proj-tag">Food &amp; Drink · Bakery</div>
+      <div class="proj-name">Mr. Doughnuts</div>
+      <div class="proj-type">Emporium of Sprinkles and Fun.</div>
+      <p class="proj-desc">A bold, playful multi-page site for a doughnut shop that doesn't take itself too seriously. Bright personality, clear menu navigation, and a contact page that keeps things easy.</p>
+      <div class="proj-pills">
+        <span class="pill">3 Pages</span>
+        <span class="pill">HTML/CSS/JS</span>
+        <span class="pill">Product Menu</span>
+        <span class="pill">Contact Form</span>
+      </div>
+      <a href="https://thomas-dylan.github.io/-Mr.-Doughnuts-Emporium-of-Sprinkles-and-Fun/" target="_blank" rel="noopener" class="proj-link">Open Site ↗</a>
     </div>
   </div>
 
-  <!-- ── HARBOR & ASH ── -->
-  <div class="project-card">
-    <div class="card-window">
-      <div class="card-loader" id="loader-pro">
-        <div class="spin"></div>
-        <div class="spin-label">Loading…</div>
-      </div>
-      <iframe
-        src="https://thomas-dylan.github.io/Harbor-And-Ash/"
-        title="Upscale restaurant website — Harbor and Ash"
-        onload="gone('loader-pro')"
-      ></iframe>
+  <!-- 3. HARBOR & ASH — feature, wide window -->
+  <div class="proj proj-feature proj-harbor reveal" data-cat="food">
+    <div class="proj-window">
+      <div class="proj-loader" id="l-harbor"><div class="spin"></div><div class="spin-label">Loading…</div></div>
+      <iframe src="https://thomas-dylan.github.io/Harbor-And-Ash/" title="Harbor &amp; Ash" onload="gone('l-harbor')"></iframe>
     </div>
-    <div class="card-info">
-      <div class="card-tier">// Project 03</div>
-      <div class="card-title">Harbor &amp; Ash</div>
-      <div class="card-subtitle">Upscale restaurant website concept.</div>
-      <p class="card-desc">A more refined restaurant concept with a polished, premium feel. Built for higher-end dining brands that need more than a simple online menu — something with atmosphere, structure, and a more elevated presentation from top to bottom. Navigate the live site on the left and feel the difference.</p>
-      <ul class="card-features">
-        <li class="card-feature"><span class="fdot"></span>Premium restaurant presentation</li>
-        <li class="card-feature"><span class="fdot"></span>Refined branding and visual hierarchy</li>
-        <li class="card-feature"><span class="fdot"></span>More immersive user experience</li>
-        <li class="card-feature"><span class="fdot"></span>Built for upscale dining and events</li>
-        <li class="card-feature"><span class="fdot"></span>Elegant layout and interaction design</li>
-        <li class="card-feature"><span class="fdot"></span>Responsive and visually polished</li>
-      </ul>
-      <div class="card-price-label">Live demo</div>
-      <div class="card-price">Premium <small>/ restaurant concept</small></div>
-      <a href="contact.html" class="btn-cta">Build Something Like This →</a>
-      <a href="https://thomas-dylan.github.io/Harbor-And-Ash/" target="_blank" rel="noopener" class="btn-ghost-sm">Open in Full Tab ↗</a>
+    <div class="proj-info">
+      <div class="proj-tag">Food &amp; Drink · Restaurant</div>
+      <div class="proj-name">Harbor &amp; Ash</div>
+      <div class="proj-type">Refined coastal dining, finished in flame.</div>
+      <p class="proj-desc">A full multi-page restaurant site with a reservation system, dedicated bar page, private dining, and a menu that does justice to the food. Dramatic, atmospheric, and built to convert browsers into bookings.</p>
+      <div class="proj-pills">
+        <span class="pill">7 Pages</span>
+        <span class="pill">Reservations</span>
+        <span class="pill">Bar &amp; Menu</span>
+        <span class="pill">Private Dining</span>
+      </div>
+      <a href="https://thomas-dylan.github.io/Harbor-And-Ash/" target="_blank" rel="noopener" class="proj-link">Open Site ↗</a>
     </div>
   </div>
-</section>
+
+  <!-- 4. CLEARSTONE — flipped, clean B2B -->
+  <div class="proj proj-flipped proj-clearstone reveal" data-cat="business">
+    <div class="proj-window">
+      <div class="proj-loader" id="l-clearstone"><div class="spin"></div><div class="spin-label">Loading…</div></div>
+      <iframe src="https://thomas-dylan.github.io/ClearStone-Pressure-Washing/" title="ClearStone Pressure Washing" onload="gone('l-clearstone')"></iframe>
+    </div>
+    <div class="proj-info">
+      <div class="proj-tag">Business · Services</div>
+      <div class="proj-name">ClearStone</div>
+      <div class="proj-type">Your property, spotless.</div>
+      <p class="proj-desc">A conversion-focused B2B service site for a pressure washing company. Trust signals, before/after results, service area map, and a quote form that makes it frictionless to book. Clean design matches the product.</p>
+      <div class="proj-pills">
+        <span class="pill">Single Page</span>
+        <span class="pill">Quote Form</span>
+        <span class="pill">Google Maps</span>
+        <span class="pill">Review Section</span>
+      </div>
+      <a href="https://thomas-dylan.github.io/ClearStone-Pressure-Washing/" target="_blank" rel="noopener" class="proj-link">Open Site ↗</a>
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="section-divider" style="padding-top:0;padding-bottom:0">
+    <div class="section-divider-label">In Development</div>
+  </div>
+
+  <!-- 5. MAISON VALE — placeholder -->
+  <div class="proj proj-placeholder proj-maisonvale reveal" data-cat="coming">
+    <div class="proj-placeholder-panel">
+      <div class="placeholder-icon">🥐</div>
+      <div class="placeholder-label">Business Package · Bakery</div>
+      <p class="placeholder-note">Site in development — launching soon.</p>
+    </div>
+    <div class="proj-info">
+      <div class="proj-tag">Food &amp; Drink · Bakery</div>
+      <div class="proj-name">Maison Vale Bakery</div>
+      <div class="proj-type">Business Package demo.</div>
+      <p class="proj-desc">A three-page bakery site currently in development — showcasing the Business Package with social media integration, Google Maps, and a strong visual identity built around the brand.</p>
+      <div class="proj-pills">
+        <span class="pill">3 Pages</span>
+        <span class="pill">Business Tier</span>
+        <span class="pill">$500</span>
+        <span class="pill">In Progress</span>
+      </div>
+      <a href="contact.html" class="proj-link">Want something like this? →</a>
+    </div>
+  </div>
+
+  <!-- 6. BLACKTHORNE VALE — placeholder -->
+  <div class="proj proj-placeholder proj-flipped proj-blackthorne reveal" data-cat="coming">
+    <div class="proj-info" style="border-right:1px solid var(--border);border-left:none">
+      <div class="proj-tag">Legal &amp; Professional Services</div>
+      <div class="proj-name">Blackthorne Vale LLP</div>
+      <div class="proj-type">Professional Package demo.</div>
+      <p class="proj-desc">A five-plus page law firm site in development — showcasing the Professional Package with full experience design, smooth animations, refined UI/UX, and brand-level polish.</p>
+      <div class="proj-pills">
+        <span class="pill">5+ Pages</span>
+        <span class="pill">Professional Tier</span>
+        <span class="pill">$1000+</span>
+        <span class="pill">In Progress</span>
+      </div>
+      <a href="contact.html" class="proj-link">Want something like this? →</a>
+    </div>
+    <div class="proj-placeholder-panel" style="order:2">
+      <div class="placeholder-icon">⚖️</div>
+      <div class="placeholder-label">Professional Package · Legal</div>
+      <p class="placeholder-note">Site in development — launching soon.</p>
+    </div>
+  </div>
+
+</div><!-- /projects-grid -->
 
 <!-- CTA -->
 <section class="cta-section">
   <div class="cta-inner">
     <p class="cta-lbl">// Ready to get started</p>
-    <h2 class="cta-h">Not sure which fits<br>your <em>bakery?</em></h2>
-    <p class="cta-sub">Message me and we'll figure it out together — no pressure, no jargon.</p>
+    <h2 class="cta-h">Want your business<br>to look this <em>good?</em></h2>
+    <p class="cta-sub">Pick a package, or message me and we'll figure out what fits. No pressure, no jargon.</p>
     <a href="contact.html" class="btn-primary">Let's Talk →</a>
   </div>
 </section>
@@ -436,23 +520,6 @@ body { cursor: none; }
 </footer>
 
 <script>
-
-document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.add('open'));
-document.getElementById('mobileClose').addEventListener('click',()=>document.getElementById('mobileNav').classList.remove('open'));
-function gone(id){const el=document.getElementById(id);if(el)el.classList.add('gone');}
-
-function hideScrollbar(iframe) {
-  try {
-    const s = iframe.contentDocument.createElement('style');
-    s.textContent = '::-webkit-scrollbar{display:none!important}html,body{scrollbar-width:none!important;-ms-overflow-style:none!important}';
-    iframe.contentDocument.head.appendChild(s);
-  } catch(e) {}
-}
-document.querySelectorAll('.card-window iframe').forEach(iframe => {
-  iframe.addEventListener('load', () => hideScrollbar(iframe));
-});
-</script>
-<script>
 // Cursor
 const cursor = document.getElementById('cursor');
 const ring   = document.getElementById('cursorRing');
@@ -460,13 +527,49 @@ let mx = 0, my = 0, rx = 0, ry = 0;
 document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 function animateCursor() {
   cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-  rx += (mx - rx) * 0.12;  ry += (my - ry) * 0.12;
+  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
   ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
   requestAnimationFrame(animateCursor);
 }
 animateCursor();
+
+// Mobile nav
+document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'));
+document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'));
+
+// Hide loader
+function gone(id) { const el = document.getElementById(id); if (el) el.classList.add('gone'); }
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Filter
+function filter(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.proj[data-cat]').forEach(el => {
+    const show = cat === 'all' || el.dataset.cat === cat;
+    el.style.display = show ? '' : 'none';
+  });
+  // Also toggle divider
+  const div = document.querySelector('.section-divider');
+  if (div) div.style.display = (cat === 'all' || cat === 'coming') ? '' : 'none';
+}
+
+// Hide scrollbars inside iframes
+function hideScrollbar(iframe) {
+  try {
+    const s = iframe.contentDocument.createElement('style');
+    s.textContent = '::-webkit-scrollbar{display:none!important}html,body{scrollbar-width:none!important;-ms-overflow-style:none!important}';
+    iframe.contentDocument.head.appendChild(s);
+  } catch(e) {}
+}
+document.querySelectorAll('.proj-window iframe').forEach(iframe => {
+  iframe.addEventListener('load', () => hideScrollbar(iframe));
+});
 </script>
 </body>
 </html>
-
-
