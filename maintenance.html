@@ -227,6 +227,14 @@ nav{
   .ret-price{text-align:left}
   .footer{flex-direction:column;text-align:center}
   .nav-right{display:none}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+  .hamburger span{width:22px;height:1.5px;background:var(--text);display:block}
+  .mobile-nav{display:none;position:fixed;top:60px;left:0;right:0;z-index:190;background:var(--bg);border-bottom:1px solid var(--border);padding:1.5rem 2.5rem;flex-direction:column;gap:1.25rem}
+  .mobile-nav.open{display:flex}
+  .mobile-nav a{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+  .mobile-nav a:hover,.mobile-nav a.active{color:var(--gold)}
+  .nav-cta{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;padding:.5rem 1.4rem;border:1px solid var(--gold);color:var(--gold);background:transparent;transition:all .2s}
+  .nav-cta:hover{background:var(--gold);color:var(--bg)}
 }
 </style>
 </head>
@@ -234,9 +242,30 @@ nav{
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Deadwood<b>.</b>Digital</div>
-  <div class="nav-right">Maintenance &amp; Retainer &nbsp;·&nbsp; <a href="index.html">← Back to Site</a></div>
+  <a class="nav-logo" href="index.html">Deadwood<b>.</b>Digital</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="templates.html">Templates</a>
+    <a href="custom.html">Custom</a>
+    <a href="qualifications.html">Qualifications</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="maintenance.html" class="active">Maintenance</a>
+  </div>
+  <a class="nav-cta" href="contact.html">Get a Site</a>
+  <div class="hamburger" id="ham" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+<div class="mobile-nav" id="mobNav">
+  <a href="index.html">Home</a>
+  <a href="templates.html">Templates</a>
+  <a href="custom.html">Custom</a>
+  <a href="qualifications.html">Qualifications</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a>
+  <a href="maintenance.html" class="active">Maintenance</a>
+</div>
 
 <div class="page-body">
 <div class="wrap">
@@ -449,5 +478,8 @@ nav{
 
 </div>
 </div>
+<script>
+function toggleMenu(){document.getElementById('mobNav').classList.toggle('open')}
+</script>
 </body>
 </html>
