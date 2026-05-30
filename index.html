@@ -2,1068 +2,461 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deadwood Digital — Web Design & Development</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Deadwood Digital — E-Commerce & Web Design for Small Businesses</title>
+  <meta name="description" content="Custom e-commerce websites and business sites for small businesses. Online stores, multi-page business sites, and landing pages — built clean, priced honestly. Based in Trenton, MO.">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Dylan Thomas, Deadwood Digital">
+  <meta name="keywords" content="e-commerce website design, online store builder, small business web design, custom website, Missouri web developer, affordable ecommerce">
+  <link rel="canonical" href="https://deadwooddigital.digital/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Deadwood Digital — E-Commerce & Web Design for Small Businesses">
+  <meta property="og:description" content="Custom e-commerce websites and business sites for small businesses. Online stores, multi-page business sites, and landing pages — built clean, priced honestly. Based in Trenton, MO.">
+  <meta property="og:url" content="https://deadwooddigital.digital/">
+  <meta property="og:image" content="https://deadwooddigital.digital/og.jpg">
+  <meta property="og:site_name" content="Deadwood Digital">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Deadwood Digital — E-Commerce & Web Design for Small Businesses">
+  <meta name="twitter:description" content="Custom e-commerce websites and business sites for small businesses. Online stores, multi-page business sites, and landing pages — built clean, priced honestly. Based in Trenton, MO.">
+  <meta name="twitter:image" content="https://deadwooddigital.digital/og.jpg">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ProfessionalService","name":"Deadwood Digital","description":"Custom e-commerce websites and business sites for small businesses.","url":"https://deadwooddigital.digital","telephone":"(816) 752-4944","email":"dylant5323@gmail.com","founder":{"@type":"Person","name":"Dylan Thomas"},"address":{"@type":"PostalAddress","addressLocality":"Trenton","addressRegion":"MO","addressCountry":"US"},"priceRange":"$250–$3,000","serviceType":["E-Commerce Website Design","Custom Web Development","Small Business Websites","Website Maintenance"]}
+  </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ======================================================
-   DESIGN TOKENS
-====================================================== */
-:root {
-  --bg:        #0b0b09;
-  --surface:   #131311;
-  --surface2:  #1a1a17;
-  --border:    #272724;
-  --border2:   #323230;
-  --text:      #ddd5c4;
-  --muted:     #7a7568;
-  --gold:      #c9a84c;
-  --gold-lt:   #dfc07a;
-  --white:     #f0e8d8;
-  --ff-d:      'Cormorant Garamond', Georgia, serif;
-  --ff-b:      'DM Sans', system-ui, sans-serif;
-}
 
-/* ======================================================
-   RESET
-====================================================== */
+:root{
+  --bg:#080807;--s1:#111110;--s2:#191917;--s3:#232320;
+  --border:#28281f;--border2:#363630;
+  --text:#ddd4c2;--muted:#7a7468;--dim:#4a4840;
+  --gold:#c8a84b;--gold-lt:#dfbe72;--gold-dim:rgba(200,168,75,.12);
+  --cream:#f0e7d4;
+  --ff-d:'Cormorant Garamond',Georgia,serif;
+  --ff-b:'Outfit',system-ui,sans-serif;
+  --nav:58px;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+  --ease-out:cubic-bezier(0,0,.2,1);
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--ff-b);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--ff-b);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-button{cursor:pointer;font-family:var(--ff-b)}
-ul{list-style:none}
+button{cursor:pointer;font-family:var(--ff-b);border:none;background:none}
+ul,ol{list-style:none}
 img{max-width:100%;display:block}
 
-/* ======================================================
-   NAV
-====================================================== */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  height:60px;padding:0 2.5rem;
+/* GRAIN */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.028;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav);padding:0 1.25rem;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(11,11,9,0.94);backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-  transition:border-color .3s;
-}
-.nav-logo{
-  font-family:var(--ff-d);font-size:1.3rem;font-weight:500;
-  letter-spacing:.06em;color:var(--white);
-  cursor:pointer;user-select:none;
-}
-.nav-logo b{color:var(--gold);font-weight:500}
-.nav-links{display:flex;align-items:center;gap:2.5rem}
-.nav-links a{
-  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--muted);transition:color .2s;cursor:pointer;
-}
+  background:rgba(8,8,7,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);}
+.nav-logo{font-family:var(--ff-d);font-size:1.2rem;font-weight:500;letter-spacing:.06em;color:var(--cream)}
+.nav-logo b{color:var(--gold);font-weight:400}
+.nav-links{display:none;align-items:center;gap:2rem}
+.nav-links a{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);transition:color .2s var(--ease);white-space:nowrap}
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
-.nav-cta{
-  font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
-  padding:.5rem 1.4rem;border:1px solid var(--gold);
-  color:var(--gold);background:transparent;
-  transition:all .2s;
-}
-.nav-cta:hover{background:var(--gold);color:var(--bg)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
-.hamburger span{width:22px;height:1.5px;background:var(--text);transition:all .3s;display:block}
-.mobile-nav{
-  display:none;position:fixed;top:60px;left:0;right:0;z-index:190;
+.nav-btn{display:none;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.42rem 1.1rem;border:1px solid var(--gold);color:var(--gold);background:transparent;
+  transition:all .2s var(--ease);cursor:pointer;white-space:nowrap}
+.nav-btn:hover{background:var(--gold);color:var(--bg)}
+.ham{display:flex;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;
+  padding:8px 6px;background:none;border:1px solid var(--border)}
+.ham:hover{border-color:var(--border2)}
+.ham span{width:18px;height:1px;background:var(--text);display:block;transition:all .3s var(--ease)}
+.ham.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* MOBILE DRAWER */
+.drawer{position:fixed;top:var(--nav);left:0;right:0;z-index:490;
   background:var(--bg);border-bottom:1px solid var(--border);
-  padding:1.5rem 2.5rem;flex-direction:column;gap:1.25rem;
-}
-.mobile-nav.open{display:flex}
-.mobile-nav a{
-  font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--muted);cursor:pointer;transition:color .2s;
-}
-.mobile-nav a:hover,.mobile-nav a.active{color:var(--gold)}
+  max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+.drawer.open{max-height:500px}
+.drawer-inner{padding:1.25rem 1.5rem;display:flex;flex-direction:column;gap:0}
+.drawer-inner a{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);padding:.8rem 0;border-bottom:1px solid var(--border);
+  transition:color .2s;display:block}
+.drawer-inner a:last-child{border-bottom:none}
+.drawer-inner a.active,.drawer-inner a:hover{color:var(--gold)}
 
-/* ======================================================
-   PAGE SYSTEM
-====================================================== */
-.page{display:none;min-height:100vh;padding-top:60px;animation:fadeIn .35s ease}
-.page.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 1.25rem}
+.pt-nav{padding-top:var(--nav)}
 
-/* ======================================================
-   LAYOUT UTILITIES
-====================================================== */
-.container{max-width:1160px;margin:0 auto;padding:0 2.5rem}
-.sec{padding:5.5rem 0}
-.sec-sm{padding:3rem 0}
-.sec-label{
-  font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--gold);display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;
-}
-.sec-label::before{content:'';width:28px;height:1px;background:var(--gold)}
-.sec-title{
-  font-family:var(--ff-d);font-weight:400;line-height:1.1;
-  color:var(--white);margin-bottom:1.25rem;
-  font-size:clamp(2rem,4vw,3.4rem);
-}
-.sec-sub{font-size:1rem;color:var(--muted);max-width:520px;line-height:1.75}
-.divider{width:44px;height:1px;background:var(--gold);margin:1.5rem 0}
+/* REVEAL ANIMATION */
+.r{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.r.vis{opacity:1;transform:none}
+.r2{transition-delay:.12s}
+.r3{transition-delay:.22s}
+.r4{transition-delay:.32s}
+
+/* TYPE UTILS */
+.eyebrow{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:.65rem;margin-bottom:.9rem}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--gold);flex-shrink:0}
+.display{font-family:var(--ff-d);font-weight:300;line-height:1.06;color:var(--cream)}
+.body-sm{font-size:.85rem;color:var(--muted);line-height:1.8}
+.rule{border:none;border-top:1px solid var(--border)}
 
 /* BUTTONS */
-.btn{
-  display:inline-block;font-size:.7rem;letter-spacing:.14em;
-  text-transform:uppercase;padding:.75rem 2rem;border:none;
-  font-family:var(--ff-b);transition:all .2s;font-weight:500;
-}
-.btn-gold{background:var(--gold);color:var(--bg)}
-.btn-gold:hover{background:var(--gold-lt)}
-.btn-out{background:transparent;border:1px solid var(--border2);color:var(--text)}
-.btn-out:hover{border-color:var(--gold);color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;font-family:var(--ff-b);
+  font-weight:500;cursor:pointer;transition:all .2s var(--ease);min-height:44px;padding:.75rem 1.75rem}
+.btn-solid{background:var(--gold);color:var(--bg);border:1px solid var(--gold)}
+.btn-solid:hover{background:var(--gold-lt);border-color:var(--gold-lt)}
+.btn-outline{background:transparent;border:1px solid var(--border2);color:var(--text)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
 .btn-ghost{background:transparent;border:1px solid transparent;color:var(--muted);padding:.75rem 0}
 .btn-ghost:hover{color:var(--gold)}
 
-/* ======================================================
-   FOOTER
-====================================================== */
-.footer{
-  border-top:1px solid var(--border);padding:2.5rem 0;
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
-}
-.footer-logo{font-family:var(--ff-d);font-size:1.1rem;color:var(--white);letter-spacing:.06em}
-.footer-logo b{color:var(--gold);font-weight:500}
-.footer p{font-size:.75rem;color:var(--muted)}
-.footer a{color:var(--gold);transition:opacity .2s}
-.footer a:hover{opacity:.8}
+/* MARQUEE */
+.marquee{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:.55rem 0;background:var(--s1)}
+.marquee-track{display:flex;width:max-content;animation:ticker 30s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-track span{white-space:nowrap;padding:0 2.5rem;font-size:.6rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--dim)}
+.marquee-track span b{color:var(--gold);font-weight:400}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ======================================================
-   ★ HOME PAGE
-====================================================== */
-.hero{
-  min-height:calc(100vh - 60px);display:flex;align-items:center;
-  position:relative;overflow:hidden;
+/* SECTION */
+.sec{padding:4rem 0}
+.sec-lg{padding:6rem 0}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2.25rem 0;margin-top:4rem}
+.foot-inner{display:flex;flex-direction:column;gap:.75rem;text-align:center}
+.foot-logo{font-family:var(--ff-d);font-size:1.05rem;color:var(--cream);letter-spacing:.06em}
+.foot-logo b{color:var(--gold);font-weight:400}
+footer p{font-size:.7rem;color:var(--dim)}
+footer a{color:var(--gold);transition:opacity .2s}
+footer a:hover{opacity:.7}
+
+/* TABLET */
+@media(min-width:640px){
+  nav{padding:0 2rem}
+  .wrap{padding:0 2rem}
+  .drawer-inner{padding:1.5rem 2rem}
+  .sec{padding:5rem 0}
+  .sec-lg{padding:7rem 0}
+  .foot-inner{flex-direction:row;justify-content:space-between;text-align:left}
 }
-.hero::before{
-  content:'';position:absolute;
-  top:-15%;right:-8%;width:700px;height:700px;
-  background:radial-gradient(circle,rgba(201,168,76,.055) 0%,transparent 68%);
-  pointer-events:none;
+
+/* DESKTOP */
+@media(min-width:1024px){
+  nav{padding:0 3rem}
+  .wrap{padding:0 3rem}
+  .nav-links{display:flex}
+  .nav-btn{display:inline-block}
+  .ham{display:none}
+  .sec{padding:6rem 0}
+  .sec-lg{padding:8rem 0}
 }
-.hero::after{
-  content:'';position:absolute;
-  bottom:10%;left:-5%;width:400px;height:400px;
-  background:radial-gradient(circle,rgba(201,168,76,.03) 0%,transparent 70%);
-  pointer-events:none;
-}
-.hero-inner{position:relative;z-index:1;max-width:800px}
-.hero-eye{
-  font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:1.75rem;
-  display:flex;align-items:center;gap:.75rem;
-}
-.hero-eye::before{content:'';width:28px;height:1px;background:var(--gold)}
-.hero-h1{
-  font-family:var(--ff-d);font-weight:300;
-  font-size:clamp(2.8rem,6.5vw,6rem);line-height:1.05;
-  color:var(--white);margin-bottom:1.5rem;
-}
+
+
+/* HERO */
+.hero{min-height:calc(100svh - var(--nav));display:flex;align-items:center;
+  position:relative;overflow:hidden;padding:3rem 0 2rem;}
+.hero-glow-a{position:absolute;top:-10%;right:-5%;width:min(650px,110vw);height:min(650px,110vw);
+  background:radial-gradient(circle,rgba(200,168,75,.07) 0%,transparent 65%);pointer-events:none}
+.hero-glow-b{position:absolute;bottom:0;left:-10%;width:min(400px,80vw);height:min(400px,80vw);
+  background:radial-gradient(circle,rgba(200,168,75,.035) 0%,transparent 70%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;width:100%}
+.hero-h1{font-size:clamp(3rem,11vw,7.5rem);margin-bottom:1.4rem;max-width:18ch}
 .hero-h1 em{font-style:italic;color:var(--gold)}
-.hero-p{
-  font-size:1.05rem;color:var(--muted);
-  max-width:480px;line-height:1.8;margin-bottom:2.5rem;
-}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-sub{font-size:clamp(.88rem,2.2vw,1rem);color:var(--muted);max-width:420px;line-height:1.85;margin-bottom:2.25rem}
+.hero-actions{display:flex;gap:.75rem;flex-wrap:wrap}
 
-/* Value strip */
-.val-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  border:1px solid var(--border);background:var(--border);gap:1px;
-  margin-top:4.5rem;
-}
-.val-card{
-  background:var(--surface);padding:2.25rem 2rem;
-  transition:background .2s;
-}
-.val-card:hover{background:var(--surface2)}
-.val-icon{font-size:1.25rem;color:var(--gold);margin-bottom:1rem}
-.val-card h3{font-family:var(--ff-d);font-size:1.35rem;color:var(--white);margin-bottom:.4rem}
-.val-card p{font-size:.85rem;color:var(--muted);line-height:1.7}
-.val-price{margin-top:.9rem;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+/* STATS ROW */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--border);border:1px solid var(--border);margin-top:4rem}
+.stat{background:var(--s1);padding:1.75rem 1.5rem}
+.stat-num{font-family:var(--ff-d);font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:.25rem}
+.stat-label{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
-/* Process */
-.proc-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;
-  margin-top:3rem;counter-reset:proc;
-}
-.proc-item{counter-increment:proc}
-.proc-num{
-  font-family:var(--ff-d);font-size:4.5rem;font-weight:300;
-  color:rgba(201,168,76,.1);line-height:1;margin-bottom:.5rem;
-  display:block;
-}
-.proc-num::before{content:counter(proc,decimal-leading-zero)}
-.proc-item h4{font-family:var(--ff-d);font-size:1.2rem;color:var(--white);margin-bottom:.4rem}
-.proc-item p{font-size:.85rem;color:var(--muted);line-height:1.7}
+/* SERVICE CARDS */
+.svc-grid{display:grid;grid-template-columns:1fr;gap:1px;
+  background:var(--border);border:1px solid var(--border)}
+.svc-card{background:var(--s1);padding:2rem 1.5rem;position:relative;
+  transition:background .25s var(--ease);overflow:hidden}
+.svc-card:hover{background:var(--s2)}
+.svc-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;
+  background:var(--gold);transition:height .4s var(--ease)}
+.svc-card:hover::before{height:100%}
+.svc-badge{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:.22rem .65rem;background:var(--gold-dim);color:var(--gold);
+  border:1px solid rgba(200,168,75,.25);display:inline-block;margin-bottom:1rem}
+.svc-name{font-family:var(--ff-d);font-size:1.6rem;color:var(--cream);margin-bottom:.5rem}
+.svc-desc{font-size:.84rem;color:var(--muted);line-height:1.75;max-width:520px;margin-bottom:1.25rem}
+.svc-price{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.svc-arrow{position:absolute;top:2rem;right:1.75rem;font-size:1.1rem;color:var(--dim);
+  transition:color .2s,transform .2s}
+.svc-card:hover .svc-arrow{color:var(--gold);transform:translate(3px,-3px)}
 
-/* Home CTA band */
-.cta-band{
-  padding:5rem 0;border-top:1px solid var(--border);
-  text-align:center;
-}
-.cta-band .sec-title{text-align:center}
-.cta-band p{color:var(--muted);font-size:.95rem;margin-bottom:2rem}
+/* FEATURED WORK STRIP */
+.work-strip{display:grid;grid-template-columns:1fr;gap:1px;
+  background:var(--border);border:1px solid var(--border);margin-top:2.5rem}
+.work-thumb{position:relative;height:200px;overflow:hidden;background:var(--s2);cursor:pointer}
+.work-thumb iframe{position:absolute;top:0;left:0;width:1280px;height:900px;
+  border:none;transform-origin:top left;pointer-events:none}
+.work-thumb-overlay{position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(8,8,7,.85) 0%,rgba(8,8,7,.1) 60%,transparent 100%);
+  display:flex;align-items:flex-end;padding:1.25rem 1.5rem;z-index:2}
+.work-thumb-title{font-family:var(--ff-d);font-size:1.25rem;color:var(--cream)}
+.work-thumb-type{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.25rem}
 
-/* ======================================================
-   ★ PRICING PAGES (shared)
-====================================================== */
-.price-hero{padding:5rem 0 3.5rem;border-bottom:1px solid var(--border)}
-.price-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  background:var(--border);border:1px solid var(--border);gap:1px;
-  margin-top:3rem;
-}
-.price-card{
-  background:var(--surface);padding:2.5rem 2rem;
-  display:flex;flex-direction:column;
-  transition:background .2s;position:relative;
-}
-.price-card:hover{background:var(--surface2)}
-.price-card.feat{
-  background:var(--surface2);
-  outline:1px solid var(--gold);outline-offset:-1px;
-  z-index:2;
-}
-.feat-badge{
-  position:absolute;top:0;right:2rem;
-  background:var(--gold);color:var(--bg);
-  font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;
-  padding:.28rem .8rem;
-}
-.p-tier{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
-.p-name{font-family:var(--ff-d);font-size:1.9rem;font-weight:500;color:var(--white);margin-bottom:.9rem}
-.p-price{font-family:var(--ff-d);font-size:3.2rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:.2rem}
-.p-scope{
-  font-size:.78rem;color:var(--muted);
-  padding-bottom:1.25rem;border-bottom:1px solid var(--border);
-  margin-bottom:1.25rem;
-}
-.p-desc{font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:1.5rem}
-.p-feat{flex:1;margin-bottom:1.75rem}
-.p-feat li{
-  font-size:.83rem;color:var(--text);
-  padding:.4rem 0;border-bottom:1px solid rgba(39,39,36,.6);
-  display:flex;align-items:flex-start;gap:.5rem;
-}
-.p-feat li::before{content:'—';color:var(--gold);font-size:.75rem;flex-shrink:0;margin-top:.05rem}
-.p-cta{width:100%;text-align:center}
-.price-note{
-  margin-top:2rem;padding:1.5rem 2rem;
-  background:var(--surface);border:1px solid var(--border);
-  font-size:.83rem;color:var(--muted);
-}
-.price-note b{color:var(--gold);font-weight:500}
+/* PROCESS */
+.proc{display:grid;grid-template-columns:1fr;gap:2rem;margin-top:2.5rem;counter-reset:p}
+.proc-item{counter-increment:p;display:flex;gap:1.5rem;align-items:flex-start}
+.proc-num{font-family:var(--ff-d);font-size:2.8rem;font-weight:300;
+  color:rgba(200,168,75,.18);line-height:1;flex-shrink:0;min-width:2.5rem}
+.proc-num::before{content:counter(p,decimal-leading-zero)}
+.proc-item h3{font-family:var(--ff-d);font-size:1.15rem;color:var(--cream);margin-bottom:.35rem}
+.proc-item p{font-size:.84rem;color:var(--muted);line-height:1.75}
 
-/* ======================================================
-   ★ CUSTOM — COMPARE TABLE
-====================================================== */
-.compare-wrap{margin-top:3rem}
-.compare-table{width:100%;border-collapse:collapse}
-.compare-table th,.compare-table td{
-  padding:.9rem 1.5rem;text-align:left;
-  border-bottom:1px solid var(--border);
-  font-size:.82rem;
-}
-.compare-table th{
-  font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--muted);font-weight:400;
-}
-.compare-table td:first-child{color:var(--muted)}
-.chk{color:var(--gold)}
-.crs{color:var(--border2)}
+/* CTA BAND */
+.cta-band{border:1px solid var(--border);padding:3.5rem 2rem;text-align:center;
+  background:var(--s1);position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);
+  width:400px;height:400px;background:radial-gradient(circle,rgba(200,168,75,.06) 0%,transparent 70%);
+  pointer-events:none}
+.cta-band .display{font-size:clamp(1.8rem,4vw,3rem);margin-bottom:1rem;position:relative}
+.cta-band p{color:var(--muted);font-size:.9rem;margin-bottom:1.75rem;position:relative}
 
-/* ======================================================
-   ★ QUALIFICATIONS
-====================================================== */
-.qual-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.qual-block{margin-bottom:3rem}
-.qual-block:last-child{margin-bottom:0}
-.qblock-label{
-  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--gold);padding-bottom:.75rem;border-bottom:1px solid var(--border);
-  margin-bottom:1.5rem;
+@media(min-width:640px){
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .work-strip{grid-template-columns:1fr 1fr}
+  .proc{grid-template-columns:1fr 1fr}
+  .work-thumb{height:240px}
 }
-.q-item{padding:1.2rem 0;border-bottom:1px solid rgba(39,39,36,.5)}
-.q-item:last-child{border-bottom:none}
-.q-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.2rem}
-.q-title{font-family:var(--ff-d);font-size:1.1rem;color:var(--white)}
-.q-date{font-size:.68rem;color:var(--muted);white-space:nowrap;margin-left:1rem}
-.q-sub{font-size:.78rem;color:var(--gold);margin-bottom:.35rem}
-.q-desc{font-size:.82rem;color:var(--muted);line-height:1.65}
-.skills-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.5rem;margin-top:1rem}
-.s-tag{
-  padding:.5rem .75rem;background:var(--surface);
-  border:1px solid var(--border);font-size:.73rem;
-  color:var(--text);text-align:center;letter-spacing:.04em;
+@media(min-width:1024px){
+  .svc-grid{grid-template-columns:repeat(3,1fr)}
+  .work-strip{grid-template-columns:repeat(3,1fr)}
+  .proc{grid-template-columns:repeat(3,1fr)}
+  .hero{padding:4rem 0 3rem}
+  .work-thumb{height:280px}
 }
 
-/* ======================================================
-   ★ PROJECTS
-====================================================== */
-.proj-grid{
-  display:grid;grid-template-columns:repeat(2,1fr);
-  background:var(--border);border:1px solid var(--border);gap:1px;
-  margin-top:3rem;
-}
-.proj-card{background:var(--surface);overflow:hidden;transition:background .2s}
-.proj-card:hover{background:var(--surface2)}
-.proj-img{
-  height:190px;background:var(--surface2);
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;position:relative;
-}
-.proj-monogram{
-  font-family:var(--ff-d);font-size:3.5rem;font-weight:300;
-  color:rgba(201,168,76,.18);letter-spacing:.08em;
-  transition:color .3s;
-}
-.proj-card:hover .proj-monogram{color:rgba(201,168,76,.28)}
-.proj-img-line{
-  position:absolute;bottom:0;left:0;right:0;
-  height:1px;background:var(--border);
-}
-.proj-body{padding:1.75rem}
-.proj-type{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
-.proj-title{font-family:var(--ff-d);font-size:1.45rem;color:var(--white);margin-bottom:.4rem}
-.proj-desc{font-size:.83rem;color:var(--muted);line-height:1.65;margin-bottom:1.25rem}
-.proj-tags{display:flex;flex-wrap:wrap;gap:.4rem}
-.proj-tag{
-  font-size:.62rem;letter-spacing:.07em;text-transform:uppercase;
-  padding:.22rem .6rem;border:1px solid var(--border);color:var(--muted);
-}
-
-/* ======================================================
-   ★ CONTACT
-====================================================== */
-.contact-grid{display:grid;grid-template-columns:1fr 1.7fr;gap:5rem;align-items:start}
-.contact-info p{font-size:.88rem;color:var(--muted);line-height:1.75;margin-bottom:2.5rem}
-.c-detail{margin-bottom:1.25rem}
-.c-label{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem}
-.c-val{font-size:.9rem;color:var(--text)}
-.cform{display:flex;flex-direction:column;gap:1.1rem}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
-.fg{display:flex;flex-direction:column;gap:.35rem}
-.fg label{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.fg input,.fg select,.fg textarea{
-  background:var(--surface);border:1px solid var(--border);
-  color:var(--text);padding:.72rem 1rem;font-family:var(--ff-b);
-  font-size:.88rem;outline:none;transition:border-color .2s;
-  -webkit-appearance:none;
-}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold)}
-.fg textarea{resize:vertical;min-height:110px}
-.fg select option{background:var(--surface);color:var(--text)}
-.form-success{
-  display:none;padding:2.5rem;background:var(--surface);
-  border:1px solid var(--gold);text-align:center;
-}
-.form-success h3{
-  font-family:var(--ff-d);font-size:1.6rem;
-  color:var(--gold);margin-bottom:.5rem;
-}
-.form-success p{font-size:.88rem;color:var(--muted)}
-
-/* ======================================================
-   RESPONSIVE
-====================================================== */
-@media(max-width:900px){
-  .nav-links,.nav-cta{display:none}
-  .hamburger{display:flex}
-  .val-grid{grid-template-columns:1fr}
-  .proc-grid{grid-template-columns:1fr}
-  .price-grid{grid-template-columns:1fr}
-  .qual-grid{grid-template-columns:1fr;gap:0}
-  .proj-grid{grid-template-columns:1fr}
-  .contact-grid{grid-template-columns:1fr;gap:3rem}
-  .form-row{grid-template-columns:1fr}
-  .footer{flex-direction:column;text-align:center}
-  .hero-h1{font-size:2.6rem}
-}
 </style>
 </head>
 <body>
-
-<!-- ==============================
-     NAV
-============================== -->
-<nav>
-  <div class="nav-logo" onclick="showPage('home')">Deadwood<b>.</b>Digital</div>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="index.html">Deadwood<b>.</b>Digital</a>
   <div class="nav-links">
-    <a data-page="home"           onclick="showPage('home')"           class="active">Home</a>
-    <a data-page="templates"      onclick="showPage('templates')">Templates</a>
-    <a data-page="custom"         onclick="showPage('custom')">Custom</a>
-    <a data-page="qualifications" onclick="showPage('qualifications')">Qualifications</a>
-    <a data-page="projects"       onclick="showPage('projects')">Projects</a>
-    <a data-page="contact"        onclick="showPage('contact')">Contact</a>
+    <a href="index.html" class="active">Home</a>
+    <a href="work.html">Work</a>
+    <a href="templates.html">Templates</a>
+    <a href="custom.html">Custom</a>
+    <a href="about.html">About</a>
     <a href="maintenance.html">Maintenance</a>
   </div>
-  <button class="btn btn-out nav-cta" onclick="showPage('contact')">Get a Site</button>
-  <div class="hamburger" id="ham" onclick="toggleMenu()">
+  <a class="nav-btn btn" href="contact.html">Start a Project</a>
+  <button class="ham" id="ham" aria-label="Menu" aria-expanded="false" onclick="toggleMenu(this)">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
-
-<div class="mobile-nav" id="mobNav">
-  <a data-page="home"           onclick="showPage('home')">Home</a>
-  <a data-page="templates"      onclick="showPage('templates')">Templates</a>
-  <a data-page="custom"         onclick="showPage('custom')">Custom</a>
-  <a data-page="qualifications" onclick="showPage('qualifications')">Qualifications</a>
-  <a data-page="projects"       onclick="showPage('projects')">Projects</a>
-  <a data-page="contact"        onclick="showPage('contact')">Contact</a>
+<div class="drawer" id="drawer">
+  <div class="drawer-inner">
+  <a href="index.html" class="active">Home</a>
+  <a href="work.html">Work</a>
+  <a href="templates.html">Templates</a>
+  <a href="custom.html">Custom</a>
+  <a href="about.html">About</a>
   <a href="maintenance.html">Maintenance</a>
+  </div>
+</div>
 </div>
 
-<!-- ==============================
-     HOME
-============================== -->
-<section class="page active" id="page-home">
-<div class="container">
+<div class="pt-nav">
 
-  <!-- Hero -->
-  <div class="hero">
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>E-Commerce</span><span><b>·</b></span>
+    <span>Custom Websites</span><span><b>·</b></span>
+    <span>Online Stores</span><span><b>·</b></span>
+    <span>Small Business</span><span><b>·</b></span>
+    <span>Deadwood Digital</span><span><b>·</b></span>
+    <span>Built to Sell</span><span><b>·</b></span>
+    <span>E-Commerce</span><span><b>·</b></span>
+    <span>Custom Websites</span><span><b>·</b></span>
+    <span>Online Stores</span><span><b>·</b></span>
+    <span>Small Business</span><span><b>·</b></span>
+    <span>Deadwood Digital</span><span><b>·</b></span>
+    <span>Built to Sell</span><span><b>·</b></span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap">
+    <div class="hero-glow-a"></div>
+    <div class="hero-glow-b"></div>
     <div class="hero-inner">
-      <div class="hero-eye">Web Design &amp; Development — Deadwood Digital</div>
-      <h1 class="hero-h1">Your business deserves<br>a website that <em>actually works.</em></h1>
-      <p class="hero-p">Professional websites for small businesses. Choose a polished template or commission a fully custom build — either way, the result is clean, modern, and built to represent you well.</p>
-      <div class="hero-btns">
-        <button class="btn btn-gold" onclick="showPage('templates')">View Templates</button>
-        <button class="btn btn-out"  onclick="showPage('custom')">Custom Work</button>
+      <div class="eyebrow r">E-Commerce &amp; Web Design — Deadwood Digital</div>
+      <h1 class="display hero-h1 r r2" id="hero-h">
+        Your store,<br><em>built right.</em>
+      </h1>
+      <p class="hero-sub r r3">
+        Custom e-commerce websites and business sites for small businesses ready to sell online.
+        Clean code, real results, honest pricing.
+      </p>
+      <div class="hero-actions r r4">
+        <a class="btn btn-solid" href="services.html">Build My Store</a>
+        <a class="btn btn-outline" href="work.html">See the Work</a>
       </div>
     </div>
   </div>
-
-  <!-- Value cards -->
-  <div class="val-grid">
-    <div class="val-card">
-      <div class="val-icon">◈</div>
-      <h3>Template Sites</h3>
-      <p>Professionally designed templates customized for your business. Fast turnaround, clear pricing, and results that rival custom builds at a fraction of the cost.</p>
-      <div class="val-price">Starting at $250</div>
-    </div>
-    <div class="val-card">
-      <div class="val-icon">◇</div>
-      <h3>Custom Builds</h3>
-      <p>A website designed and coded specifically around your business — original layouts, brand-first structure, and every page built with intention from the ground up.</p>
-      <div class="val-price">Starting at $1,000</div>
-    </div>
-    <div class="val-card">
-      <div class="val-icon">◉</div>
-      <h3>Built Right</h3>
-      <p>Every project — template or custom — is mobile responsive, cross-browser tested, and written in clean code. Nothing sloppy, nothing wasted.</p>
-      <div class="val-price">Every project</div>
-    </div>
-  </div>
-
-  <!-- Process -->
-  <div class="sec">
-    <div class="sec-label">How It Works</div>
-    <h2 class="sec-title">Simple from start to finish.</h2>
-    <div class="proc-grid">
-      <div class="proc-item">
-        <span class="proc-num"></span>
-        <h4>Choose Your Path</h4>
-        <p>Pick a template tier or request a custom build. Not sure which fits? The contact form has a "not sure" option — I'll help figure it out.</p>
-      </div>
-      <div class="proc-item">
-        <span class="proc-num"></span>
-        <h4>Share Your Details</h4>
-        <p>Fill out the form with your business info, timeline, and any style direction you have in mind. More detail means a better result.</p>
-      </div>
-      <div class="proc-item">
-        <span class="proc-num"></span>
-        <h4>Get Your Site</h4>
-        <p>Receive a professional website built and ready to represent your business online — responsive, tested, and deployable.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- CTA band -->
-  <div class="cta-band">
-    <div class="sec-label" style="justify-content:center">Ready?</div>
-    <h2 class="sec-title">Let's build your site.</h2>
-    <p>Fill out the contact form and I'll be in touch within 24–48 hours.</p>
-    <button class="btn btn-gold" onclick="showPage('contact')">Start Your Project</button>
-  </div>
-
-  <footer class="footer">
-    <div class="footer-logo">Deadwood<b>.</b>Digital</div>
-    <p>© 2026 Deadwood Digital &nbsp;·&nbsp; Trenton, MO</p>
-    <p><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></p>
-  </footer>
-
-</div>
 </section>
 
-<!-- ==============================
-     TEMPLATES
-============================== -->
-<section class="page" id="page-templates">
-<div class="container">
-
-  <div class="price-hero">
-    <div class="sec-label">Template Websites</div>
-    <h1 class="sec-title">Launch fast.<br>Look sharp.</h1>
-    <p class="sec-sub">Template sites are built on a professional framework, then customized for your business. Faster turnaround and fixed pricing — without sacrificing quality.</p>
+<!-- STATS -->
+<div class="wrap">
+  <div class="stats">
+    <div class="stat r"><div class="stat-num">5</div><div class="stat-label">Live Sites Built</div></div>
+    <div class="stat r r2"><div class="stat-num">$250</div><div class="stat-label">Starting Price</div></div>
+    <div class="stat r r3"><div class="stat-num">48h</div><div class="stat-label">Response Time</div></div>
   </div>
-
-  <div class="price-grid">
-
-    <!-- Tier 1 -->
-    <div class="price-card">
-      <div class="p-tier">Tier 01</div>
-      <div class="p-name">Starter</div>
-      <div class="p-price">$250</div>
-      <div class="p-scope">Single-page website</div>
-      <p class="p-desc">One clean, well-structured page covering who you are, what you offer, and how to reach you. The fastest way to establish a professional presence online.</p>
-      <ul class="p-feat">
-        <li>1 full-length page</li>
-        <li>Mobile responsive layout</li>
-        <li>Contact section included</li>
-        <li>Professional template base</li>
-        <li>Deployed and ready to launch</li>
-      </ul>
-      <button class="btn btn-out p-cta" onclick="showPage('contact')">Get Started</button>
-    </div>
-
-    <!-- Tier 2 -->
-    <div class="price-card feat">
-      <div class="feat-badge">Most Popular</div>
-      <div class="p-tier">Tier 02</div>
-      <div class="p-name">Standard</div>
-      <div class="p-price">$500</div>
-      <div class="p-scope">3–5 page website</div>
-      <p class="p-desc">A complete business website with dedicated pages for your services, about section, and contact. Gives customers everything they need to choose you.</p>
-      <ul class="p-feat">
-        <li>3–5 pages</li>
-        <li>Home, About, Services, Contact</li>
-        <li>Mobile responsive layout</li>
-        <li>Consistent design system across pages</li>
-        <li>Professional template base</li>
-        <li>Deployed and ready to launch</li>
-      </ul>
-      <button class="btn btn-gold p-cta" onclick="showPage('contact')">Get Started</button>
-    </div>
-
-    <!-- Tier 3 -->
-    <div class="price-card">
-      <div class="p-tier">Tier 03</div>
-      <div class="p-name">Premium</div>
-      <div class="p-price">$1,000</div>
-      <div class="p-scope">7–10 page website</div>
-      <p class="p-desc">A complete web presence with real depth — more pages, more room to communicate, and a full structure built for a business that's serious about showing up well.</p>
-      <ul class="p-feat">
-        <li>7–10 pages</li>
-        <li>Full site structure</li>
-        <li>Mobile responsive layout</li>
-        <li>Gallery or portfolio section</li>
-        <li>Consistent design system across pages</li>
-        <li>Professional template base</li>
-        <li>Deployed and ready to launch</li>
-      </ul>
-      <button class="btn btn-out p-cta" onclick="showPage('contact')">Get Started</button>
-    </div>
-
-  </div>
-
-  <div class="price-note">
-    <b>Not sure which tier fits?</b> — Fill out the contact form, describe your business, and I'll help you find the right starting point. No commitment required.
-  </div>
-
-  <div class="sec-sm" style="padding-bottom:4rem">
-    <button class="btn btn-ghost" onclick="showPage('custom')">Looking for a fully custom build instead? →</button>
-  </div>
-
-  <footer class="footer">
-    <div class="footer-logo">Deadwood<b>.</b>Digital</div>
-    <p>© 2026 Deadwood Digital &nbsp;·&nbsp; Trenton, MO</p>
-    <p><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></p>
-  </footer>
-
 </div>
+
+<!-- SERVICES OVERVIEW -->
+<section class="sec wrap" aria-labelledby="svc-h">
+  <div class="eyebrow r">What We Build</div>
+  <h2 class="display r r2" id="svc-h" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:2rem">
+    Three ways to get online.
+  </h2>
+  <div class="svc-grid">
+    <a class="svc-card" href="services.html#ecommerce" aria-label="E-Commerce Stores">
+      <div class="svc-badge">Primary Focus</div>
+      <div class="svc-name">E-Commerce Store</div>
+      <p class="svc-desc">A full online store with product pages, checkout, inventory management, and everything your customers need to buy from you directly.</p>
+      <div class="svc-price">Custom Build — from $1,500</div>
+      <span class="svc-arrow" aria-hidden="true">↗</span>
+    </a>
+    <a class="svc-card" href="services.html#business" aria-label="Business Websites">
+      <div class="svc-badge">Multi-Page</div>
+      <div class="svc-name">Business Website</div>
+      <p class="svc-desc">A professional multi-page site covering your services, about, gallery, and contact. Everything a customer needs to trust you before they call.</p>
+      <div class="svc-price">Template or Custom — from $500</div>
+      <span class="svc-arrow" aria-hidden="true">↗</span>
+    </a>
+    <a class="svc-card" href="services.html#landing" aria-label="Landing Pages">
+      <div class="svc-badge">Single Page</div>
+      <div class="svc-name">Landing Page</div>
+      <p class="svc-desc">One focused, well-built page for businesses that want a fast, professional online presence without the full site scope.</p>
+      <div class="svc-price">Starting at $250</div>
+      <span class="svc-arrow" aria-hidden="true">↗</span>
+    </a>
+  </div>
 </section>
 
-<!-- ==============================
-     CUSTOM
-============================== -->
-<section class="page" id="page-custom">
-<div class="container">
-
-  <div class="price-hero">
-    <div class="sec-label">Custom Websites</div>
-    <h1 class="sec-title">Built for your business.<br>Not anyone else's.</h1>
-    <p class="sec-sub">Custom builds start from a blank page. Every layout, structure, and visual decision is made specifically around your brand and your goals — no templates, no shortcuts.</p>
-  </div>
-
-  <div class="price-grid">
-
-    <!-- Foundation -->
-    <div class="price-card">
-      <div class="p-tier">Tier 01</div>
-      <div class="p-name">Foundation</div>
-      <div class="p-price">$1,000</div>
-      <div class="p-scope">Custom single-page site</div>
-      <p class="p-desc">One page designed and built from scratch specifically for your business. Ideal for businesses that want a high-quality custom presence without a full multi-page scope.</p>
-      <ul class="p-feat">
-        <li>1 fully custom page</li>
-        <li>Original design — no templates</li>
-        <li>Mobile responsive</li>
-        <li>Built around your brand</li>
-        <li>Deployed and ready to launch</li>
-      </ul>
-      <button class="btn btn-out p-cta" onclick="showPage('contact')">Inquire</button>
+<!-- FEATURED WORK -->
+<section class="sec wrap" aria-labelledby="fw-h">
+  <div class="eyebrow r">Featured Work</div>
+  <h2 class="display r r2" id="fw-h" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:2rem">
+    Real sites. Real businesses.
+  </h2>
+  <div class="work-strip" id="featuredStrip">
+    <div class="work-thumb r" onclick="window.open('https://bigboypeps.com','_blank')" role="link" tabindex="0" aria-label="Big Boy Peps — E-Commerce">
+      <iframe src="https://bigboypeps.com" title="Big Boy Peps e-commerce site" loading="lazy" scrolling="no"></iframe>
+      <div class="work-thumb-overlay">
+        <div><div class="work-thumb-type">E-Commerce · Client</div><div class="work-thumb-title">Big Boy Peps</div></div>
+      </div>
     </div>
-
-    <!-- Staple -->
-    <div class="price-card feat">
-      <div class="feat-badge">Most Popular</div>
-      <div class="p-tier">Tier 02</div>
-      <div class="p-name">Staple</div>
-      <div class="p-price">$2,000</div>
-      <div class="p-scope">Custom 3–5 page site</div>
-      <p class="p-desc">A full custom business website. Structure, design, and every page built specifically around your brand — each one with purpose and a clear role in the overall site.</p>
-      <ul class="p-feat">
-        <li>3–5 fully custom pages</li>
-        <li>Original design — no templates</li>
-        <li>Mobile responsive</li>
-        <li>Unique layout per page</li>
-        <li>Built around your brand</li>
-        <li>Deployed and ready to launch</li>
-      </ul>
-      <button class="btn btn-gold p-cta" onclick="showPage('contact')">Inquire</button>
+    <div class="work-thumb r r2" onclick="window.open('https://thomas-dylan.github.io/Blackthorne-Vale-LLP/','_blank')" role="link" tabindex="0" aria-label="Blackthorne Vale LLP">
+      <iframe src="https://thomas-dylan.github.io/Blackthorne-Vale-LLP/" title="Blackthorne Vale LLP website" loading="lazy" scrolling="no"></iframe>
+      <div class="work-thumb-overlay">
+        <div><div class="work-thumb-type">Multi-Page · Template</div><div class="work-thumb-title">Blackthorne Vale LLP</div></div>
+      </div>
     </div>
-
-    <!-- Signature -->
-    <div class="price-card">
-      <div class="p-tier">Tier 03</div>
-      <div class="p-name">Signature</div>
-      <div class="p-price">$3,000</div>
-      <div class="p-scope">Custom 7–10 page site</div>
-      <p class="p-desc">A comprehensive custom web presence. Deep structure, original design throughout, and a site built to reflect where your business is going — not just where it is.</p>
-      <ul class="p-feat">
-        <li>7–10 fully custom pages</li>
-        <li>Original design — no templates</li>
-        <li>Mobile responsive</li>
-        <li>Unique layout per page</li>
-        <li>Advanced structure and flow</li>
-        <li>Built around your brand</li>
-        <li>Deployed and ready to launch</li>
-      </ul>
-      <button class="btn btn-out p-cta" onclick="showPage('contact')">Inquire</button>
-    </div>
-
-  </div>
-
-  <!-- Comparison -->
-  <div class="sec">
-    <div class="sec-label">Comparison</div>
-    <h2 class="sec-title">Templates vs. Custom</h2>
-    <p class="sec-sub">Both produce professional, real websites. The difference is in how specific you need to get.</p>
-    <div class="compare-wrap">
-      <table class="compare-table">
-        <thead>
-          <tr><th>Feature</th><th>Template</th><th>Custom</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Professional design</td><td class="chk">✓</td><td class="chk">✓</td></tr>
-          <tr><td>Mobile responsive</td><td class="chk">✓</td><td class="chk">✓</td></tr>
-          <tr><td>Deployed and launch-ready</td><td class="chk">✓</td><td class="chk">✓</td></tr>
-          <tr><td>Original design built for you</td><td class="crs">—</td><td class="chk">✓</td></tr>
-          <tr><td>Unique layout per page</td><td class="crs">—</td><td class="chk">✓</td></tr>
-          <tr><td>Brand-specific structure</td><td class="crs">—</td><td class="chk">✓</td></tr>
-          <tr><td>Faster turnaround</td><td class="chk">✓</td><td class="crs">—</td></tr>
-          <tr><td>Lower starting price</td><td class="chk">✓</td><td class="crs">—</td></tr>
-        </tbody>
-      </table>
+    <div class="work-thumb r r3" onclick="window.open('https://thomas-dylan.github.io/Harbor-And-Ash/','_blank')" role="link" tabindex="0" aria-label="Harbor & Ash">
+      <iframe src="https://thomas-dylan.github.io/Harbor-And-Ash/" title="Harbor and Ash website" loading="lazy" scrolling="no"></iframe>
+      <div class="work-thumb-overlay">
+        <div><div class="work-thumb-type">Multi-Page · Template</div><div class="work-thumb-title">Harbor &amp; Ash</div></div>
+      </div>
     </div>
   </div>
-
-  <div style="display:flex;gap:1rem;flex-wrap:wrap;padding-bottom:4rem">
-    <button class="btn btn-gold"  onclick="showPage('contact')">Start a Custom Project</button>
-    <button class="btn btn-out"   onclick="showPage('templates')">Browse Templates Instead</button>
+  <div style="margin-top:1.5rem">
+    <a class="btn btn-ghost" href="work.html">View all work →</a>
   </div>
-
-  <footer class="footer">
-    <div class="footer-logo">Deadwood<b>.</b>Digital</div>
-    <p>© 2026 Deadwood Digital &nbsp;·&nbsp; Trenton, MO</p>
-    <p><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></p>
-  </footer>
-
-</div>
 </section>
 
-<!-- ==============================
-     QUALIFICATIONS
-============================== -->
-<section class="page" id="page-qualifications">
-<div class="container">
-
-  <div class="price-hero">
-    <div class="sec-label">Qualifications</div>
-    <h1 class="sec-title">Background &amp; Skills</h1>
-    <p class="sec-sub">A web developer with a certificate in web development, hands-on experience across real client projects, and a foundation built from two years of formal training.</p>
-  </div>
-
-  <div class="sec">
-    <div class="qual-grid">
-
-      <!-- Left column -->
-      <div>
-
-        <div class="qual-block">
-          <div class="qblock-label">Education</div>
-
-          <div class="q-item">
-            <div class="q-row">
-              <div class="q-title">Certificate in Web Development</div>
-              <div class="q-date">2020–2022</div>
-            </div>
-            <div class="q-sub">West-MEC Career &amp; Technical Education &nbsp;·&nbsp; Glendale, AZ</div>
-            <div class="q-desc">Two-year industry-focused program covering HTML, CSS, JavaScript, and web design. Completed alongside a high school diploma.</div>
-          </div>
-
-          <div class="q-item">
-            <div class="q-row">
-              <div class="q-title">High School Diploma</div>
-              <div class="q-date">2018–2022</div>
-            </div>
-            <div class="q-sub">Canyon View High School &nbsp;·&nbsp; Glendale, AZ</div>
-          </div>
-        </div>
-
-        <div class="qual-block">
-          <div class="qblock-label">Activities &amp; Involvement</div>
-
-          <div class="q-item">
-            <div class="q-row">
-              <div class="q-title">Founder</div>
-              <div class="q-date">2026–Present</div>
-            </div>
-            <div class="q-sub">Deadwood Digital</div>
-            <div class="q-desc">Founded a web development and design business focused on helping small businesses establish a professional online presence.</div>
-          </div>
-
-          <div class="q-item">
-            <div class="q-row">
-              <div class="q-title">FBLA</div>
-              <div class="q-date">2020–2022</div>
-            </div>
-            <div class="q-sub">Future Business Leaders of America</div>
-          </div>
-
-          <div class="q-item">
-            <div class="q-row">
-              <div class="q-title">Varsity Wrestling</div>
-              <div class="q-date">2018–2020</div>
-            </div>
-            <div class="q-desc">Competed at the varsity level. Built discipline, resilience, and a competitive mindset.</div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Right column -->
-      <div>
-
-        <div class="qual-block">
-          <div class="qblock-label">Work Experience</div>
-
-          <div class="q-item">
-            <div class="q-row">
-              <div class="q-title">Team Member — Market Grille</div>
-              <div class="q-date">Jan 2025–Present</div>
-            </div>
-            <div class="q-sub">HyVee &nbsp;·&nbsp; Trenton, MO</div>
-            <div class="q-desc">Prep, cook, and serve food in a fast-paced kitchen environment. Previously stocked dairy inventory and managed pallet unloading; cross-trained across departments.</div>
-          </div>
-
-          <div class="q-item">
-            <div class="q-row">
-              <div class="q-title">Stock Associate</div>
-              <div class="q-date">Feb–Sep 2025</div>
-            </div>
-            <div class="q-sub">Hostetlers &nbsp;·&nbsp; Trenton, MO</div>
-            <div class="q-desc">Moved and organized products from storage to the sales floor. Handled pricing, sorting, and systematic stocking with accuracy.</div>
-          </div>
-
-          <div class="q-item">
-            <div class="q-row">
-              <div class="q-title">Courtesy Clerk</div>
-              <div class="q-date">Feb 2022–Nov 2024</div>
-            </div>
-            <div class="q-sub">Fry's Food Store (Kroger) &nbsp;·&nbsp; Buckeye, AZ</div>
-            <div class="q-desc">High-volume retail environment — reliable, fast, and customer-first. Helped customers directly with loading, moving, and locating products.</div>
-          </div>
-        </div>
-
-        <div class="qual-block">
-          <div class="qblock-label">Technical Skills</div>
-          <div class="skills-wrap">
-            <div class="s-tag">HTML</div>
-            <div class="s-tag">CSS</div>
-            <div class="s-tag">JavaScript</div>
-            <div class="s-tag">TypeScript</div>
-            <div class="s-tag">SQL</div>
-            <div class="s-tag">Git / GitHub</div>
-            <div class="s-tag">Google Workspace</div>
-            <div class="s-tag">Microsoft Office</div>
-            <div class="s-tag">AI Prompt Engineering</div>
-            <div class="s-tag">Claude Code / Skills</div>
-            <div class="s-tag">SDK Integration</div>
-            <div class="s-tag">Code Review</div>
-          </div>
-        </div>
-
-      </div>
+<!-- HOW IT WORKS -->
+<section class="sec wrap" aria-labelledby="proc-h">
+  <div class="eyebrow r">Process</div>
+  <h2 class="display r r2" id="proc-h" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:2.5rem">
+    Simple from start to finish.
+  </h2>
+  <div class="proc">
+    <div class="proc-item r">
+      <span class="proc-num"></span>
+      <div><h3>Choose Your Build</h3><p>Pick a service — e-commerce store, business site, or landing page. Not sure? The contact form handles that too.</p></div>
+    </div>
+    <div class="proc-item r r2">
+      <span class="proc-num"></span>
+      <div><h3>Share Your Details</h3><p>Fill out the form with business info, style direction, and timeline. More detail means a better result.</p></div>
+    </div>
+    <div class="proc-item r r3">
+      <span class="proc-num"></span>
+      <div><h3>Get Your Site</h3><p>Receive a responsive, launch-ready website built to actually represent your business — and sell your products.</p></div>
     </div>
   </div>
-
-  <footer class="footer">
-    <div class="footer-logo">Deadwood<b>.</b>Digital</div>
-    <p>© 2026 Deadwood Digital &nbsp;·&nbsp; Trenton, MO</p>
-    <p><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></p>
-  </footer>
-
-</div>
 </section>
 
-<!-- ==============================
-     PROJECTS
-============================== -->
-<section class="page" id="page-projects">
-<div class="container">
-
-  <div class="price-hero">
-    <div class="sec-label">Projects</div>
-    <h1 class="sec-title">Real work.<br>Real businesses.</h1>
-    <p class="sec-sub">Sites designed, coded, and deployed. Every project listed here is real — built for actual clients or as a live personal project.</p>
+<!-- CTA BAND -->
+<div class="wrap" style="padding-bottom:5rem">
+  <div class="cta-band r">
+    <h2 class="display" style="font-size:clamp(1.8rem,4vw,3rem);margin-bottom:.9rem">Ready to build?</h2>
+    <p>Fill out the form and I'll be in touch within 24–48 hours.</p>
+    <a class="btn btn-solid" href="contact.html">Start a Project</a>
   </div>
-
-  <div class="proj-grid">
-
-    <div class="proj-card">
-      <div class="proj-img">
-        <div class="proj-monogram">BBP</div>
-        <div class="proj-img-line"></div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-type">Client Website</div>
-        <div class="proj-title">Big Boy Peps</div>
-        <div class="proj-desc">A client website built for Big Boy Peps. Designed and developed to establish a professional online presence for the business.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">HTML</span>
-          <span class="proj-tag">CSS</span>
-          <span class="proj-tag">JavaScript</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-img">
-        <div class="proj-monogram">CS</div>
-        <div class="proj-img-line"></div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-type">Single-Page &nbsp;·&nbsp; Template Starter</div>
-        <div class="proj-title">ClearStone</div>
-        <div class="proj-desc">A single-page site for a pressure washing business. Clean layout focused on services and a direct call to action for new customers.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">HTML</span>
-          <span class="proj-tag">CSS</span>
-          <span class="proj-tag">JavaScript</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-img">
-        <div class="proj-monogram">MDE</div>
-        <div class="proj-img-line"></div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-type">3-Page &nbsp;·&nbsp; Template Standard</div>
-        <div class="proj-title">Mr. Doughnuts Emporium</div>
-        <div class="proj-desc">A three-page site for a doughnut shop covering menu, about, and contact — across a cohesive branded design system.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">HTML</span>
-          <span class="proj-tag">CSS</span>
-          <span class="proj-tag">JavaScript</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-img">
-        <div class="proj-monogram">DT</div>
-        <div class="proj-img-line"></div>
-      </div>
-      <div class="proj-body">
-        <div class="proj-type">Personal Project &nbsp;·&nbsp; <a href="https://thomas-dylan.github.io/Portfolio" target="_blank" style="color:var(--gold)">View Live ↗</a></div>
-        <div class="proj-title">Personal Portfolio</div>
-        <div class="proj-desc">Designed and coded from scratch using only HTML. Fully responsive, cross-browser tested, and deployed via GitHub Pages.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">HTML</span>
-          <span class="proj-tag">CSS</span>
-          <span class="proj-tag">GitHub Pages</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div style="padding:4rem 0;text-align:center">
-    <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.5rem">Interested in having your project here?</p>
-    <button class="btn btn-gold" onclick="showPage('contact')">Start a Project</button>
-  </div>
-
-  <footer class="footer">
-    <div class="footer-logo">Deadwood<b>.</b>Digital</div>
-    <p>© 2026 Deadwood Digital &nbsp;·&nbsp; Trenton, MO</p>
-    <p><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></p>
-  </footer>
-
 </div>
-</section>
 
-<!-- ==============================
-     CONTACT
-============================== -->
-<section class="page" id="page-contact">
-<div class="container">
-
-  <div class="price-hero">
-    <div class="sec-label">Contact</div>
-    <h1 class="sec-title">Let's build your site.</h1>
-  </div>
-
-  <div class="sec" style="padding-top:3rem">
-    <div class="contact-grid">
-
-      <div class="contact-info">
-        <p>Fill out the form and I'll get back to you within 24–48 hours. The more detail you include about your business and what you're looking for, the better I can help.</p>
-        <div class="c-detail">
-          <div class="c-label">Email</div>
-          <div class="c-val">dylant5323@gmail.com</div>
-        </div>
-        <div class="c-detail">
-          <div class="c-label">Phone</div>
-          <div class="c-val">(816) 752-4944</div>
-        </div>
-        <div class="c-detail">
-          <div class="c-label">Location</div>
-          <div class="c-val">Trenton, MO</div>
-        </div>
-        <div class="c-detail">
-          <div class="c-label">Website</div>
-          <div class="c-val"><a href="http://deadwooddigital.digital" target="_blank" style="color:var(--gold)">deadwooddigital.digital ↗</a></div>
-        </div>
-      </div>
-
-      <div>
-        <form class="cform" id="cForm" onsubmit="submitForm(event)">
-          <div class="form-row">
-            <div class="fg">
-              <label>Your Name</label>
-              <input type="text" placeholder="Jane Smith" required>
-            </div>
-            <div class="fg">
-              <label>Email Address</label>
-              <input type="email" placeholder="jane@yourbusiness.com" required>
-            </div>
-          </div>
-          <div class="fg">
-            <label>Business Name</label>
-            <input type="text" placeholder="Your business name">
-          </div>
-          <div class="fg">
-            <label>Service</label>
-            <select required>
-              <option value="" disabled selected>Select a service</option>
-              <optgroup label="— Template">
-                <option>Template — Starter ($250 · 1 page)</option>
-                <option>Template — Standard ($500 · 3–5 pages)</option>
-                <option>Template — Premium ($1,000 · 7–10 pages)</option>
-              </optgroup>
-              <optgroup label="— Custom">
-                <option>Custom — Foundation ($1,000 · 1 page)</option>
-                <option>Custom — Staple ($2,000 · 3–5 pages)</option>
-                <option>Custom — Signature ($3,000 · 7–10 pages)</option>
-              </optgroup>
-              <option>Not sure yet — need a recommendation</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <div class="fg">
-              <label>Timeframe</label>
-              <select>
-                <option value="" disabled selected>When do you need this?</option>
-                <option>As soon as possible</option>
-                <option>Within a month</option>
-                <option>1–3 months out</option>
-                <option>No rush</option>
-              </select>
-            </div>
-            <div class="fg">
-              <label>Style Direction</label>
-              <select>
-                <option value="" disabled selected>General style preference</option>
-                <option>Clean &amp; minimal</option>
-                <option>Bold &amp; modern</option>
-                <option>Warm &amp; rustic</option>
-                <option>Professional &amp; corporate</option>
-                <option>Not sure — open to suggestions</option>
-              </select>
-            </div>
-          </div>
-          <div class="fg">
-            <label>Tell me about your business and what you need</label>
-            <textarea placeholder="What does your business do? What should the website accomplish? Any reference sites or style examples you like?"></textarea>
-          </div>
-          <button type="submit" class="btn btn-gold" style="align-self:flex-start">Send It</button>
-        </form>
-        <div class="form-success" id="fSuccess">
-          <h3>Message Received</h3>
-          <p>I'll be in touch within 24–48 hours. Thank you for reaching out.</p>
-        </div>
-      </div>
-
+</div><script>
+// Scale featured work iframes
+(function(){
+  function scale(){
+    document.querySelectorAll('#featuredStrip .work-thumb').forEach(function(wrap){
+      var iframe=wrap.querySelector('iframe');
+      if(!iframe)return;
+      var s=wrap.offsetWidth/1280;
+      iframe.style.transform='scale('+s+')';
+    });
+  }
+  scale();
+  window.addEventListener('resize',scale);
+})();
+</script>
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="foot-logo">Deadwood<b>.</b>Digital</div>
+      <p>© 2026 Deadwood Digital · Trenton, MO</p>
+      <p><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></p>
     </div>
   </div>
-
-  <footer class="footer">
-    <div class="footer-logo">Deadwood<b>.</b>Digital</div>
-    <p>© 2026 Deadwood Digital &nbsp;·&nbsp; Trenton, MO</p>
-    <p><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></p>
-  </footer>
-
-</div>
-</section>
-
-<!-- ==============================
-     JS
-============================== -->
+</footer>
 <script>
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('[data-page]').forEach(a=>{
-    a.classList.toggle('active', a.dataset.page === id);
-  });
-  document.getElementById('page-'+id).classList.add('active');
-  window.scrollTo({top:0,behavior:'instant'});
-  document.getElementById('mobNav').classList.remove('open');
+function toggleMenu(btn){
+  var d=document.getElementById('drawer');
+  var open=d.classList.toggle('open');
+  btn.classList.toggle('open',open);
+  btn.setAttribute('aria-expanded',open);
 }
-function toggleMenu(){
-  document.getElementById('mobNav').classList.toggle('open');
-}
-function submitForm(e){
-  e.preventDefault();
-  document.getElementById('cForm').style.display='none';
-  document.getElementById('fSuccess').style.display='block';
-}
+// Reveal on scroll
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});
+  },{threshold:.08});
+  function init(){document.querySelectorAll('.r').forEach(function(el){io.observe(el);});}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+})();
 </script>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Deadwood Digital — Monthly Retainer & Maintenance</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0b0b09;--surface:#131311;--surface2:#1a1a17;--border:#272724;--border2:#323230;--text:#ddd5c4;--muted:#7a7568;--gold:#c9a84c;--gold-lt:#dfc07a;--white:#f0e8d8;--ff-d:'Cormorant Garamond',Georgia,serif;--ff-b:'DM Sans',system-ui,sans-serif}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -23,6 +23,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;padding:0 2.5rem
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
 .nav-cta{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;padding:.5rem 1.4rem;border:1px solid var(--gold);color:var(--gold);background:transparent;transition:all .2s}
 .nav-cta:hover{background:var(--gold);color:var(--bg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--ff-b);font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap}
+.nav-btn{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;padding:.45rem 1.2rem;border:1px solid var(--gold);color:var(--gold);background:transparent;transition:all .2s;display:inline-flex;align-items:center;min-height:36px}
+.nav-btn:hover{background:var(--gold);color:var(--bg)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
 .hamburger span{width:22px;height:1.5px;background:var(--text);display:block}
 .mobile-nav{display:none;position:fixed;top:60px;left:0;right:0;z-index:190;background:var(--bg);border-bottom:1px solid var(--border);padding:1.5rem 2.5rem;flex-direction:column;gap:1.25rem}
@@ -54,6 +57,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;padding:0 2.5rem
 .ret-price{text-align:right;flex-shrink:0}
 .ret-amount{font-family:var(--ff-d);font-size:3.5rem;font-weight:300;color:var(--gold);line-height:1}
 .ret-period{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.35rem}
+.ret-note{font-size:.68rem;letter-spacing:.08em;color:var(--muted);margin-top:.5rem}
+.ret-note b{color:var(--gold);font-weight:500}
 .included-grid{display:grid;grid-template-columns:1fr 1fr;background:var(--border);border:1px solid var(--border);border-top:none;gap:1px}
 .inc-item{background:var(--surface);padding:.8rem 1.25rem;font-size:.83rem;color:var(--text);display:flex;align-items:center;gap:.6rem}
 .inc-item::before{content:'—';color:var(--gold);font-size:.75rem;flex-shrink:0}
@@ -111,39 +116,43 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;padding:0 2.5rem
   .nav-links,.nav-cta{display:none}
   .hamburger{display:flex}
   .tier-grid,.proj-grid,.terms-grid,.included-grid{grid-template-columns:1fr}
-  .retainer-card{flex-direction:column;align-items:flex-start}
-  .ret-price{text-align:left}
   .footer{flex-direction:column;text-align:center}
 }
 </style>
 </head>
 <body>
 
-<nav>
+<nav aria-label="Main navigation">
   <a class="nav-logo" href="index.html">Deadwood<b>.</b>Digital</a>
   <div class="nav-links">
     <a href="index.html">Home</a>
+    <a href="work.html">Work</a>
     <a href="templates.html">Templates</a>
     <a href="custom.html">Custom</a>
-    <a href="qualifications.html">Qualifications</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
+    <a href="about.html">About</a>
+    <a href="setup.html">Setup & Launch</a>
     <a href="maintenance.html" class="active">Maintenance</a>
   </div>
-  <a class="nav-cta" href="contact.html">Get a Site</a>
-  <div class="hamburger" id="ham" onclick="toggleMenu()">
+  <a class="nav-btn btn" href="contact.html">Start a Project</a>
+  <button class="ham" id="ham" aria-label="Menu" aria-expanded="false" onclick="toggleMenu(this)">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
-<div class="mobile-nav" id="mobNav">
+<div class="drawer" id="drawer">
+  <div class="drawer-inner">
   <a href="index.html">Home</a>
+  <a href="work.html">Work</a>
   <a href="templates.html">Templates</a>
   <a href="custom.html">Custom</a>
-  <a href="qualifications.html">Qualifications</a>
-  <a href="projects.html">Projects</a>
-  <a href="contact.html">Contact</a>
+  <a href="about.html">About</a>
+  <a href="setup.html">Setup & Launch</a>
   <a href="maintenance.html" class="active">Maintenance</a>
+  </div>
 </div>
+</div>
+</div>
+
+
 
 <div class="page-body">
 <div class="wrap">
@@ -172,6 +181,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;padding:0 2.5rem
       <div class="ret-price">
         <div class="ret-amount">$100</div>
         <div class="ret-period">per month</div>
+        <div class="ret-note"><b>+$5/mo</b> for domain management</div>
       </div>
     </div>
 

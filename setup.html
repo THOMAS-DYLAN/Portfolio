@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Setup & Launch Services — Deadwood Digital</title>
+  <meta name="description" content="Domain registration, hosting deployment, DNS setup, Google Analytics, pre-launch auditing, and ongoing maintenance. Everything outside the website build itself.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://deadwooddigital.digital/setup.html">
+  <meta property="og:title" content="Setup & Launch Services — Deadwood Digital">
+  <meta property="og:description" content="Domain setup, hosting deployment, business email, Google Analytics, pre-launch audits, and monthly maintenance. Flat-rate pricing, no surprises.">
+  <meta property="og:url" content="https://deadwooddigital.digital/setup.html">
+  <meta property="og:image" content="https://deadwooddigital.digital/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+
+
+:root{
+  --bg:#080807;--s1:#111110;--s2:#191917;--s3:#232320;
+  --border:#28281f;--border2:#363630;
+  --text:#ddd4c2;--muted:#7a7468;--dim:#4a4840;
+  --gold:#c8a84b;--gold-lt:#dfbe72;--gold-dim:rgba(200,168,75,.12);
+  --cream:#f0e7d4;
+  --ff-d:'Cormorant Garamond',Georgia,serif;
+  --ff-b:'Outfit',system-ui,sans-serif;
+  --nav:58px;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+  --ease-out:cubic-bezier(0,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--ff-b);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font-family:var(--ff-b);border:none;background:none}
+ul,ol{list-style:none}
+img{max-width:100%;display:block}
+
+/* GRAIN */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.028;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav);padding:0 1.25rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(8,8,7,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);}
+.nav-logo{font-family:var(--ff-d);font-size:1.2rem;font-weight:500;letter-spacing:.06em;color:var(--cream)}
+.nav-logo b{color:var(--gold);font-weight:400}
+.nav-links{display:none;align-items:center;gap:2rem}
+.nav-links a{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);transition:color .2s var(--ease);white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-btn{display:none;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.42rem 1.1rem;border:1px solid var(--gold);color:var(--gold);background:transparent;
+  transition:all .2s var(--ease);cursor:pointer;white-space:nowrap}
+.nav-btn:hover{background:var(--gold);color:var(--bg)}
+.ham{display:flex;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;
+  padding:8px 6px;background:none;border:1px solid var(--border)}
+.ham:hover{border-color:var(--border2)}
+.ham span{width:18px;height:1px;background:var(--text);display:block;transition:all .3s var(--ease)}
+.ham.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* MOBILE DRAWER */
+.drawer{position:fixed;top:var(--nav);left:0;right:0;z-index:490;
+  background:var(--bg);border-bottom:1px solid var(--border);
+  max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+.drawer.open{max-height:500px}
+.drawer-inner{padding:1.25rem 1.5rem;display:flex;flex-direction:column;gap:0}
+.drawer-inner a{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);padding:.8rem 0;border-bottom:1px solid var(--border);
+  transition:color .2s;display:block}
+.drawer-inner a:last-child{border-bottom:none}
+.drawer-inner a.active,.drawer-inner a:hover{color:var(--gold)}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 1.25rem}
+.pt-nav{padding-top:var(--nav)}
+
+/* REVEAL ANIMATION */
+.r{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.r.vis{opacity:1;transform:none}
+.r2{transition-delay:.12s}
+.r3{transition-delay:.22s}
+.r4{transition-delay:.32s}
+
+/* TYPE UTILS */
+.eyebrow{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:.65rem;margin-bottom:.9rem}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--gold);flex-shrink:0}
+.display{font-family:var(--ff-d);font-weight:300;line-height:1.06;color:var(--cream)}
+.body-sm{font-size:.85rem;color:var(--muted);line-height:1.8}
+.rule{border:none;border-top:1px solid var(--border)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;font-family:var(--ff-b);
+  font-weight:500;cursor:pointer;transition:all .2s var(--ease);min-height:44px;padding:.75rem 1.75rem}
+.btn-solid{background:var(--gold);color:var(--bg);border:1px solid var(--gold)}
+.btn-solid:hover{background:var(--gold-lt);border-color:var(--gold-lt)}
+.btn-outline{background:transparent;border:1px solid var(--border2);color:var(--text)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-ghost{background:transparent;border:1px solid transparent;color:var(--muted);padding:.75rem 0}
+.btn-ghost:hover{color:var(--gold)}
+
+/* MARQUEE */
+.marquee{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:.55rem 0;background:var(--s1)}
+.marquee-track{display:flex;width:max-content;animation:ticker 30s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-track span{white-space:nowrap;padding:0 2.5rem;font-size:.6rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--dim)}
+.marquee-track span b{color:var(--gold);font-weight:400}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION */
+.sec{padding:4rem 0}
+.sec-lg{padding:6rem 0}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2.25rem 0;margin-top:4rem}
+.foot-inner{display:flex;flex-direction:column;gap:.75rem;text-align:center}
+.foot-logo{font-family:var(--ff-d);font-size:1.05rem;color:var(--cream);letter-spacing:.06em}
+.foot-logo b{color:var(--gold);font-weight:400}
+footer p{font-size:.7rem;color:var(--dim)}
+footer a{color:var(--gold);transition:opacity .2s}
+footer a:hover{opacity:.7}
+
+/* TABLET */
+@media(min-width:640px){
+  nav{padding:0 2rem}
+  .wrap{padding:0 2rem}
+  .drawer-inner{padding:1.5rem 2rem}
+  .sec{padding:5rem 0}
+  .sec-lg{padding:7rem 0}
+  .foot-inner{flex-direction:row;justify-content:space-between;text-align:left}
+}
+
+/* DESKTOP */
+@media(min-width:1024px){
+  nav{padding:0 3rem}
+  .wrap{padding:0 3rem}
+  .nav-links{display:flex}
+  .nav-btn{display:inline-block}
+  .ham{display:none}
+  .sec{padding:6rem 0}
+  .sec-lg{padding:8rem 0}
+}
+
+
+.svc-hero{padding:5rem 0 3rem;border-bottom:1px solid var(--border)}
+
+/* TIER GRID */
+.tier-grid{display:grid;grid-template-columns:1fr;gap:1px;
+  background:var(--border);border:1px solid var(--border);margin-top:2.5rem}
+.tier{background:var(--s1);padding:2.25rem 2rem;display:flex;flex-direction:column;
+  position:relative;transition:background .25s var(--ease)}
+.tier:hover{background:var(--s2)}
+.tier.hero-tier{background:var(--s2);outline:1px solid var(--gold);outline-offset:-1px;z-index:2}
+.tier-badge{position:absolute;top:0;right:2rem;background:var(--gold);color:var(--bg);
+  font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .75rem}
+.tier-tag{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.tier-name{font-family:var(--ff-d);font-size:1.8rem;font-weight:500;color:var(--cream);margin-bottom:.8rem}
+.tier-price{font-family:var(--ff-d);font-size:3.2rem;font-weight:300;color:var(--gold);
+  line-height:1;margin-bottom:.2rem}
+.tier-scope{font-size:.75rem;color:var(--muted);padding-bottom:1.1rem;
+  border-bottom:1px solid var(--border);margin-bottom:1.1rem}
+.tier-desc{font-size:.85rem;color:var(--muted);line-height:1.75;margin-bottom:1.35rem}
+.tier-list{flex:1;margin-bottom:1.6rem}
+.tier-list li{font-size:.82rem;color:var(--text);padding:.38rem 0;
+  border-bottom:1px solid rgba(40,40,31,.6);display:flex;align-items:flex-start;gap:.45rem}
+.tier-list li::before{content:'—';color:var(--gold);font-size:.7rem;flex-shrink:0;margin-top:.05rem}
+.tier-cta{width:100%;text-align:center}
+
+/* COMPARE TABLE */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:2.5rem}
+.cmp{width:100%;min-width:400px;border-collapse:collapse}
+.cmp th,.cmp td{padding:.85rem 1.25rem;text-align:left;border-bottom:1px solid var(--border);font-size:.8rem}
+.cmp th{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.cmp td:first-child{color:var(--muted)}
+.ck{color:var(--gold)}
+.cx{color:var(--border2)}
+
+/* SECTION DIVIDER */
+.sec-divider{display:flex;align-items:center;gap:1.5rem;margin:4rem 0 2.5rem}
+.sec-divider::before,.sec-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.sec-divider span{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+
+.note{padding:1.25rem 1.5rem;background:var(--s1);border:1px solid var(--border);
+  font-size:.8rem;color:var(--muted);margin-top:1.5rem}
+.note b{color:var(--gold);font-weight:500}
+
+@media(min-width:640px){.tier-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.tier-grid{grid-template-columns:repeat(3,1fr)}}
+
+
+
+.page-hero{padding:5rem 0 3rem;border-bottom:1px solid var(--border)}
+.tier-grid{display:grid;grid-template-columns:1fr;gap:1px;
+  background:var(--border);border:1px solid var(--border);margin-top:2.5rem}
+.tier{background:var(--s1);padding:2.25rem 2rem;display:flex;flex-direction:column;
+  position:relative;transition:background .25s var(--ease)}
+.tier:hover{background:var(--s2)}
+.tier.hero-tier{background:var(--s2);outline:1px solid var(--gold);outline-offset:-1px;z-index:2}
+.tier-badge{position:absolute;top:0;right:2rem;background:var(--gold);color:var(--bg);
+  font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .75rem}
+.tier-tag{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.tier-name{font-family:var(--ff-d);font-size:1.8rem;font-weight:500;color:var(--cream);margin-bottom:.8rem}
+.tier-price{font-family:var(--ff-d);font-size:3.2rem;font-weight:300;color:var(--gold);
+  line-height:1;margin-bottom:.2rem}
+.tier-scope{font-size:.75rem;color:var(--muted);padding-bottom:1.1rem;
+  border-bottom:1px solid var(--border);margin-bottom:1.1rem}
+.tier-desc{font-size:.85rem;color:var(--muted);line-height:1.75;margin-bottom:1.35rem}
+.tier-list{flex:1;margin-bottom:1.6rem}
+.tier-list li{font-size:.82rem;color:var(--text);padding:.38rem 0;
+  border-bottom:1px solid rgba(40,40,31,.6);display:flex;align-items:flex-start;gap:.45rem}
+.tier-list li::before{content:'—';color:var(--gold);font-size:.7rem;flex-shrink:0;margin-top:.05rem}
+.tier-cta{width:100%;text-align:center}
+
+/* COMPARE */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:2.5rem}
+.cmp{width:100%;min-width:400px;border-collapse:collapse}
+.cmp th,.cmp td{padding:.85rem 1.25rem;text-align:left;border-bottom:1px solid var(--border);font-size:.8rem}
+.cmp th{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.cmp td:first-child{color:var(--muted)}
+.ck{color:var(--gold)}
+.cx{color:var(--border2)}
+
+@media(min-width:640px){.tier-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.tier-grid{grid-template-columns:repeat(3,1fr)}}
+
+
+
+.setup-hero{padding:5rem 0 3rem;border-bottom:1px solid var(--border)}
+
+/* SERVICE GROUP */
+.svc-group{margin-bottom:4rem}
+.group-label{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);padding-bottom:.65rem;border-bottom:1px solid var(--border);
+  margin-bottom:2rem;display:flex;align-items:center;gap:.75rem}
+.group-label::before{content:'';width:22px;height:1px;background:var(--gold);flex-shrink:0}
+
+/* SERVICE ROWS */
+.svc-row{background:var(--border);border:1px solid var(--border);gap:1px;
+  display:flex;flex-direction:column}
+.svc-item{background:var(--s1);display:flex;align-items:baseline;
+  justify-content:space-between;gap:1.5rem;padding:1.35rem 1.75rem;
+  transition:background .2s;flex-wrap:wrap}
+.svc-item:hover{background:var(--s2)}
+.svc-item-left{flex:1;min-width:180px}
+.svc-item-name{font-family:var(--ff-d);font-size:1.1rem;color:var(--cream);margin-bottom:.22rem}
+.svc-item-desc{font-size:.8rem;color:var(--muted);line-height:1.65}
+.svc-item-price{font-family:var(--ff-d);font-size:1.5rem;font-weight:300;
+  color:var(--gold);white-space:nowrap;flex-shrink:0}
+.svc-item-price.quoted{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  font-family:var(--ff-b);color:var(--muted)}
+
+/* DOMAIN ADD-ON CALLOUT */
+
+/* NOTE BAND */
+.note-band{background:var(--s1);border:1px solid var(--border);
+  border-left:3px solid var(--gold);padding:1.25rem 1.75rem;
+  font-size:.82rem;color:var(--muted);line-height:1.75;margin-top:1.5rem}
+.note-band b{color:var(--text);font-weight:500}
+
+/* CTA BAND */
+.cta-band{border:1px solid var(--border);padding:3rem 2rem;text-align:center;
+  background:var(--s1);margin-top:4rem}
+.cta-band h3{font-family:var(--ff-d);font-size:clamp(1.5rem,3vw,2.2rem);
+  color:var(--cream);margin-bottom:.7rem}
+.cta-band p{font-size:.85rem;color:var(--muted);margin-bottom:1.5rem}
+.btn-solid-sm{display:inline-flex;align-items:center;justify-content:center;
+  font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.7rem 1.75rem;background:var(--gold);color:var(--bg);
+  border:1px solid var(--gold);font-family:var(--ff-b);font-weight:500;
+  transition:all .2s;cursor:pointer;min-height:42px}
+.btn-solid-sm:hover{background:var(--gold-lt)}
+
+@media(min-width:640px){
+  .svc-item{flex-wrap:nowrap}
+}
+
+</style>
+</head>
+<body>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="index.html">Deadwood<b>.</b>Digital</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="work.html">Work</a>
+    <a href="templates.html">Templates</a>
+    <a href="custom.html">Custom</a>
+    <a href="about.html">About</a>
+    <a href="setup.html" class="active">Setup & Launch</a>
+    <a href="maintenance.html">Maintenance</a>
+  </div>
+  <a class="nav-btn btn" href="contact.html">Start a Project</a>
+  <button class="ham" id="ham" aria-label="Menu" aria-expanded="false" onclick="toggleMenu(this)">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="drawer" id="drawer">
+  <div class="drawer-inner">
+  <a href="index.html">Home</a>
+  <a href="work.html">Work</a>
+  <a href="templates.html">Templates</a>
+  <a href="custom.html">Custom</a>
+  <a href="about.html">About</a>
+  <a href="setup.html" class="active">Setup & Launch</a>
+  <a href="maintenance.html">Maintenance</a>
+  </div>
+</div>
+</div>
+<div class="pt-nav">
+
+<header class="setup-hero wrap">
+  <div class="eyebrow r">Setup &amp; Launch</div>
+  <h1 class="display r r2" style="font-size:clamp(2.5rem,7vw,5rem);margin-bottom:1.1rem">
+    Everything outside<br>the build itself.
+  </h1>
+  <p class="body-sm r r3" style="max-width:500px">
+    Designing and building a site is one part. Getting it live, set up correctly,
+    and found on Google is another. These services cover everything before launch
+    and the ongoing support that keeps it running after.
+  </p>
+</header>
+
+<div class="wrap" style="padding-bottom:6rem">
+
+  <!-- PRE-LAUNCH: DOMAIN & HOSTING -->
+  <section class="sec svc-group" id="domain" aria-labelledby="domain-h">
+    <div class="group-label">Pre-Launch — Domain &amp; Hosting</div>
+    <h2 class="display r r2" id="domain-h"
+        style="font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:.5rem;color:var(--cream)">
+      Get your site on the internet.
+    </h2>
+    <p class="body-sm r r3" style="margin-bottom:2rem">
+      Everything needed to connect a domain, configure DNS, and get the site
+      deployed and live. These are separate from the design work itself.
+    </p>
+    <div class="svc-row">
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Domain Registration</div>
+          <div class="svc-item-desc">Help registering a new domain name through your preferred registrar (Namecheap, Google Domains, etc.). Includes advisory on naming and availability check.</div>
+        </div>
+        <div class="svc-item-price">$25</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Domain Transfer</div>
+          <div class="svc-item-desc">Move an existing domain from one registrar to another. Includes unlock, auth code retrieval, transfer initiation, and verification.</div>
+        </div>
+        <div class="svc-item-price">$30</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">DNS Configuration</div>
+          <div class="svc-item-desc">Point your domain to its hosting provider by setting A records, CNAMEs, MX records, or any other DNS entries needed for the site to resolve correctly.</div>
+        </div>
+        <div class="svc-item-price">$20</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Hosting Deployment</div>
+          <div class="svc-item-desc">Deploy your completed site to a hosting provider — GitHub Pages, Vercel, or Netlify. Includes environment setup and first deployment.</div>
+        </div>
+        <div class="svc-item-price">$30</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">SSL Certificate Setup</div>
+          <div class="svc-item-desc">Configure HTTPS for your site. Most modern hosts handle this automatically — this covers any manual steps or troubleshooting needed to get the padlock showing.</div>
+        </div>
+        <div class="svc-item-price">$15</div>
+      </div>
+    </div>
+    </div>
+
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- BUSINESS TOOLS SETUP -->
+  <section class="sec svc-group" id="tools" aria-labelledby="tools-h">
+    <div class="group-label">Pre-Launch — Business Tools</div>
+    <h2 class="display r r2" id="tools-h"
+        style="font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:.5rem;color:var(--cream)">
+      Set up the tools that matter.
+    </h2>
+    <p class="body-sm r r3" style="margin-bottom:2rem">
+      Optional setup services for the business tools your site should be connected to
+      before going live. Each is a one-time flat-rate job.
+    </p>
+    <div class="svc-row">
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Business Email Setup</div>
+          <div class="svc-item-desc">Configure a professional email address at your domain (e.g. hello@yourbusiness.com) through Google Workspace or Zoho Mail. Includes DNS record setup and inbox verification.</div>
+        </div>
+        <div class="svc-item-price">$45</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Google Analytics 4 Setup</div>
+          <div class="svc-item-desc">Install GA4 tracking on your site, configure a property, set up basic events (page views, CTA clicks), and verify data is flowing correctly.</div>
+        </div>
+        <div class="svc-item-price">$30</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Google Search Console</div>
+          <div class="svc-item-desc">Verify your site's ownership, submit the sitemap, and confirm Google can crawl and index all pages. Includes initial coverage report review.</div>
+        </div>
+        <div class="svc-item-price">$20</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Contact Form Backend</div>
+          <div class="svc-item-desc">Connect your site's contact form to actually send emails — via Web3Forms, Formspree, or Resend. Includes setup, testing, and spam protection configuration.</div>
+        </div>
+        <div class="svc-item-price">$25</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Favicon Setup</div>
+          <div class="svc-item-desc">Create and implement a favicon from your logo or brand mark — sized and exported for all devices and browsers. Covers browser tab, mobile home screen, and OG formats.</div>
+        </div>
+        <div class="svc-item-price">$15</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Social Share Image (OG Image)</div>
+          <div class="svc-item-desc">Design and implement the preview image that appears when your site is shared on social media or in iMessage. Sized to og:image spec (1200×630).</div>
+        </div>
+        <div class="svc-item-price">$20</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Sitemap Generation</div>
+          <div class="svc-item-desc">Generate and upload an XML sitemap for your site. Submitted to both Google Search Console and Bing Webmaster Tools.</div>
+        </div>
+        <div class="svc-item-price">$15</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- SITE CONFIGURATION -->
+  <section class="sec svc-group" id="config" aria-labelledby="config-h">
+    <div class="group-label">Pre-Launch — Site Configuration</div>
+    <h2 class="display r r2" id="config-h"
+        style="font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:.5rem;color:var(--cream)">
+      The details that get missed.
+    </h2>
+    <p class="body-sm r r3" style="margin-bottom:2rem">
+      Small setup items that aren't part of the design itself but need to be
+      in place before the site is truly complete. Each is a flat-rate job.
+    </p>
+    <div class="svc-row">
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">robots.txt Setup</div>
+          <div class="svc-item-desc">Configure which pages search engines should and shouldn't crawl. Includes setup of the robots.txt file and verification through Google Search Console.</div>
+        </div>
+        <div class="svc-item-price">$15</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Custom 404 Page</div>
+          <div class="svc-item-desc">Design and implement a branded 404 error page that matches the site. Keeps visitors on the site instead of bouncing when a URL breaks.</div>
+        </div>
+        <div class="svc-item-price">$20</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Privacy Policy &amp; Terms Pages</div>
+          <div class="svc-item-desc">Build and style the legal pages your site needs — Privacy Policy and/or Terms of Service. Content is provided by the client or sourced via a generator; this covers the page design and integration.</div>
+        </div>
+        <div class="svc-item-price">$20</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Cookie Consent Banner</div>
+          <div class="svc-item-desc">Add a compliant cookie consent notice to the site for businesses that need it. Simple, non-intrusive design that matches the site's style.</div>
+        </div>
+        <div class="svc-item-price">$20</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Password Protection</div>
+          <div class="svc-item-desc">Lock the site or a section of it behind a password — useful for keeping a site private during review, or for members-only pages.</div>
+        </div>
+        <div class="svc-item-price">$25</div>
+      </div>
+    </div>
+  </section>
+  <hr class="rule">
+
+  <!-- PRE-LAUNCH AUDIT -->
+  <section class="sec svc-group" id="audit" aria-labelledby="audit-h">
+    <div class="group-label">Pre-Launch — Quality Check</div>
+    <h2 class="display r r2" id="audit-h"
+        style="font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:.5rem;color:var(--cream)">
+      Review before it goes live.
+    </h2>
+    <p class="body-sm r r3" style="margin-bottom:2rem">
+      A structured audit of the site before launch day. Catches what a first visitor
+      would catch — before any actual visitors do.
+    </p>
+    <div class="svc-row">
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Pre-Launch Site Audit</div>
+          <div class="svc-item-desc">Full review across five areas: cross-browser display (Chrome, Firefox, Safari), mobile layout at 375px and 768px, all internal links, contact form submission, and Lighthouse performance score.</div>
+        </div>
+        <div class="svc-item-price">$50</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Content Proofread</div>
+          <div class="svc-item-desc">Line-by-line review of all copy on the site — spelling, grammar, consistency, and anything that doesn't sound like the business. Delivered as a tracked list of corrections.</div>
+        </div>
+        <div class="svc-item-price">$30</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Basic SEO Check</div>
+          <div class="svc-item-desc">Review of page titles, meta descriptions, heading hierarchy, image alt text, and canonical URLs across all pages. Delivered as a corrections checklist.</div>
+        </div>
+        <div class="svc-item-price">$30</div>
+      </div>
+    </div>
+
+    <p class="note-band r">
+      <b>Note:</b> The Pre-Launch Audit is recommended for all sites regardless of tier.
+      It's the last line of defense before real customers see the site.
+    </p>
+  </section>
+  <hr class="rule">
+
+  <!-- POST-LAUNCH -->
+  <section class="sec svc-group" id="postlaunch" aria-labelledby="post-h">
+    <div class="group-label">Post-Launch — After It Goes Live</div>
+    <h2 class="display r r2" id="post-h"
+        style="font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:.5rem;color:var(--cream)">
+      After the site is live.
+    </h2>
+    <p class="body-sm r r3" style="margin-bottom:2rem">
+      One-time services for after launch — fixes, optimizations, and setup
+      tasks that often only make sense once the site is in the wild.
+    </p>
+    <div class="svc-row">
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Google Business Profile Setup</div>
+          <div class="svc-item-desc">Create or claim your Google Business Profile, add photos, hours, services, and link it to your website. Helps local search visibility immediately after launch.</div>
+        </div>
+        <div class="svc-item-price">$35</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">301 Redirect Setup</div>
+          <div class="svc-item-desc">Configure old URLs to redirect correctly after a site migration or restructure. Preserves any existing search ranking and prevents broken links for returning visitors.</div>
+        </div>
+        <div class="svc-item-price">$20</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Speed Optimization Pass</div>
+          <div class="svc-item-desc">Audit and implement quick wins for load time — image compression, lazy loading, render-blocking script fixes, and cache configuration. Delivered with before/after Lighthouse scores.</div>
+        </div>
+        <div class="svc-item-price">$50</div>
+      </div>
+      <div class="svc-item r">
+        <div class="svc-item-left">
+          <div class="svc-item-name">Bing Webmaster Tools Setup</div>
+          <div class="svc-item-desc">Verify the site with Bing Webmaster Tools and submit the sitemap. Often overlooked, but Bing drives meaningful traffic for local and small business searches.</div>
+        </div>
+        <div class="svc-item-price">$15</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-band r">
+    <h3>Not sure what you need?</h3>
+    <p>Describe where you're at in the process and I'll tell you exactly what applies.</p>
+    <a class="btn-solid-sm" href="contact.html">Get in Touch</a>
+  </div>
+
+</div>
+</div>
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="foot-logo">Deadwood<b>.</b>Digital</div>
+      <p>© 2026 Deadwood Digital · Trenton, MO</p>
+      <p><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></p>
+    </div>
+  </div>
+</footer>
+<script>
+function toggleMenu(btn){
+  var d=document.getElementById('drawer');
+  var open=d.classList.toggle('open');
+  btn.classList.toggle('open',open);
+  btn.setAttribute('aria-expanded',open);
+}
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});
+  },{threshold:.08});
+  function init(){document.querySelectorAll('.r').forEach(function(el){io.observe(el);});}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+})();
+</script>
+</body>
+</html>

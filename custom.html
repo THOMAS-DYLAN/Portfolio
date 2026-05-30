@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Custom Websites — Deadwood Digital | Foundation $500 · Staple $1,500 · Signature $3,000</title>
+  <meta name="description" content="Fully custom websites and e-commerce stores. Foundation single-page $500, Staple 3–5 pages $1,500, Signature 7–10 pages $3,000. Original design, no templates, built around your brand.">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Dylan Thomas, Deadwood Digital">
+  <meta name="keywords" content="e-commerce website design, online store builder, small business web design, custom website, Missouri web developer, affordable ecommerce">
+  <link rel="canonical" href="https://deadwooddigital.digital/custom.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Custom Websites — Deadwood Digital | Foundation $500 · Staple $1,500 · Signature $3,000">
+  <meta property="og:description" content="Fully custom websites and e-commerce stores. Foundation single-page $500, Staple 3–5 pages $1,500, Signature 7–10 pages $3,000. Original design, no templates, built around your brand.">
+  <meta property="og:url" content="https://deadwooddigital.digital/custom.html">
+  <meta property="og:image" content="https://deadwooddigital.digital/og.jpg">
+  <meta property="og:site_name" content="Deadwood Digital">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Custom Websites — Deadwood Digital | Foundation $500 · Staple $1,500 · Signature $3,000">
+  <meta name="twitter:description" content="Fully custom websites and e-commerce stores. Foundation single-page $500, Staple 3–5 pages $1,500, Signature 7–10 pages $3,000. Original design, no templates, built around your brand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+
+:root{
+  --bg:#080807;--s1:#111110;--s2:#191917;--s3:#232320;
+  --border:#28281f;--border2:#363630;
+  --text:#ddd4c2;--muted:#7a7468;--dim:#4a4840;
+  --gold:#c8a84b;--gold-lt:#dfbe72;--gold-dim:rgba(200,168,75,.12);
+  --cream:#f0e7d4;
+  --ff-d:'Cormorant Garamond',Georgia,serif;
+  --ff-b:'Outfit',system-ui,sans-serif;
+  --nav:58px;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+  --ease-out:cubic-bezier(0,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--ff-b);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font-family:var(--ff-b);border:none;background:none}
+ul,ol{list-style:none}
+img{max-width:100%;display:block}
+
+/* GRAIN */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.028;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav);padding:0 1.25rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(8,8,7,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);}
+.nav-logo{font-family:var(--ff-d);font-size:1.2rem;font-weight:500;letter-spacing:.06em;color:var(--cream)}
+.nav-logo b{color:var(--gold);font-weight:400}
+.nav-links{display:none;align-items:center;gap:2rem}
+.nav-links a{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);transition:color .2s var(--ease);white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-btn{display:none;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.42rem 1.1rem;border:1px solid var(--gold);color:var(--gold);background:transparent;
+  transition:all .2s var(--ease);cursor:pointer;white-space:nowrap}
+.nav-btn:hover{background:var(--gold);color:var(--bg)}
+.ham{display:flex;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;
+  padding:8px 6px;background:none;border:1px solid var(--border)}
+.ham:hover{border-color:var(--border2)}
+.ham span{width:18px;height:1px;background:var(--text);display:block;transition:all .3s var(--ease)}
+.ham.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* MOBILE DRAWER */
+.drawer{position:fixed;top:var(--nav);left:0;right:0;z-index:490;
+  background:var(--bg);border-bottom:1px solid var(--border);
+  max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+.drawer.open{max-height:500px}
+.drawer-inner{padding:1.25rem 1.5rem;display:flex;flex-direction:column;gap:0}
+.drawer-inner a{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);padding:.8rem 0;border-bottom:1px solid var(--border);
+  transition:color .2s;display:block}
+.drawer-inner a:last-child{border-bottom:none}
+.drawer-inner a.active,.drawer-inner a:hover{color:var(--gold)}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 1.25rem}
+.pt-nav{padding-top:var(--nav)}
+
+/* REVEAL ANIMATION */
+.r{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.r.vis{opacity:1;transform:none}
+.r2{transition-delay:.12s}
+.r3{transition-delay:.22s}
+.r4{transition-delay:.32s}
+
+/* TYPE UTILS */
+.eyebrow{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:.65rem;margin-bottom:.9rem}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--gold);flex-shrink:0}
+.display{font-family:var(--ff-d);font-weight:300;line-height:1.06;color:var(--cream)}
+.body-sm{font-size:.85rem;color:var(--muted);line-height:1.8}
+.rule{border:none;border-top:1px solid var(--border)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;font-family:var(--ff-b);
+  font-weight:500;cursor:pointer;transition:all .2s var(--ease);min-height:44px;padding:.75rem 1.75rem}
+.btn-solid{background:var(--gold);color:var(--bg);border:1px solid var(--gold)}
+.btn-solid:hover{background:var(--gold-lt);border-color:var(--gold-lt)}
+.btn-outline{background:transparent;border:1px solid var(--border2);color:var(--text)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-ghost{background:transparent;border:1px solid transparent;color:var(--muted);padding:.75rem 0}
+.btn-ghost:hover{color:var(--gold)}
+
+/* MARQUEE */
+.marquee{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:.55rem 0;background:var(--s1)}
+.marquee-track{display:flex;width:max-content;animation:ticker 30s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-track span{white-space:nowrap;padding:0 2.5rem;font-size:.6rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--dim)}
+.marquee-track span b{color:var(--gold);font-weight:400}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION */
+.sec{padding:4rem 0}
+.sec-lg{padding:6rem 0}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2.25rem 0;margin-top:4rem}
+.foot-inner{display:flex;flex-direction:column;gap:.75rem;text-align:center}
+.foot-logo{font-family:var(--ff-d);font-size:1.05rem;color:var(--cream);letter-spacing:.06em}
+.foot-logo b{color:var(--gold);font-weight:400}
+footer p{font-size:.7rem;color:var(--dim)}
+footer a{color:var(--gold);transition:opacity .2s}
+footer a:hover{opacity:.7}
+
+/* TABLET */
+@media(min-width:640px){
+  nav{padding:0 2rem}
+  .wrap{padding:0 2rem}
+  .drawer-inner{padding:1.5rem 2rem}
+  .sec{padding:5rem 0}
+  .sec-lg{padding:7rem 0}
+  .foot-inner{flex-direction:row;justify-content:space-between;text-align:left}
+}
+
+/* DESKTOP */
+@media(min-width:1024px){
+  nav{padding:0 3rem}
+  .wrap{padding:0 3rem}
+  .nav-links{display:flex}
+  .nav-btn{display:inline-block}
+  .ham{display:none}
+  .sec{padding:6rem 0}
+  .sec-lg{padding:8rem 0}
+}
+
+
+.svc-hero{padding:5rem 0 3rem;border-bottom:1px solid var(--border)}
+
+/* TIER GRID */
+.tier-grid{display:grid;grid-template-columns:1fr;gap:1px;
+  background:var(--border);border:1px solid var(--border);margin-top:2.5rem}
+.tier{background:var(--s1);padding:2.25rem 2rem;display:flex;flex-direction:column;
+  position:relative;transition:background .25s var(--ease)}
+.tier:hover{background:var(--s2)}
+.tier.hero-tier{background:var(--s2);outline:1px solid var(--gold);outline-offset:-1px;z-index:2}
+.tier-badge{position:absolute;top:0;right:2rem;background:var(--gold);color:var(--bg);
+  font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .75rem}
+.tier-tag{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.tier-name{font-family:var(--ff-d);font-size:1.8rem;font-weight:500;color:var(--cream);margin-bottom:.8rem}
+.tier-price{font-family:var(--ff-d);font-size:3.2rem;font-weight:300;color:var(--gold);
+  line-height:1;margin-bottom:.2rem}
+.tier-scope{font-size:.75rem;color:var(--muted);padding-bottom:1.1rem;
+  border-bottom:1px solid var(--border);margin-bottom:1.1rem}
+.tier-desc{font-size:.85rem;color:var(--muted);line-height:1.75;margin-bottom:1.35rem}
+.tier-list{flex:1;margin-bottom:1.6rem}
+.tier-list li{font-size:.82rem;color:var(--text);padding:.38rem 0;
+  border-bottom:1px solid rgba(40,40,31,.6);display:flex;align-items:flex-start;gap:.45rem}
+.tier-list li::before{content:'—';color:var(--gold);font-size:.7rem;flex-shrink:0;margin-top:.05rem}
+.tier-cta{width:100%;text-align:center}
+
+/* COMPARE TABLE */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:2.5rem}
+.cmp{width:100%;min-width:400px;border-collapse:collapse}
+.cmp th,.cmp td{padding:.85rem 1.25rem;text-align:left;border-bottom:1px solid var(--border);font-size:.8rem}
+.cmp th{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.cmp td:first-child{color:var(--muted)}
+.ck{color:var(--gold)}
+.cx{color:var(--border2)}
+
+/* SECTION DIVIDER */
+.sec-divider{display:flex;align-items:center;gap:1.5rem;margin:4rem 0 2.5rem}
+.sec-divider::before,.sec-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.sec-divider span{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+
+.note{padding:1.25rem 1.5rem;background:var(--s1);border:1px solid var(--border);
+  font-size:.8rem;color:var(--muted);margin-top:1.5rem}
+.note b{color:var(--gold);font-weight:500}
+
+@media(min-width:640px){.tier-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.tier-grid{grid-template-columns:repeat(3,1fr)}}
+
+
+
+.page-hero{padding:5rem 0 3rem;border-bottom:1px solid var(--border)}
+.tier-grid{display:grid;grid-template-columns:1fr;gap:1px;
+  background:var(--border);border:1px solid var(--border);margin-top:2.5rem}
+.tier{background:var(--s1);padding:2.25rem 2rem;display:flex;flex-direction:column;
+  position:relative;transition:background .25s var(--ease)}
+.tier:hover{background:var(--s2)}
+.tier.hero-tier{background:var(--s2);outline:1px solid var(--gold);outline-offset:-1px;z-index:2}
+.tier-badge{position:absolute;top:0;right:2rem;background:var(--gold);color:var(--bg);
+  font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .75rem}
+.tier-tag{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.tier-name{font-family:var(--ff-d);font-size:1.8rem;font-weight:500;color:var(--cream);margin-bottom:.8rem}
+.tier-price{font-family:var(--ff-d);font-size:3.2rem;font-weight:300;color:var(--gold);
+  line-height:1;margin-bottom:.2rem}
+.tier-scope{font-size:.75rem;color:var(--muted);padding-bottom:1.1rem;
+  border-bottom:1px solid var(--border);margin-bottom:1.1rem}
+.tier-desc{font-size:.85rem;color:var(--muted);line-height:1.75;margin-bottom:1.35rem}
+.tier-list{flex:1;margin-bottom:1.6rem}
+.tier-list li{font-size:.82rem;color:var(--text);padding:.38rem 0;
+  border-bottom:1px solid rgba(40,40,31,.6);display:flex;align-items:flex-start;gap:.45rem}
+.tier-list li::before{content:'—';color:var(--gold);font-size:.7rem;flex-shrink:0;margin-top:.05rem}
+.tier-cta{width:100%;text-align:center}
+
+/* COMPARE */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:2.5rem}
+.cmp{width:100%;min-width:400px;border-collapse:collapse}
+.cmp th,.cmp td{padding:.85rem 1.25rem;text-align:left;border-bottom:1px solid var(--border);font-size:.8rem}
+.cmp th{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.cmp td:first-child{color:var(--muted)}
+.ck{color:var(--gold)}
+.cx{color:var(--border2)}
+
+@media(min-width:640px){.tier-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.tier-grid{grid-template-columns:repeat(3,1fr)}}
+
+</style>
+</head>
+<body>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="index.html">Deadwood<b>.</b>Digital</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="work.html">Work</a>
+    <a href="templates.html">Templates</a>
+    <a href="custom.html" class="active">Custom</a>
+    <a href="about.html">About</a>
+    <a href="maintenance.html">Maintenance</a>
+  </div>
+  <a class="nav-btn btn" href="contact.html">Start a Project</a>
+  <button class="ham" id="ham" aria-label="Menu" aria-expanded="false" onclick="toggleMenu(this)">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="drawer" id="drawer">
+  <div class="drawer-inner">
+  <a href="index.html">Home</a>
+  <a href="work.html">Work</a>
+  <a href="templates.html">Templates</a>
+  <a href="custom.html" class="active">Custom</a>
+  <a href="about.html">About</a>
+  <a href="maintenance.html">Maintenance</a>
+  </div>
+</div>
+</div>
+
+<div class="pt-nav">
+<header class="page-hero wrap">
+  <div class="eyebrow r">Custom Websites &amp; E-Commerce</div>
+  <h1 class="display r r2" style="font-size:clamp(2.5rem,7vw,5rem);margin-bottom:1.1rem">
+    Built for your business.<br>Not anyone else's.
+  </h1>
+  <p class="body-sm r r3" style="max-width:480px">
+    Every custom build starts from a blank page. Original layout, original design —
+    structured around your brand, your customers, and your goals.
+    E-commerce capability included at every tier.
+  </p>
+</header>
+
+<div class="wrap" style="padding-bottom:6rem">
+  <div class="tier-grid" role="list" aria-label="Custom pricing tiers">
+
+    <article class="tier r" role="listitem">
+      <div class="tier-tag">Custom · Tier 01</div>
+      <h2 class="tier-name">Foundation</h2>
+      <div class="tier-price" aria-label="$500">$500</div>
+      <div class="tier-scope">Custom single-page site</div>
+      <p class="tier-desc">One page designed and built from scratch for your business. High-quality custom presence without the full multi-page scope.</p>
+      <ul class="tier-list" aria-label="Included features">
+        <li>1 fully custom page</li>
+        <li>Original design — no templates</li>
+        <li>Mobile responsive</li>
+        <li>Contact or product section</li>
+        <li>Built around your brand</li>
+        <li>Deployed and ready to launch</li>
+      </ul>
+      <a class="btn btn-outline tier-cta" href="contact.html">Inquire</a>
+    </article>
+
+    <article class="tier hero-tier r r2" role="listitem">
+      <div class="tier-badge">Best Value</div>
+      <div class="tier-tag">Custom · Tier 02</div>
+      <h2 class="tier-name">Staple</h2>
+      <div class="tier-price" aria-label="$1,500">$1,500</div>
+      <div class="tier-scope">Custom 3–5 page site</div>
+      <p class="tier-desc">A full custom business website or online store. Every page is purpose-built and structured to guide your customers toward buying or booking.</p>
+      <ul class="tier-list" aria-label="Included features">
+        <li>3–5 fully custom pages</li>
+        <li>Original design — no templates</li>
+        <li>Mobile responsive</li>
+        <li>E-commerce ready structure</li>
+        <li>Unique layout per page</li>
+        <li>Built around your brand</li>
+        <li>Deployed and ready to launch</li>
+      </ul>
+      <a class="btn btn-solid tier-cta" href="contact.html">Inquire</a>
+    </article>
+
+    <article class="tier r r3" role="listitem">
+      <div class="tier-tag">Custom · Tier 03</div>
+      <h2 class="tier-name">Signature</h2>
+      <div class="tier-price" aria-label="$3,000">$3,000</div>
+      <div class="tier-scope">Custom 7–10 page site</div>
+      <p class="tier-desc">A comprehensive custom web presence with advanced structure, full e-commerce suite, and a site built to reflect where your business is going.</p>
+      <ul class="tier-list" aria-label="Included features">
+        <li>7–10 fully custom pages</li>
+        <li>Original design — no templates</li>
+        <li>Mobile responsive</li>
+        <li>Full e-commerce suite</li>
+        <li>Advanced layout &amp; flow</li>
+        <li>Unique layout per page</li>
+        <li>Built around your brand</li>
+        <li>Deployed and ready to launch</li>
+      </ul>
+      <a class="btn btn-outline tier-cta" href="contact.html">Inquire</a>
+    </article>
+
+  </div>
+
+  <!-- COMPARE TABLE -->
+  <section class="sec" aria-labelledby="cmp-h">
+    <div class="eyebrow r">Comparison</div>
+    <h2 class="display r r2" id="cmp-h" style="font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:.5rem">
+      Custom vs. Template
+    </h2>
+    <p class="body-sm r r3" style="margin-bottom:0">Both produce professional, live websites. This is what sets them apart.</p>
+    <div class="tbl-wrap r">
+      <table class="cmp" aria-label="Feature comparison">
+        <thead><tr><th>Feature</th><th>Template</th><th>Custom</th></tr></thead>
+        <tbody>
+          <tr><td>Professional design</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+          <tr><td>Mobile responsive</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+          <tr><td>Deployed and live</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+          <tr><td>E-commerce capability</td><td class="cx">—</td><td class="ck">✓</td></tr>
+          <tr><td>Original design built for you</td><td class="cx">—</td><td class="ck">✓</td></tr>
+          <tr><td>Unique layout per page</td><td class="cx">—</td><td class="ck">✓</td></tr>
+          <tr><td>Brand-specific structure</td><td class="cx">—</td><td class="ck">✓</td></tr>
+          <tr><td>Faster turnaround</td><td class="ck">✓</td><td class="cx">—</td></tr>
+          <tr><td>Lower starting price</td><td class="ck">✓</td><td class="cx">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+    <a class="btn btn-solid r" href="contact.html">Start a Custom Project</a>
+    <a class="btn btn-ghost r" href="templates.html">Browse Template Sites Instead →</a>
+  </div>
+</div>
+</div>
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="foot-logo">Deadwood<b>.</b>Digital</div>
+      <p>© 2026 Deadwood Digital · Trenton, MO</p>
+      <p><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></p>
+    </div>
+  </div>
+</footer>
+<script>
+function toggleMenu(btn){
+  var d=document.getElementById('drawer');
+  var open=d.classList.toggle('open');
+  btn.classList.toggle('open',open);
+  btn.setAttribute('aria-expanded',open);
+}
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});
+  },{threshold:.08});
+  function init(){document.querySelectorAll('.r').forEach(function(el){io.observe(el);});}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+})();
+</script>
+
+</body>
+</html>
