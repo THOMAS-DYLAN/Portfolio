@@ -10,6 +10,7 @@
   <meta name="keywords" content="e-commerce website design, online store, small business web design, custom website, Missouri web developer, SEO setup, affordable ecommerce">
   <meta name="geo.region" content="US-MO">
   <meta name="geo.placename" content="Trenton, Missouri">
+  <link rel="sitemap" type="application/xml" href="https://deadwooddigital.digital/sitemap.xml">
   <link rel="canonical" href="https://deadwooddigital.digital/contact.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Start a Project — Deadwood Digital | Web Design & E-Commerce">
@@ -30,138 +31,248 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 
+/* ── TOKENS ── */
 :root{
-  --bg:#080807;--s1:#111110;--s2:#191917;--s3:#232320;
-  --border:#28281f;--border2:#363630;
-  --text:#ddd4c2;--muted:#7a7468;--dim:#4a4840;
-  --gold:#c8a84b;--gold-lt:#dfbe72;--gold-dim:rgba(200,168,75,.12);
-  --cream:#f0e7d4;
-  --ff-d:'Cormorant Garamond',Georgia,serif;
-  --ff-b:'Outfit',system-ui,sans-serif;
-  --nav:58px;
-  --ease:cubic-bezier(.25,.46,.45,.94);
-  --ease-out:cubic-bezier(0,0,.2,1);
+  --bg:      #0d0b08;
+  --s1:      #151210;
+  --s2:      #1d1914;
+  --s3:      #252018;
+  --border:  #2e2820;
+  --border2: #3c3428;
+  --text:    #e5d9c5;
+  --muted:   #8a7d6a;
+  --dim:     #4e4438;
+  --gold:    #cf9532;
+  --gold-lt: #e8b454;
+  --gold-dk: #a87428;
+  --gold-bg: rgba(207,149,50,.10);
+  --cream:   #f5ead6;
+  --red:     #c0392b;
+  --ff-d:    'Cormorant Garamond',Georgia,serif;
+  --ff-b:    'Outfit',system-ui,sans-serif;
+  --nav:     60px;
+  --max:     1200px;
+  --ease:    cubic-bezier(.25,.46,.45,.94);
+  --eout:    cubic-bezier(0,0,.2,1);
 }
+
+/* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--text);font-family:var(--ff-b);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--ff-b);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer;font-family:var(--ff-b);border:none;background:none}
 ul,ol{list-style:none}
 img{max-width:100%;display:block}
 
-/* GRAIN */
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.028;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+/* ── GRAIN ── */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:8000;
+  opacity:.032;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav);padding:0 1.25rem;
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:var(--nav);padding:0 1.25rem;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(8,8,7,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border);}
-.nav-logo{font-family:var(--ff-d);font-size:1.2rem;font-weight:500;letter-spacing:.06em;color:var(--cream)}
+  background:rgba(13,11,8,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:var(--ff-d);font-size:1.25rem;font-weight:500;
+  letter-spacing:.06em;color:var(--cream);
+}
 .nav-logo b{color:var(--gold);font-weight:400}
-.nav-links{display:none;align-items:center;gap:2rem}
-.nav-links a{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);transition:color .2s var(--ease);white-space:nowrap}
+.nav-links{display:none;align-items:center;gap:1.75rem}
+.nav-links a{
+  font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);transition:color .2s var(--ease);white-space:nowrap;
+}
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
-.nav-btn{display:none;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
-  padding:.42rem 1.1rem;border:1px solid var(--gold);color:var(--gold);background:transparent;
-  transition:all .2s var(--ease);cursor:pointer;white-space:nowrap}
-.nav-btn:hover{background:var(--gold);color:var(--bg)}
-.ham{display:flex;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;
-  padding:8px 6px;background:none;border:1px solid var(--border)}
-.ham:hover{border-color:var(--border2)}
-.ham span{width:18px;height:1px;background:var(--text);display:block;transition:all .3s var(--ease)}
-.ham.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-btn{
+  display:none;font-size:.65rem;letter-spacing:.13em;text-transform:uppercase;
+  padding:.5rem 1.25rem;background:var(--gold);color:var(--bg);
+  transition:all .2s var(--ease);cursor:pointer;white-space:nowrap;
+  font-family:var(--ff-b);font-weight:600;
+}
+.nav-btn:hover{background:var(--gold-lt)}
+.ham{
+  display:flex;flex-direction:column;justify-content:center;gap:5px;
+  cursor:pointer;padding:8px 6px;background:none;
+  border:1px solid var(--border);transition:border-color .2s;
+}
+.ham:hover{border-color:var(--gold)}
+.ham span{width:19px;height:1.5px;background:var(--text);display:block;transition:all .3s var(--ease)}
+.ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.ham.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
-/* MOBILE DRAWER */
-.drawer{position:fixed;top:var(--nav);left:0;right:0;z-index:490;
-  background:var(--bg);border-bottom:1px solid var(--border);
-  max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
-.drawer.open{max-height:500px}
-.drawer-inner{padding:1.25rem 1.5rem;display:flex;flex-direction:column;gap:0}
-.drawer-inner a{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;
+/* ── DRAWER ── */
+.drawer{
+  position:fixed;top:var(--nav);left:0;right:0;z-index:490;
+  background:var(--s1);border-bottom:1px solid var(--border);
+  max-height:0;overflow:hidden;transition:max-height .4s var(--ease);
+}
+.drawer.open{max-height:420px}
+.drawer-inner{padding:1.25rem 1.5rem;display:flex;flex-direction:column}
+.drawer-inner a{
+  font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
   color:var(--muted);padding:.8rem 0;border-bottom:1px solid var(--border);
-  transition:color .2s;display:block}
+  display:block;transition:color .2s;
+}
 .drawer-inner a:last-child{border-bottom:none}
 .drawer-inner a.active,.drawer-inner a:hover{color:var(--gold)}
 
-/* LAYOUT */
-.wrap{max-width:1200px;margin:0 auto;padding:0 1.25rem}
+/* ── MOBILE STICKY CTA ── */
+.mobile-cta{
+  display:flex;position:fixed;bottom:0;left:0;right:0;z-index:490;
+  background:rgba(13,11,8,.97);border-top:1px solid var(--border);
+  padding:.75rem 1.25rem;gap:.75rem;align-items:center;justify-content:center;
+  backdrop-filter:blur(12px);
+}
+.mobile-cta a{
+  flex:1;max-width:320px;text-align:center;padding:.8rem;
+  background:var(--gold);color:var(--bg);font-family:var(--ff-b);
+  font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  transition:background .2s;
+}
+.mobile-cta a:hover{background:var(--gold-lt)}
+
+/* ── LAYOUT ── */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
 .pt-nav{padding-top:var(--nav)}
-
-/* REVEAL ANIMATION */
-.r{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.r.vis{opacity:1;transform:none}
-.r2{transition-delay:.12s}
-.r3{transition-delay:.22s}
-.r4{transition-delay:.32s}
-
-/* TYPE UTILS */
-.eyebrow{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
-  display:flex;align-items:center;gap:.65rem;margin-bottom:.9rem}
-.eyebrow::before{content:'';width:22px;height:1px;background:var(--gold);flex-shrink:0}
-.display{font-family:var(--ff-d);font-weight:300;line-height:1.06;color:var(--cream)}
-.body-sm{font-size:.85rem;color:var(--muted);line-height:1.8}
+/* Extra bottom padding on mobile to clear the sticky CTA */
+.pt-nav > .wrap:last-child,
+footer{padding-bottom:calc(2.5rem + 58px)}
+.sec{padding:4rem 0}
 .rule{border:none;border-top:1px solid var(--border)}
 
-/* BUTTONS */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
-  font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;font-family:var(--ff-b);
-  font-weight:500;cursor:pointer;transition:all .2s var(--ease);min-height:44px;padding:.75rem 1.75rem}
-.btn-solid{background:var(--gold);color:var(--bg);border:1px solid var(--gold)}
-.btn-solid:hover{background:var(--gold-lt);border-color:var(--gold-lt)}
-.btn-outline{background:transparent;border:1px solid var(--border2);color:var(--text)}
+/* ── TYPOGRAPHY ── */
+.eyebrow{
+  font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:.65rem;margin-bottom:.85rem;
+}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--gold);flex-shrink:0}
+.display{font-family:var(--ff-d);font-weight:300;line-height:1.06;color:var(--cream)}
+.body-sm{font-size:.9rem;color:var(--muted);line-height:1.82}
+
+/* ── BUTTONS ── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;
+  font-family:var(--ff-b);font-weight:600;cursor:pointer;
+  transition:all .2s var(--ease);min-height:46px;padding:.8rem 1.85rem;border:none;
+}
+.btn-solid{background:var(--gold);color:var(--bg)}
+.btn-solid:hover{background:var(--gold-lt)}
+.btn-outline{
+  background:transparent;border:1px solid var(--border2);color:var(--text);
+}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
-.btn-ghost{background:transparent;border:1px solid transparent;color:var(--muted);padding:.75rem 0}
+.btn-ghost{background:transparent;color:var(--muted);padding:.8rem 0}
 .btn-ghost:hover{color:var(--gold)}
 
-/* MARQUEE */
-.marquee{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:.55rem 0;background:var(--s1)}
-.marquee-track{display:flex;width:max-content;animation:ticker 30s linear infinite}
+/* ── SHARED CARD STYLES ── */
+.note{
+  padding:1.1rem 1.5rem;background:var(--s1);
+  border:1px solid var(--border);border-left:3px solid var(--gold);
+  font-size:.82rem;color:var(--muted);line-height:1.75;
+}
+.note b{color:var(--text);font-weight:500}
+.note a{color:var(--gold)}
+
+/* ── PRICING SHARED ── */
+.price-hero{padding:4.5rem 0 3rem;border-bottom:1px solid var(--border)}
+.price-grid{
+  display:grid;grid-template-columns:1fr;
+  background:var(--border);border:1px solid var(--border);gap:1px;margin-top:2.5rem;
+}
+.price-card{
+  background:var(--s1);padding:2.25rem 2rem;display:flex;flex-direction:column;
+  transition:background .25s var(--ease);position:relative;
+}
+.price-card:hover{background:var(--s2)}
+.price-card.feat{
+  background:var(--s2);outline:1px solid var(--gold);outline-offset:-1px;z-index:2;
+}
+.feat-badge{
+  position:absolute;top:0;right:1.75rem;
+  background:var(--gold);color:var(--bg);
+  font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;padding:.28rem .75rem;
+  font-weight:600;
+}
+.p-tier{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+.p-name{font-family:var(--ff-d);font-size:1.75rem;font-weight:500;color:var(--cream);margin-bottom:.75rem}
+.p-price{font-family:var(--ff-d);font-size:3rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:.2rem}
+.p-scope{font-size:.75rem;color:var(--muted);padding-bottom:1rem;border-bottom:1px solid var(--border);margin-bottom:1rem}
+.p-desc{font-size:.85rem;color:var(--muted);line-height:1.75;margin-bottom:1.25rem}
+.p-feat{flex:1;margin-bottom:1.5rem}
+.p-feat li{
+  font-size:.82rem;color:var(--text);padding:.38rem 0;
+  border-bottom:1px solid rgba(46,40,32,.6);
+  display:flex;align-items:flex-start;gap:.5rem;
+}
+.p-feat li::before{content:'—';color:var(--gold);font-size:.7rem;flex-shrink:0;margin-top:.06rem}
+.p-cta{width:100%;text-align:center}
+
+/* ── MARQUEE ── */
+.marquee{
+  overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:.55rem 0;background:var(--s1);
+}
+.marquee-track{display:flex;width:max-content;animation:ticker 32s linear infinite}
 .marquee-track:hover{animation-play-state:paused}
-.marquee-track span{white-space:nowrap;padding:0 2.5rem;font-size:.6rem;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--dim)}
+.marquee-track span{
+  white-space:nowrap;padding:0 2rem;font-size:.62rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--dim);
+}
 .marquee-track span b{color:var(--gold);font-weight:400}
 @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* SECTION */
-.sec{padding:4rem 0}
-.sec-lg{padding:6rem 0}
+/* ── REVEAL ── */
+.r{opacity:0;transform:translateY(18px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.r.vis{opacity:1;transform:none}
+.r2{transition-delay:.1s}.r3{transition-delay:.18s}.r4{transition-delay:.26s}
 
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:2.25rem 0;margin-top:4rem}
-.foot-inner{display:flex;flex-direction:column;gap:.75rem;text-align:center}
-.foot-logo{font-family:var(--ff-d);font-size:1.05rem;color:var(--cream);letter-spacing:.06em}
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--border);padding:2.5rem 0;margin-top:0;
+}
+.foot-inner{
+  display:flex;flex-direction:column;gap:.75rem;text-align:center;
+}
+.foot-logo{font-family:var(--ff-d);font-size:1.1rem;color:var(--cream);letter-spacing:.06em}
 .foot-logo b{color:var(--gold);font-weight:400}
-footer p{font-size:.7rem;color:var(--dim)}
+footer p{font-size:.72rem;color:var(--dim)}
 footer a{color:var(--gold);transition:opacity .2s}
 footer a:hover{opacity:.7}
 
-/* TABLET */
+/* ── RESPONSIVE ── */
 @media(min-width:640px){
   nav{padding:0 2rem}
   .wrap{padding:0 2rem}
-  .drawer-inner{padding:1.5rem 2rem}
-  .sec{padding:5rem 0}
-  .sec-lg{padding:7rem 0}
+  .sec{padding:5.5rem 0}
   .foot-inner{flex-direction:row;justify-content:space-between;text-align:left}
+  .price-grid{grid-template-columns:repeat(2,1fr)}
+  footer{padding-bottom:2.5rem}
 }
-
-/* DESKTOP */
 @media(min-width:1024px){
   nav{padding:0 3rem}
   .wrap{padding:0 3rem}
   .nav-links{display:flex}
   .nav-btn{display:inline-block}
   .ham{display:none}
-  .sec{padding:6rem 0}
-  .sec-lg{padding:8rem 0}
+  .mobile-cta{display:none}
+  .sec{padding:7rem 0}
+  .price-grid{grid-template-columns:repeat(3,1fr)}
+  .pt-nav > .wrap:last-child,footer{padding-bottom:2.5rem}
 }
-
 
 .contact-hero{padding:5rem 0 3rem;border-bottom:1px solid var(--border)}
 .contact-grid{display:grid;grid-template-columns:1fr;gap:3rem;margin-top:3rem}
@@ -186,7 +297,6 @@ footer a:hover{opacity:.7}
 .form-ok p{font-size:.84rem;color:var(--muted)}
 @media(min-width:640px){.frow{grid-template-columns:1fr 1fr}}
 @media(min-width:900px){.contact-grid{grid-template-columns:1fr 1.7fr;gap:5rem}}
-
 </style>
 </head>
 <body>
@@ -200,7 +310,7 @@ footer a:hover{opacity:.7}
     <a href="setup.html">Setup & Launch</a>
     <a href="maintenance.html">Maintenance</a>
   </div>
-  <a class="nav-btn btn" href="contact.html">Start a Project</a>
+  <a class="nav-btn" href="contact.html">Start a Project</a>
   <button class="ham" id="ham" aria-label="Menu" aria-expanded="false" onclick="toggleMenu(this)">
     <span></span><span></span><span></span>
   </button>
@@ -214,6 +324,10 @@ footer a:hover{opacity:.7}
   <a href="setup.html">Setup & Launch</a>
   <a href="maintenance.html">Maintenance</a>
   </div>
+</div>
+<div class="mobile-cta" aria-hidden="true">
+  <a href="contact.html">Start a Project →</a>
+</div>
 </div>
 </div>
 </div>
@@ -299,10 +413,155 @@ footer a:hover{opacity:.7}
   </div>
 </div>
 </div><script>
-function handleSubmit(e){
+// ── Keys ────────────────────────────────────────────────
+var W3F_KEY    = '2dade2fd-afd5-4b67-8365-f25f2eb447dd';
+var RESEND_KEY = 're_D1cs71uM_JBWogxUAeGgfh1X5Uif7m3kz';
+var MY_EMAIL   = 'dylant5323@gmail.com';
+
+// ── Intake email HTML ────────────────────────────────────
+function buildIntakeEmail(name, service, message) {
+  var isEcom    = /signature|staple|e-commerce/i.test(service);
+  var isCustom  = /custom/i.test(service);
+  var isUnsure  = /not sure/i.test(service);
+
+  var opener = isEcom
+    ? "Sounds like you're ready to get a real online store built — let me gather a few details before I put anything together."
+    : isCustom
+    ? "A fully custom build is a real project — I want to make sure I have everything I need before we start."
+    : isUnsure
+    ? "No problem — your answers below will help me figure out the right fit and put together a real recommendation."
+    : "A template site can move fast — I just need a few things from you to get started.";
+
+  var ecomExtra = isEcom ? [
+    '<tr><td style="padding:6px 0;border-bottom:1px solid #2e2820;color:#8a7d6a;font-size:13px;">Roughly how many products are you starting with?</td><td style="padding:6px 0 6px 16px;border-bottom:1px solid #2e2820;color:#e5d9c5;font-size:13px;">____________________</td></tr>',
+    '<tr><td style="padding:6px 0;border-bottom:1px solid #2e2820;color:#8a7d6a;font-size:13px;">Do you have product photos ready?</td><td style="padding:6px 0 6px 16px;border-bottom:1px solid #2e2820;color:#e5d9c5;font-size:13px;">Yes &nbsp;/&nbsp; No &nbsp;/&nbsp; Some of them</td></tr>'
+  ].join('') : '';
+
+  return [
+    '<!DOCTYPE html><html><head><meta charset="UTF-8"></head>',
+    '<body style="margin:0;padding:0;background:#0d0b08;font-family:Outfit,system-ui,sans-serif;">',
+    '<div style="max-width:580px;margin:0 auto;padding:40px 24px;">',
+
+    // Header
+    '<div style="border-bottom:1px solid #2e2820;padding-bottom:24px;margin-bottom:32px;">',
+    '<p style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#cf9532;margin:0 0 6px;">Deadwood Digital</p>',
+    '<p style="font-size:22px;color:#f5ead6;margin:0;font-weight:300;">Web Design &amp; Development</p>',
+    '</div>',
+
+    // Greeting
+    '<p style="color:#f5ead6;font-size:16px;margin:0 0 8px;">Hey ' + name + ',</p>',
+    '<p style="color:#8a7d6a;font-size:14px;line-height:1.75;margin:0 0 32px;">' + opener + '</p>',
+    '<p style="color:#8a7d6a;font-size:14px;margin:0 0 28px;line-height:1.7;">Reply to this email with whatever you have — rough answers are fine, anything helps.</p>',
+
+    // Section: Brand
+    '<p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#cf9532;margin:0 0 12px;border-bottom:1px solid #2e2820;padding-bottom:8px;">YOUR BRAND</p>',
+    '<table style="width:100%;border-collapse:collapse;margin-bottom:28px;">',
+    '<tr><td style="padding:6px 0;border-bottom:1px solid #2e2820;color:#8a7d6a;font-size:13px;">Do you have a logo?</td><td style="padding:6px 0 6px 16px;border-bottom:1px solid #2e2820;color:#e5d9c5;font-size:13px;">Yes &nbsp;/&nbsp; No &nbsp;/&nbsp; In progress</td></tr>',
+    '<tr><td style="padding:6px 0;border-bottom:1px solid #2e2820;color:#8a7d6a;font-size:13px;">Do you have brand colors?</td><td style="padding:6px 0 6px 16px;border-bottom:1px solid #2e2820;color:#e5d9c5;font-size:13px;">Yes (what are they?) &nbsp;/&nbsp; No &nbsp;/&nbsp; Open to suggestions</td></tr>',
+    '<tr><td style="padding:6px 0;border-bottom:1px solid #2e2820;color:#8a7d6a;font-size:13px;">2–3 words for how the site should feel:</td><td style="padding:6px 0 6px 16px;border-bottom:1px solid #2e2820;color:#e5d9c5;font-size:13px;">____________________</td></tr>',
+    '<tr><td style="padding:6px 0;color:#8a7d6a;font-size:13px;">1–3 websites you like the look of:</td><td style="padding:6px 0 6px 16px;color:#e5d9c5;font-size:13px;">____________________</td></tr>',
+    '</table>',
+
+    // Section: Content
+    '<p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#cf9532;margin:0 0 12px;border-bottom:1px solid #2e2820;padding-bottom:8px;">YOUR CONTENT</p>',
+    '<table style="width:100%;border-collapse:collapse;margin-bottom:28px;">',
+    '<tr><td style="padding:6px 0;border-bottom:1px solid #2e2820;color:#8a7d6a;font-size:13px;">Text written for your pages?</td><td style="padding:6px 0 6px 16px;border-bottom:1px solid #2e2820;color:#e5d9c5;font-size:13px;">Yes &nbsp;/&nbsp; Partially &nbsp;/&nbsp; No — need help</td></tr>',
+    '<tr><td style="padding:6px 0;color:#8a7d6a;font-size:13px;">Do you have photos?</td><td style="padding:6px 0 6px 16px;color:#e5d9c5;font-size:13px;">Yes &nbsp;/&nbsp; No &nbsp;/&nbsp; Need help sourcing</td></tr>',
+    '</table>',
+
+    // Section: Site
+    '<p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#cf9532;margin:0 0 12px;border-bottom:1px solid #2e2820;padding-bottom:8px;">YOUR SITE</p>',
+    '<table style="width:100%;border-collapse:collapse;margin-bottom:28px;">',
+    '<tr><td style="padding:6px 0;border-bottom:1px solid #2e2820;color:#8a7d6a;font-size:13px;">Pages you need (or what the site should do):</td><td style="padding:6px 0 6px 16px;border-bottom:1px solid #2e2820;color:#e5d9c5;font-size:13px;">____________________</td></tr>',
+    '<tr><td style="padding:6px 0;border-bottom:1px solid #2e2820;color:#8a7d6a;font-size:13px;">Customers buying directly from the site?</td><td style="padding:6px 0 6px 16px;border-bottom:1px solid #2e2820;color:#e5d9c5;font-size:13px;">Yes &nbsp;/&nbsp; No &nbsp;/&nbsp; Maybe later</td></tr>',
+    ecomExtra,
+    '<tr><td style="padding:6px 0;color:#8a7d6a;font-size:13px;">Do you have a domain name?</td><td style="padding:6px 0 6px 16px;color:#e5d9c5;font-size:13px;">Yes (what is it?) &nbsp;/&nbsp; No</td></tr>',
+    '</table>',
+
+    // Section: Timeline
+    '<p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#cf9532;margin:0 0 12px;border-bottom:1px solid #2e2820;padding-bottom:8px;">TIMELINE &amp; CONTEXT</p>',
+    '<table style="width:100%;border-collapse:collapse;margin-bottom:36px;">',
+    '<tr><td style="padding:6px 0;border-bottom:1px solid #2e2820;color:#8a7d6a;font-size:13px;">When do you need this live?</td><td style="padding:6px 0 6px 16px;border-bottom:1px solid #2e2820;color:#e5d9c5;font-size:13px;">ASAP &nbsp;/&nbsp; Within a month &nbsp;/&nbsp; 1–3 months &nbsp;/&nbsp; No rush</td></tr>',
+    '<tr><td style="padding:6px 0;color:#8a7d6a;font-size:13px;">Anything I should know upfront?</td><td style="padding:6px 0 6px 16px;color:#e5d9c5;font-size:13px;">____________________</td></tr>',
+    '</table>',
+
+    // Closer
+    '<div style="border-top:1px solid #2e2820;padding-top:24px;">',
+    '<p style="color:#8a7d6a;font-size:13px;line-height:1.75;margin:0 0 20px;">That\'s it. Once I hear back I\'ll put together a full scope and quote.</p>',
+    '<p style="color:#f5ead6;font-size:14px;margin:0;">— Dylan</p>',
+    '<p style="color:#8a7d6a;font-size:12px;margin:4px 0 0;">Deadwood Digital &nbsp;·&nbsp; <a href="mailto:dylant5323@gmail.com" style="color:#cf9532;text-decoration:none;">dylant5323@gmail.com</a> &nbsp;·&nbsp; (816) 752-4944</p>',
+    '</div>',
+
+    '</div></body></html>'
+  ].join('');
+}
+
+// ── Submit handler ───────────────────────────────────────
+async function handleSubmit(e) {
   e.preventDefault();
-  document.getElementById('cForm').style.display='none';
-  document.getElementById('formOk').style.display='block';
+
+  var btn  = e.target.querySelector('button[type="submit"]');
+  var name     = document.getElementById('fn').value.trim();
+  var email    = document.getElementById('fe').value.trim();
+  var business = document.getElementById('fb').value.trim();
+  var service  = document.getElementById('fs').value;
+  var timeframe= document.getElementById('ft').value;
+  var style    = document.getElementById('fst').value;
+  var message  = document.getElementById('fm').value.trim();
+
+  // Basic validation
+  if (!name || !email || !service) {
+    alert('Please fill in your name, email, and service selection.');
+    return;
+  }
+
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  try {
+    // ── 1. Web3Forms — notify Dylan ───────────────────
+    await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        access_key: W3F_KEY,
+        subject:    'New Inquiry — ' + service,
+        from_name:  name,
+        name:       name,
+        email:      email,
+        business:   business || 'Not provided',
+        service:    service,
+        timeframe:  timeframe || 'Not specified',
+        style:      style || 'Not specified',
+        message:    message || 'No message provided'
+      })
+    });
+
+    // ── 2. Resend — intake email to client ────────────
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer ' + RESEND_KEY
+      },
+      body: JSON.stringify({
+        from:     'Deadwood Digital <onboarding@resend.dev>',
+        to:       [email],
+        reply_to: MY_EMAIL,
+        subject:  'A few quick questions about your project — Deadwood Digital',
+        html:     buildIntakeEmail(name.split(' ')[0], service, message)
+      })
+    });
+
+    // ── Success ───────────────────────────────────────
+    document.getElementById('cForm').style.display  = 'none';
+    document.getElementById('formOk').style.display = 'block';
+
+  } catch(err) {
+    btn.textContent = 'Send It ↗';
+    btn.disabled = false;
+    alert('Something went wrong — please email me directly at dylant5323@gmail.com');
+  }
 }
 </script>
 <footer>
@@ -310,7 +569,13 @@ function handleSubmit(e){
     <div class="foot-inner">
       <div class="foot-logo">Deadwood<b>.</b>Digital</div>
       <p>© 2026 Deadwood Digital · Trenton, MO</p>
-      <p><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></p>
+      <p style="display:flex;gap:1.25rem;flex-wrap:wrap;justify-content:center">
+        <a href="templates.html">Templates</a>
+        <a href="custom.html">Custom</a>
+        <a href="setup.html">Setup</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a>
+      </p>
     </div>
   </div>
 </footer>
@@ -321,13 +586,15 @@ function toggleMenu(btn){
   btn.classList.toggle('open',open);
   btn.setAttribute('aria-expanded',open);
 }
-// Reveal on scroll
 (function(){
   var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});
-  },{threshold:.08});
+    es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}
+    });
+  },{threshold:.07});
   function init(){document.querySelectorAll('.r').forEach(function(el){io.observe(el);});}
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}
+  else{init();}
 })();
 </script>
 </body>
