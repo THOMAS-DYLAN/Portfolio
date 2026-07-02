@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Start a Project — Deadwood Digital | Web Design & E-Commerce</title>
-  <meta name="description" content="Ready to build your online store or business website? Fill out the form and get a response within 24–48 hours. Template and custom options from $250. Based in Trenton, MO.">
+  <meta name="description" content="Ready to own your store? Tell me where you sell now — Etsy, Amazon, TikTok Shop, or pre-launch — and get a response within 24–48 hours. Custom and template e-commerce builds.">
   <meta name="robots" content="index,follow">
   <meta name="author" content="Dylan Thomas, Deadwood Digital">
   <meta name="keywords" content="e-commerce website design, online store, small business web design, custom website, Missouri web developer, SEO setup, affordable ecommerce">
@@ -26,6 +26,7 @@
   {"@context":"https://schema.org","@type":"ContactPage","name":"Contact Deadwood Digital","url":"https://deadwooddigital.digital/contact.html","description":"Contact form for web design and e-commerce projects."}
   </script>
 
+<link rel="icon" type="image/png" href="Logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -84,11 +85,8 @@ nav{
   background:rgba(13,11,8,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
 }
-.nav-logo{
-  font-family:var(--ff-d);font-size:1.25rem;font-weight:500;
-  letter-spacing:.06em;color:var(--cream);
-}
-.nav-logo b{color:var(--gold);font-weight:400}
+.nav-logo{display:flex;align-items:center}
+.nav-logo-img{height:34px;width:auto}
 .nav-links{display:none;align-items:center;gap:1.75rem}
 .nav-links a{
   font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
@@ -301,7 +299,7 @@ footer a:hover{opacity:.7}
 </head>
 <body>
 <nav aria-label="Main navigation">
-  <a class="nav-logo" href="index.html">Deadwood<b>.</b>Digital</a>
+  <a class="nav-logo" href="index.html"><img src="Logo.png" alt="Deadwood Digital" class="nav-logo-img"></a>
   <div class="nav-links">
     <a href="work.html">Work</a>
     <a href="templates.html">Templates</a>
@@ -360,6 +358,23 @@ footer a:hover{opacity:.7}
         </div>
         <div class="fg"><label for="fb">Business Name</label><input id="fb" type="text" name="business" placeholder="Your business or store name" autocomplete="organization"></div>
         <div class="fg">
+          <label for="fwhere">Where do you currently sell?</label>
+          <select id="fwhere" name="where">
+            <option value="" disabled selected>Select what applies</option>
+            <option>Not launched yet — pre-launch brand</option>
+            <option>Etsy</option>
+            <option>Amazon</option>
+            <option>eBay</option>
+            <option>TikTok Shop</option>
+            <option>Temu</option>
+            <option>Facebook Marketplace</option>
+            <option>Instagram / social media DMs</option>
+            <option>Multiple marketplaces</option>
+            <option>I have a website already</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg">
           <label for="fs">Service</label>
           <select id="fs" name="service" required>
             <option value="" disabled selected>Select a service</option>
@@ -415,7 +430,6 @@ footer a:hover{opacity:.7}
 </div><script>
 // ── Keys ────────────────────────────────────────────────
 var W3F_KEY    = '2dade2fd-afd5-4b67-8365-f25f2eb447dd';
-var RESEND_KEY = 're_D1cs71uM_JBWogxUAeGgfh1X5Uif7m3kz';
 var MY_EMAIL   = 'dylant5323@gmail.com';
 
 // ── Intake email HTML ────────────────────────────────────
@@ -504,6 +518,7 @@ async function handleSubmit(e) {
   var name     = document.getElementById('fn').value.trim();
   var email    = document.getElementById('fe').value.trim();
   var business = document.getElementById('fb').value.trim();
+  var where    = document.getElementById('fwhere').value;
   var service  = document.getElementById('fs').value;
   var timeframe= document.getElementById('ft').value;
   var style    = document.getElementById('fst').value;
@@ -530,6 +545,7 @@ async function handleSubmit(e) {
         name:       name,
         email:      email,
         business:   business || 'Not provided',
+        sells_on:   where || 'Not specified',
         service:    service,
         timeframe:  timeframe || 'Not specified',
         style:      style || 'Not specified',
@@ -537,20 +553,11 @@ async function handleSubmit(e) {
       })
     });
 
-    // ── 2. Resend — intake email to client ────────────
-    await fetch('https://api.resend.com/emails', {
+    // ── 2. Edge Function — sends intake email via Resend server-side ──
+    await fetch('https://utqviljholfvpfztfuvx.supabase.co/functions/v1/send-intake-email', {
       method: 'POST',
-      headers: {
-        'Content-Type':  'application/json',
-        'Authorization': 'Bearer ' + RESEND_KEY
-      },
-      body: JSON.stringify({
-        from:     'Deadwood Digital <onboarding@resend.dev>',
-        to:       [email],
-        reply_to: MY_EMAIL,
-        subject:  'A few quick questions about your project — Deadwood Digital',
-        html:     buildIntakeEmail(name.split(' ')[0], service, message)
-      })
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ name, email, service, business, where, timeframe, style, message })
     });
 
     // ── Success ───────────────────────────────────────

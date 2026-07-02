@@ -3,266 +3,447 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Deadwood Digital — E-Commerce & Web Design for Small Businesses</title>
-  <meta name="description" content="Custom e-commerce websites and business sites for small businesses. Online stores, multi-page sites, and landing pages built clean and priced honestly. Based in Trenton, MO. Starting at $300.">
+  <title>Deadwood Digital — E-Commerce Websites for Marketplace Sellers & New Brands</title>
+  <meta name="description" content="Deadwood Digital builds quality e-commerce websites for brands launching new or selling on Etsy, Amazon, eBay, TikTok Shop, Temu, and Facebook Marketplace. Own your store instead of renting space. Trenton, MO.">
   <meta name="robots" content="index,follow">
   <meta name="author" content="Dylan Thomas, Deadwood Digital">
-  <meta name="keywords" content="e-commerce website design, online store, small business web design, custom website, Missouri web developer, SEO setup, affordable ecommerce">
+  <meta name="keywords" content="ecommerce website for Etsy sellers, Amazon to own website, move off marketplace, Shopify alternative, online store for marketplace sellers, TikTok Shop website, pre-launch ecommerce site, custom online store">
   <meta name="geo.region" content="US-MO">
   <meta name="geo.placename" content="Trenton, Missouri">
-  <link rel="canonical" href="https://deadwooddigital.digital/index.html">
+  <link rel="sitemap" type="application/xml" href="https://deadwooddigital.digital/sitemap.xml">
+  <link rel="canonical" href="https://deadwooddigital.digital/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Deadwood Digital — E-Commerce & Web Design for Small Businesses">
-  <meta property="og:description" content="Custom e-commerce websites and business sites for small businesses. Online stores, multi-page sites, and landing pages built clean and priced honestly. Based in Trenton, MO. Starting at $300.">
-  <meta property="og:url" content="https://deadwooddigital.digital/index.html">
+  <meta property="og:title" content="Deadwood Digital — E-Commerce Websites for Marketplace Sellers & New Brands">
+  <meta property="og:description" content="Quality e-commerce websites for brands launching new or selling on Etsy, Amazon, eBay, TikTok Shop, and more. Own your store instead of renting space.">
+  <meta property="og:url" content="https://deadwooddigital.digital/">
   <meta property="og:image" content="https://deadwooddigital.digital/og.jpg">
   <meta property="og:site_name" content="Deadwood Digital">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Deadwood Digital — E-Commerce & Web Design for Small Businesses">
-  <meta name="twitter:description" content="Custom e-commerce websites and business sites for small businesses. Online stores, multi-page sites, and landing pages built clean and priced honestly. Based in Trenton, MO. Starting at $300.">
-  <meta name="twitter:image" content="https://deadwooddigital.digital/og.jpg">
+  <meta name="twitter:title" content="Deadwood Digital — E-Commerce Websites for Marketplace Sellers & New Brands">
+  <meta name="twitter:description" content="Quality e-commerce websites for brands launching new or selling on Etsy, Amazon, eBay, TikTok Shop, and more.">
   <script type="application/ld+json">
-  [{"@context":"https://schema.org","@type":"WebSite","name":"Deadwood Digital","url":"https://deadwooddigital.digital","potentialAction":{"@type":"SearchAction","target":"https://deadwooddigital.digital/work.html","query-input":"required name=search_term_string"}},{"@context":"https://schema.org","@type":"LocalBusiness","name":"Deadwood Digital","url":"https://deadwooddigital.digital","telephone":"(816) 752-4944","email":"dylant5323@gmail.com","founder":{"@type":"Person","name":"Dylan Thomas","jobTitle":"Web Developer"},"address":{"@type":"PostalAddress","addressLocality":"Trenton","addressRegion":"MO","addressCountry":"US"},"priceRange":"$250–$3,000","areaServed":"United States","serviceType":["E-Commerce Website Design","Custom Web Development","Small Business Websites","SEO Setup","Website Maintenance"]}]
+  [{"@context":"https://schema.org","@type":"WebSite","name":"Deadwood Digital","url":"https://deadwooddigital.digital"},{"@context":"https://schema.org","@type":"LocalBusiness","name":"Deadwood Digital","description":"E-commerce websites for brands that are pre-launch or selling on online marketplaces like Etsy, Amazon, eBay, and TikTok Shop.","url":"https://deadwooddigital.digital","telephone":"(816) 752-4944","email":"dylant5323@gmail.com","founder":{"@type":"Person","name":"Dylan Thomas"},"address":{"@type":"PostalAddress","addressLocality":"Trenton","addressRegion":"MO","addressCountry":"US"},"priceRange":"$300–$5,000","areaServed":"United States"}]
   </script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-
+/* ── TOKENS ── */
 :root{
-  --bg:#080807;--s1:#111110;--s2:#191917;--s3:#232320;
-  --border:#28281f;--border2:#363630;
-  --text:#ddd4c2;--muted:#7a7468;--dim:#4a4840;
-  --gold:#c8a84b;--gold-lt:#dfbe72;--gold-dim:rgba(200,168,75,.12);
-  --cream:#f0e7d4;
-  --ff-d:'Cormorant Garamond',Georgia,serif;
-  --ff-b:'Outfit',system-ui,sans-serif;
-  --nav:58px;
-  --ease:cubic-bezier(.25,.46,.45,.94);
-  --ease-out:cubic-bezier(0,0,.2,1);
+  --bg:      #0d0b08;
+  --s1:      #151210;
+  --s2:      #1d1914;
+  --s3:      #252018;
+  --border:  #2e2820;
+  --border2: #3c3428;
+  --text:    #e5d9c5;
+  --muted:   #8a7d6a;
+  --dim:     #4e4438;
+  --gold:    #cf9532;
+  --gold-lt: #e8b454;
+  --gold-dk: #a87428;
+  --gold-bg: rgba(207,149,50,.10);
+  --cream:   #f5ead6;
+  --red:     #c0392b;
+  --ff-d:    'Cormorant Garamond',Georgia,serif;
+  --ff-b:    'Outfit',system-ui,sans-serif;
+  --nav:     60px;
+  --max:     1200px;
+  --ease:    cubic-bezier(.25,.46,.45,.94);
+  --eout:    cubic-bezier(0,0,.2,1);
 }
+
+/* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--text);font-family:var(--ff-b);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--ff-b);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer;font-family:var(--ff-b);border:none;background:none}
 ul,ol{list-style:none}
 img{max-width:100%;display:block}
 
-/* GRAIN */
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.028;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+/* ── GRAIN ── */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:8000;
+  opacity:.032;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav);padding:0 1.25rem;
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:var(--nav);padding:0 1.25rem;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(8,8,7,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border);}
-.nav-logo{font-family:var(--ff-d);font-size:1.2rem;font-weight:500;letter-spacing:.06em;color:var(--cream)}
+  background:rgba(13,11,8,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:var(--ff-d);font-size:1.25rem;font-weight:500;
+  letter-spacing:.06em;color:var(--cream);
+}
 .nav-logo b{color:var(--gold);font-weight:400}
-.nav-links{display:none;align-items:center;gap:2rem}
-.nav-links a{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);transition:color .2s var(--ease);white-space:nowrap}
+.nav-links{display:none;align-items:center;gap:1.75rem}
+.nav-links a{
+  font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);transition:color .2s var(--ease);white-space:nowrap;
+}
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
-.nav-btn{display:none;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
-  padding:.42rem 1.1rem;border:1px solid var(--gold);color:var(--gold);background:transparent;
-  transition:all .2s var(--ease);cursor:pointer;white-space:nowrap}
-.nav-btn:hover{background:var(--gold);color:var(--bg)}
-.ham{display:flex;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;
-  padding:8px 6px;background:none;border:1px solid var(--border)}
-.ham:hover{border-color:var(--border2)}
-.ham span{width:18px;height:1px;background:var(--text);display:block;transition:all .3s var(--ease)}
-.ham.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-btn{
+  display:none;font-size:.65rem;letter-spacing:.13em;text-transform:uppercase;
+  padding:.5rem 1.25rem;background:var(--gold);color:var(--bg);
+  transition:all .2s var(--ease);cursor:pointer;white-space:nowrap;
+  font-family:var(--ff-b);font-weight:600;
+}
+.nav-btn:hover{background:var(--gold-lt)}
+.ham{
+  display:flex;flex-direction:column;justify-content:center;gap:5px;
+  cursor:pointer;padding:8px 6px;background:none;
+  border:1px solid var(--border);transition:border-color .2s;
+}
+.ham:hover{border-color:var(--gold)}
+.ham span{width:19px;height:1.5px;background:var(--text);display:block;transition:all .3s var(--ease)}
+.ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.ham.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
-/* MOBILE DRAWER */
-.drawer{position:fixed;top:var(--nav);left:0;right:0;z-index:490;
-  background:var(--bg);border-bottom:1px solid var(--border);
-  max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
-.drawer.open{max-height:500px}
-.drawer-inner{padding:1.25rem 1.5rem;display:flex;flex-direction:column;gap:0}
-.drawer-inner a{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;
+/* ── DRAWER ── */
+.drawer{
+  position:fixed;top:var(--nav);left:0;right:0;z-index:490;
+  background:var(--s1);border-bottom:1px solid var(--border);
+  max-height:0;overflow:hidden;transition:max-height .4s var(--ease);
+}
+.drawer.open{max-height:420px}
+.drawer-inner{padding:1.25rem 1.5rem;display:flex;flex-direction:column}
+.drawer-inner a{
+  font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
   color:var(--muted);padding:.8rem 0;border-bottom:1px solid var(--border);
-  transition:color .2s;display:block}
+  display:block;transition:color .2s;
+}
 .drawer-inner a:last-child{border-bottom:none}
 .drawer-inner a.active,.drawer-inner a:hover{color:var(--gold)}
 
-/* LAYOUT */
-.wrap{max-width:1200px;margin:0 auto;padding:0 1.25rem}
+/* ── MOBILE STICKY CTA ── */
+.mobile-cta{
+  display:flex;position:fixed;bottom:0;left:0;right:0;z-index:490;
+  background:rgba(13,11,8,.97);border-top:1px solid var(--border);
+  padding:.75rem 1.25rem;gap:.75rem;align-items:center;justify-content:center;
+  backdrop-filter:blur(12px);
+}
+.mobile-cta a{
+  flex:1;max-width:320px;text-align:center;padding:.8rem;
+  background:var(--gold);color:var(--bg);font-family:var(--ff-b);
+  font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  transition:background .2s;
+}
+.mobile-cta a:hover{background:var(--gold-lt)}
+
+/* ── LAYOUT ── */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
 .pt-nav{padding-top:var(--nav)}
-
-/* REVEAL ANIMATION */
-.r{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.r.vis{opacity:1;transform:none}
-.r2{transition-delay:.12s}
-.r3{transition-delay:.22s}
-.r4{transition-delay:.32s}
-
-/* TYPE UTILS */
-.eyebrow{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
-  display:flex;align-items:center;gap:.65rem;margin-bottom:.9rem}
-.eyebrow::before{content:'';width:22px;height:1px;background:var(--gold);flex-shrink:0}
-.display{font-family:var(--ff-d);font-weight:300;line-height:1.06;color:var(--cream)}
-.body-sm{font-size:.85rem;color:var(--muted);line-height:1.8}
+/* Extra bottom padding on mobile to clear the sticky CTA */
+.pt-nav > .wrap:last-child,
+footer{padding-bottom:calc(2.5rem + 58px)}
+.sec{padding:4rem 0}
 .rule{border:none;border-top:1px solid var(--border)}
 
-/* BUTTONS */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
-  font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;font-family:var(--ff-b);
-  font-weight:500;cursor:pointer;transition:all .2s var(--ease);min-height:44px;padding:.75rem 1.75rem}
-.btn-solid{background:var(--gold);color:var(--bg);border:1px solid var(--gold)}
-.btn-solid:hover{background:var(--gold-lt);border-color:var(--gold-lt)}
-.btn-outline{background:transparent;border:1px solid var(--border2);color:var(--text)}
+/* ── TYPOGRAPHY ── */
+.eyebrow{
+  font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:.65rem;margin-bottom:.85rem;
+}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--gold);flex-shrink:0}
+.display{font-family:var(--ff-d);font-weight:300;line-height:1.06;color:var(--cream)}
+.body-sm{font-size:.9rem;color:var(--muted);line-height:1.82}
+
+/* ── BUTTONS ── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;
+  font-family:var(--ff-b);font-weight:600;cursor:pointer;
+  transition:all .2s var(--ease);min-height:46px;padding:.8rem 1.85rem;border:none;
+}
+.btn-solid{background:var(--gold);color:var(--bg)}
+.btn-solid:hover{background:var(--gold-lt)}
+.btn-outline{
+  background:transparent;border:1px solid var(--border2);color:var(--text);
+}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
-.btn-ghost{background:transparent;border:1px solid transparent;color:var(--muted);padding:.75rem 0}
+.btn-ghost{background:transparent;color:var(--muted);padding:.8rem 0}
 .btn-ghost:hover{color:var(--gold)}
 
-/* MARQUEE */
-.marquee{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:.55rem 0;background:var(--s1)}
-.marquee-track{display:flex;width:max-content;animation:ticker 30s linear infinite}
+/* ── SHARED CARD STYLES ── */
+.note{
+  padding:1.1rem 1.5rem;background:var(--s1);
+  border:1px solid var(--border);border-left:3px solid var(--gold);
+  font-size:.82rem;color:var(--muted);line-height:1.75;
+}
+.note b{color:var(--text);font-weight:500}
+.note a{color:var(--gold)}
+
+/* ── PRICING SHARED ── */
+.price-hero{padding:4.5rem 0 3rem;border-bottom:1px solid var(--border)}
+.price-grid{
+  display:grid;grid-template-columns:1fr;
+  background:var(--border);border:1px solid var(--border);gap:1px;margin-top:2.5rem;
+}
+.price-card{
+  background:var(--s1);padding:2.25rem 2rem;display:flex;flex-direction:column;
+  transition:background .25s var(--ease);position:relative;
+}
+.price-card:hover{background:var(--s2)}
+.price-card.feat{
+  background:var(--s2);outline:1px solid var(--gold);outline-offset:-1px;z-index:2;
+}
+.feat-badge{
+  position:absolute;top:0;right:1.75rem;
+  background:var(--gold);color:var(--bg);
+  font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;padding:.28rem .75rem;
+  font-weight:600;
+}
+.p-tier{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+.p-name{font-family:var(--ff-d);font-size:1.75rem;font-weight:500;color:var(--cream);margin-bottom:.75rem}
+.p-price{font-family:var(--ff-d);font-size:3rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:.2rem}
+.p-scope{font-size:.75rem;color:var(--muted);padding-bottom:1rem;border-bottom:1px solid var(--border);margin-bottom:1rem}
+.p-desc{font-size:.85rem;color:var(--muted);line-height:1.75;margin-bottom:1.25rem}
+.p-feat{flex:1;margin-bottom:1.5rem}
+.p-feat li{
+  font-size:.82rem;color:var(--text);padding:.38rem 0;
+  border-bottom:1px solid rgba(46,40,32,.6);
+  display:flex;align-items:flex-start;gap:.5rem;
+}
+.p-feat li::before{content:'—';color:var(--gold);font-size:.7rem;flex-shrink:0;margin-top:.06rem}
+.p-cta{width:100%;text-align:center}
+
+/* ── MARQUEE ── */
+.marquee{
+  overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:.55rem 0;background:var(--s1);
+}
+.marquee-track{display:flex;width:max-content;animation:ticker 32s linear infinite}
 .marquee-track:hover{animation-play-state:paused}
-.marquee-track span{white-space:nowrap;padding:0 2.5rem;font-size:.6rem;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--dim)}
+.marquee-track span{
+  white-space:nowrap;padding:0 2rem;font-size:.62rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--dim);
+}
 .marquee-track span b{color:var(--gold);font-weight:400}
 @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* SECTION */
-.sec{padding:4rem 0}
-.sec-lg{padding:6rem 0}
+/* ── REVEAL ── */
+.r{opacity:0;transform:translateY(18px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.r.vis{opacity:1;transform:none}
+.r2{transition-delay:.1s}.r3{transition-delay:.18s}.r4{transition-delay:.26s}
 
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:2.25rem 0;margin-top:4rem}
-.foot-inner{display:flex;flex-direction:column;gap:.75rem;text-align:center}
-.foot-logo{font-family:var(--ff-d);font-size:1.05rem;color:var(--cream);letter-spacing:.06em}
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--border);padding:2.5rem 0;margin-top:0;
+}
+.foot-inner{
+  display:flex;flex-direction:column;gap:.75rem;text-align:center;
+}
+.foot-logo{font-family:var(--ff-d);font-size:1.1rem;color:var(--cream);letter-spacing:.06em}
 .foot-logo b{color:var(--gold);font-weight:400}
-footer p{font-size:.7rem;color:var(--dim)}
+footer p{font-size:.72rem;color:var(--dim)}
 footer a{color:var(--gold);transition:opacity .2s}
 footer a:hover{opacity:.7}
 
-/* TABLET */
+/* ── RESPONSIVE ── */
 @media(min-width:640px){
   nav{padding:0 2rem}
   .wrap{padding:0 2rem}
-  .drawer-inner{padding:1.5rem 2rem}
-  .sec{padding:5rem 0}
-  .sec-lg{padding:7rem 0}
+  .sec{padding:5.5rem 0}
   .foot-inner{flex-direction:row;justify-content:space-between;text-align:left}
+  .price-grid{grid-template-columns:repeat(2,1fr)}
+  footer{padding-bottom:2.5rem}
 }
-
-/* DESKTOP */
 @media(min-width:1024px){
   nav{padding:0 3rem}
   .wrap{padding:0 3rem}
   .nav-links{display:flex}
   .nav-btn{display:inline-block}
   .ham{display:none}
-  .sec{padding:6rem 0}
-  .sec-lg{padding:8rem 0}
+  .mobile-cta{display:none}
+  .sec{padding:7rem 0}
+  .price-grid{grid-template-columns:repeat(3,1fr)}
+  .pt-nav > .wrap:last-child,footer{padding-bottom:2.5rem}
 }
-
-
 /* HERO */
-.hero{min-height:calc(100svh - var(--nav));display:flex;align-items:center;
-  position:relative;overflow:hidden;padding:3rem 0 2rem;}
-.hero-glow-a{position:absolute;top:-10%;right:-5%;width:min(650px,110vw);height:min(650px,110vw);
-  background:radial-gradient(circle,rgba(200,168,75,.07) 0%,transparent 65%);pointer-events:none}
-.hero-glow-b{position:absolute;bottom:0;left:-10%;width:min(400px,80vw);height:min(400px,80vw);
-  background:radial-gradient(circle,rgba(200,168,75,.035) 0%,transparent 70%);pointer-events:none}
-.hero-inner{position:relative;z-index:1;width:100%}
-.hero-h1{font-size:clamp(3rem,11vw,7.5rem);margin-bottom:1.4rem;max-width:18ch}
+.hero{
+  min-height:calc(100svh - var(--nav));
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;padding:3rem 0 5rem;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 55% at 75% 45%, rgba(207,149,50,.10) 0%,transparent 100%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(207,149,50,.05) 0%,transparent 100%);
+}
+.hero-inner{position:relative;z-index:1}
+.hero-h1{
+  font-size:clamp(2.8rem,9.5vw,6.5rem);
+  margin-bottom:1.4rem;max-width:14ch;
+}
 .hero-h1 em{font-style:italic;color:var(--gold)}
-.hero-sub{font-size:clamp(.88rem,2.2vw,1rem);color:var(--muted);max-width:420px;line-height:1.85;margin-bottom:2.25rem}
-.hero-actions{display:flex;gap:.75rem;flex-wrap:wrap}
+.hero-sub{
+  font-size:clamp(.9rem,2.2vw,1.05rem);color:var(--muted);
+  max-width:440px;line-height:1.85;margin-bottom:2.25rem;
+}
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.hero-btns .btn{min-height:50px;padding:.85rem 2rem}
 
-/* STATS ROW */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-  background:var(--border);border:1px solid var(--border);margin-top:4rem}
-.stat{background:var(--s1);padding:1.75rem 1.5rem}
-.stat-num{font-family:var(--ff-d);font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:.25rem}
-.stat-label{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+/* STATS */
+.stats-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  background:var(--border);border:1px solid var(--border);gap:1px;
+  margin-top:3.5rem;
+}
+.stat{background:var(--s1);padding:1.6rem 1.25rem;transition:background .2s}
+.stat:hover{background:var(--s2)}
+.stat-n{
+  font-family:var(--ff-d);font-size:clamp(2rem,4vw,2.8rem);font-weight:300;
+  color:var(--gold);line-height:1;margin-bottom:.25rem;
+}
+.stat-l{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* WHY ME */
+.why-grid{
+  display:grid;grid-template-columns:1fr;
+  background:var(--border);border:1px solid var(--border);gap:1px;margin-top:2.5rem;
+}
+.why-card{
+  background:var(--s1);padding:2rem 1.75rem;
+  transition:background .25s var(--ease);position:relative;overflow:hidden;
+}
+.why-card::after{
+  content:'';position:absolute;top:0;left:0;width:3px;height:0;
+  background:var(--gold);transition:height .4s var(--ease);
+}
+.why-card:hover{background:var(--s2)}
+.why-card:hover::after{height:100%}
+.why-n{
+  font-family:var(--ff-d);font-size:2.5rem;font-weight:300;
+  color:rgba(207,149,50,.14);line-height:1;margin-bottom:.65rem;
+}
+.why-card h3{font-family:var(--ff-d);font-size:1.25rem;color:var(--cream);margin-bottom:.5rem}
+.why-card p{font-size:.85rem;color:var(--muted);line-height:1.78;max-width:340px}
 
 /* SERVICE CARDS */
-.svc-grid{display:grid;grid-template-columns:1fr;gap:1px;
-  background:var(--border);border:1px solid var(--border)}
-.svc-card{background:var(--s1);padding:2rem 1.5rem;position:relative;
-  transition:background .25s var(--ease);overflow:hidden}
+.svc-grid{
+  display:grid;grid-template-columns:1fr;
+  background:var(--border);border:1px solid var(--border);gap:1px;
+}
+.svc-card{
+  background:var(--s1);padding:2rem 1.75rem;position:relative;
+  transition:background .25s var(--ease);display:block;
+}
 .svc-card:hover{background:var(--s2)}
-.svc-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;
-  background:var(--gold);transition:height .4s var(--ease)}
-.svc-card:hover::before{height:100%}
-.svc-badge{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;
-  padding:.22rem .65rem;background:var(--gold-dim);color:var(--gold);
-  border:1px solid rgba(200,168,75,.25);display:inline-block;margin-bottom:1rem}
-.svc-name{font-family:var(--ff-d);font-size:1.6rem;color:var(--cream);margin-bottom:.5rem}
-.svc-desc{font-size:.84rem;color:var(--muted);line-height:1.75;max-width:520px;margin-bottom:1.25rem}
+.svc-badge{
+  font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:.22rem .65rem;background:var(--gold-bg);
+  color:var(--gold);border:1px solid rgba(207,149,50,.25);
+  display:inline-block;margin-bottom:.9rem;
+}
+.svc-name{font-family:var(--ff-d);font-size:1.5rem;color:var(--cream);margin-bottom:.45rem}
+.svc-desc{font-size:.84rem;color:var(--muted);line-height:1.75;max-width:480px;margin-bottom:1rem}
 .svc-price{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
-.svc-arrow{position:absolute;top:2rem;right:1.75rem;font-size:1.1rem;color:var(--dim);
-  transition:color .2s,transform .2s}
+.svc-arrow{
+  position:absolute;top:2rem;right:1.75rem;
+  font-size:1.1rem;color:var(--dim);transition:color .2s,transform .2s;
+}
 .svc-card:hover .svc-arrow{color:var(--gold);transform:translate(3px,-3px)}
 
-/* FEATURED WORK STRIP */
-.work-strip{display:grid;grid-template-columns:1fr;gap:1px;
-  background:var(--border);border:1px solid var(--border);margin-top:2.5rem}
-.work-thumb{position:relative;height:200px;overflow:hidden;background:var(--s2);cursor:pointer}
-.work-thumb iframe{position:absolute;top:0;left:0;width:1280px;height:900px;
-  border:none;transform-origin:top left;pointer-events:none}
-.work-thumb-overlay{position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(8,8,7,.85) 0%,rgba(8,8,7,.1) 60%,transparent 100%);
-  display:flex;align-items:flex-end;padding:1.25rem 1.5rem;z-index:2}
-.work-thumb-title{font-family:var(--ff-d);font-size:1.25rem;color:var(--cream)}
-.work-thumb-type{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:.25rem}
+/* FEATURED WORK */
+.work-strip{
+  display:grid;grid-template-columns:1fr;
+  background:var(--border);border:1px solid var(--border);gap:1px;margin-top:2.5rem;
+}
+.work-thumb{
+  position:relative;height:200px;overflow:hidden;
+  background:var(--s2);cursor:pointer;
+}
+.work-thumb iframe{
+  position:absolute;top:0;left:0;width:1280px;height:900px;
+  border:none;transform-origin:top left;pointer-events:none;
+}
+.work-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(13,11,8,.88) 0%,rgba(13,11,8,.1) 55%,transparent 100%);
+  display:flex;align-items:flex-end;padding:1.25rem 1.5rem;z-index:2;
+}
+.work-label-type{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem}
+.work-label-title{font-family:var(--ff-d);font-size:1.2rem;color:var(--cream)}
+
+/* QUAL HOME */
+.qual-home-grid{display:grid;grid-template-columns:1fr;gap:2.5rem}
+.qual-home-bio{font-size:.95rem;color:var(--muted);line-height:1.88;max-width:460px;margin-bottom:1.4rem}
+.qual-skills{display:flex;flex-wrap:wrap;gap:.4rem}
+.qual-skills span{
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.3rem .75rem;border:1px solid var(--border);color:var(--dim);
+  transition:all .2s;
+}
+.qual-skills span:hover{border-color:var(--gold);color:var(--gold)}
+.qual-cred{padding:1rem 0;border-bottom:1px solid var(--border)}
+.qual-cred:last-child{border-bottom:none}
+.qual-cred-label{font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.22rem}
+.qual-cred-name{font-family:var(--ff-d);font-size:1.1rem;color:var(--cream);margin-bottom:.15rem}
+.qual-cred-org{font-size:.76rem;color:var(--muted)}
 
 /* PROCESS */
-.proc{display:grid;grid-template-columns:1fr;gap:2rem;margin-top:2.5rem;counter-reset:p}
-.proc-item{counter-increment:p;display:flex;gap:1.5rem;align-items:flex-start}
-.proc-num{font-family:var(--ff-d);font-size:2.8rem;font-weight:300;
-  color:rgba(200,168,75,.18);line-height:1;flex-shrink:0;min-width:2.5rem}
+.proc-grid{display:grid;grid-template-columns:1fr;gap:2rem;margin-top:2.5rem;counter-reset:p}
+.proc-item{counter-increment:p;display:flex;gap:1.25rem;align-items:flex-start}
+.proc-num{
+  font-family:var(--ff-d);font-size:2.8rem;font-weight:300;
+  color:rgba(207,149,50,.16);line-height:1;flex-shrink:0;min-width:2.5rem;
+}
 .proc-num::before{content:counter(p,decimal-leading-zero)}
 .proc-item h3{font-family:var(--ff-d);font-size:1.15rem;color:var(--cream);margin-bottom:.35rem}
 .proc-item p{font-size:.84rem;color:var(--muted);line-height:1.75}
 
 /* CTA BAND */
-.cta-band{border:1px solid var(--border);padding:3.5rem 2rem;text-align:center;
-  background:var(--s1);position:relative;overflow:hidden}
-.cta-band::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);
-  width:400px;height:400px;background:radial-gradient(circle,rgba(200,168,75,.06) 0%,transparent 70%);
-  pointer-events:none}
-.cta-band .display{font-size:clamp(1.8rem,4vw,3rem);margin-bottom:1rem;position:relative}
-.cta-band p{color:var(--muted);font-size:.9rem;margin-bottom:1.75rem;position:relative}
+.cta-band{
+  background:var(--s1);border:1px solid var(--border);
+  padding:3.5rem 2rem;text-align:center;position:relative;overflow:hidden;
+}
+.cta-band::before{
+  content:'';position:absolute;top:-60%;left:50%;transform:translateX(-50%);
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(207,149,50,.07) 0%,transparent 68%);
+  pointer-events:none;
+}
+.cta-band .display{font-size:clamp(1.9rem,4vw,3rem);margin-bottom:.85rem;position:relative}
+.cta-band p{color:var(--muted);font-size:.92rem;margin-bottom:1.75rem;position:relative}
 
 @media(min-width:640px){
-  .stats{grid-template-columns:repeat(3,1fr)}
+  .stats-strip{grid-template-columns:repeat(3,1fr)}
+  .why-grid{grid-template-columns:1fr 1fr}
   .svc-grid{grid-template-columns:1fr 1fr}
-  .work-strip{grid-template-columns:1fr 1fr}
-  .proc{grid-template-columns:1fr 1fr}
-  .work-thumb{height:240px}
+  .work-strip{grid-template-columns:repeat(3,1fr)}
+  .proc-grid{grid-template-columns:1fr 1fr}
+  .qual-home-grid{grid-template-columns:1fr 1fr;align-items:start}
+  .work-thumb{height:230px}
 }
 @media(min-width:1024px){
+  .why-grid{grid-template-columns:repeat(4,1fr)}
   .svc-grid{grid-template-columns:repeat(3,1fr)}
-  .work-strip{grid-template-columns:repeat(3,1fr)}
-  .proc{grid-template-columns:repeat(3,1fr)}
-  .hero{padding:4rem 0 3rem}
-  .work-thumb{height:280px}
+  .proc-grid{grid-template-columns:repeat(3,1fr)}
+  .work-thumb{height:260px}
 }
 
-
-/* HOME QUALIFICATIONS */
-.qual-home-grid{display:grid;grid-template-columns:1fr;gap:2.5rem}
-.qual-home-bio{font-size:1rem;color:var(--muted);line-height:1.85;max-width:480px;margin-bottom:1.5rem}
-.qual-skills{display:flex;flex-wrap:wrap;gap:.4rem}
-.qual-skills span{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
-  padding:.3rem .75rem;border:1px solid var(--border);color:var(--dim);
-  transition:border-color .2s,color .2s}
-.qual-skills span:hover{border-color:var(--gold);color:var(--gold)}
-.qual-cred{padding:1rem 0;border-bottom:1px solid var(--border)}
-.qual-cred:last-child{border-bottom:none}
-.qual-cred-label{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem}
-.qual-cred-name{font-family:var(--ff-d);font-size:1.15rem;color:var(--cream);margin-bottom:.18rem}
-.qual-cred-org{font-size:.78rem;color:var(--muted)}
-@media(min-width:768px){.qual-home-grid{grid-template-columns:1fr 1fr;gap:4rem;align-items:start}}
+/* MARKETPLACE BADGES */
+.mkt-section{padding:3.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--s1)}
+.mkt-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:1.5rem}
+.mkt-row{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;max-width:760px;margin:0 auto}
+.mkt-badge{
+  font-size:.78rem;letter-spacing:.04em;color:var(--text);
+  padding:.55rem 1.1rem;border:1px solid var(--border2);
+  background:var(--bg);transition:all .2s var(--ease);
+}
+.mkt-badge:hover{border-color:var(--gold);color:var(--gold)}
 
 </style>
 </head>
@@ -277,7 +458,7 @@ footer a:hover{opacity:.7}
     <a href="setup.html">Setup & Launch</a>
     <a href="maintenance.html">Maintenance</a>
   </div>
-  <a class="nav-btn btn" href="contact.html">Start a Project</a>
+  <a class="nav-btn" href="contact.html">Start a Project</a>
   <button class="ham" id="ham" aria-label="Menu" aria-expanded="false" onclick="toggleMenu(this)">
     <span></span><span></span><span></span>
   </button>
@@ -292,87 +473,133 @@ footer a:hover{opacity:.7}
   <a href="maintenance.html">Maintenance</a>
   </div>
 </div>
+<div class="mobile-cta" aria-hidden="true">
+  <a href="contact.html">Start a Project →</a>
 </div>
-</div>
-</div>
-</div>
-</div>
-
 <div class="pt-nav">
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>E-Commerce</span><span><b>·</b></span>
-    <span>Custom Websites</span><span><b>·</b></span>
-    <span>Online Stores</span><span><b>·</b></span>
-    <span>Small Business</span><span><b>·</b></span>
-    <span>Deadwood Digital</span><span><b>·</b></span>
-    <span>Built to Sell</span><span><b>·</b></span>
-    <span>E-Commerce</span><span><b>·</b></span>
-    <span>Custom Websites</span><span><b>·</b></span>
-    <span>Online Stores</span><span><b>·</b></span>
-    <span>Small Business</span><span><b>·</b></span>
-    <span>Deadwood Digital</span><span><b>·</b></span>
-    <span>Built to Sell</span><span><b>·</b></span>
+    <span>Etsy</span><span><b>→</b></span>
+    <span>Amazon</span><span><b>→</b></span>
+    <span>eBay</span><span><b>→</b></span>
+    <span>TikTok Shop</span><span><b>→</b></span>
+    <span>Temu</span><span><b>→</b></span>
+    <span>Facebook Marketplace</span><span><b>→</b></span>
+    <span style="color:var(--gold)">Your Own Store</span><span><b>·</b></span>
+    <span>Etsy</span><span><b>→</b></span>
+    <span>Amazon</span><span><b>→</b></span>
+    <span>eBay</span><span><b>→</b></span>
+    <span>TikTok Shop</span><span><b>→</b></span>
+    <span>Temu</span><span><b>→</b></span>
+    <span>Facebook Marketplace</span><span><b>→</b></span>
+    <span style="color:var(--gold)">Your Own Store</span><span><b>·</b></span>
   </div>
 </div>
 
-<!-- HERO -->
 <section class="hero" aria-labelledby="hero-h">
   <div class="wrap">
-    <div class="hero-glow-a"></div>
-    <div class="hero-glow-b"></div>
     <div class="hero-inner">
-      <div class="eyebrow r">E-Commerce &amp; Web Design — Deadwood Digital</div>
+      <div class="eyebrow r">E-Commerce Websites — Deadwood Digital</div>
       <h1 class="display hero-h1 r r2" id="hero-h">
-        Your store,<br><em>built right.</em>
+        Own your store.<br>Not just a <em>storefront.</em>
       </h1>
       <p class="hero-sub r r3">
-        Custom e-commerce websites and business sites for small businesses ready to sell online.
-        Clean code, real results, honest pricing.
+        Deadwood Digital builds quality e-commerce websites for brands launching new
+        or already selling on Etsy, Amazon, eBay, TikTok Shop, and beyond.
+        Stop renting space on someone else's platform — build something that's yours.
       </p>
-      <div class="hero-actions r r4">
-        <a class="btn btn-solid" href="services.html">Build My Store</a>
-        <a class="btn btn-outline" href="work.html">See the Work</a>
+      <div class="hero-btns r r4">
+        <a class="btn btn-solid" href="services.html">See Pricing</a>
+        <a class="btn btn-outline" href="work.html">View Work</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="wrap">
-  <div class="stats">
-    <div class="stat r"><div class="stat-num">1</div><div class="stat-label">Live Site Built</div></div>
-    <div class="stat r r2"><div class="stat-num">$300</div><div class="stat-label">Starting Price</div></div>
-    <div class="stat r r3"><div class="stat-num">48h</div><div class="stat-label">Response Time</div></div>
+<!-- MARKETPLACE STRIP -->
+<div class="mkt-section">
+  <div class="wrap">
+    <p class="mkt-label r">Built for brands selling on — or leaving —</p>
+    <div class="mkt-row">
+      <span class="mkt-badge r">Etsy</span>
+      <span class="mkt-badge r">Amazon</span>
+      <span class="mkt-badge r">eBay</span>
+      <span class="mkt-badge r">TikTok Shop</span>
+      <span class="mkt-badge r">Temu</span>
+      <span class="mkt-badge r">Facebook Marketplace</span>
+      <span class="mkt-badge r">…or launching fresh</span>
+    </div>
   </div>
 </div>
 
-<!-- SERVICES OVERVIEW -->
+<div class="wrap">
+  <div class="stats-strip">
+    <div class="stat r"><div class="stat-n">0%</div><div class="stat-l">Platform Fees on Your Store</div></div>
+    <div class="stat r r2"><div class="stat-n">$300</div><div class="stat-l">Starting Price</div></div>
+    <div class="stat r r3"><div class="stat-n">48h</div><div class="stat-l">Response Time</div></div>
+  </div>
+</div>
+
+<!-- WHY OWN YOUR STORE -->
+<section class="sec wrap" aria-labelledby="why-h">
+  <div class="eyebrow r">Why Your Own Store</div>
+  <h2 class="display r r2" id="why-h" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:2rem">
+    The marketplace isn't yours.
+  </h2>
+  <div class="why-grid">
+    <div class="why-card r">
+      <div class="why-n">01</div>
+      <h3>Stop paying the platform tax</h3>
+      <p>Marketplaces take 6–15% of every sale, plus listing and payment fees. Your own store keeps that money in your pocket — month after month.</p>
+    </div>
+    <div class="why-card r r2">
+      <div class="why-n">02</div>
+      <h3>Own your customers</h3>
+      <p>Etsy and Amazon own your buyer list — not you. Your own store means an email list, repeat sales, and customers you can actually reach again.</p>
+    </div>
+    <div class="why-card r r3">
+      <div class="why-n">03</div>
+      <h3>Build a real brand</h3>
+      <p>On a marketplace you're listing #4,892 in a sea of lookalikes. Your own store looks like <em>you</em> — and makes customers trust you enough to buy.</p>
+    </div>
+    <div class="why-card r r4">
+      <div class="why-n">04</div>
+      <h3>Never get shut down</h3>
+      <p>One policy change or a wrongful account flag and a marketplace seller loses everything overnight. Your store runs on your rules, on infrastructure you control.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
 <section class="sec wrap" aria-labelledby="svc-h">
   <div class="eyebrow r">What We Build</div>
-  <h2 class="display r r2" id="svc-h" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:2rem">
-    Three ways to get online.
+  <h2 class="display r r2" id="svc-h" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:.75rem">
+    Launching, or making the move.
   </h2>
+  <p class="body-sm r r3" style="max-width:520px;margin-bottom:2rem">
+    Whether you're about to launch your first product or you've outgrown the marketplace,
+    there's a build that fits.
+  </p>
   <div class="svc-grid">
-    <a class="svc-card" href="services.html#ecommerce" aria-label="E-Commerce Stores">
+    <a class="svc-card r" href="custom.html">
       <div class="svc-badge">Primary Focus</div>
-      <div class="svc-name">E-Commerce Store</div>
-      <p class="svc-desc">A full online store with product pages, checkout, inventory management, and everything your customers need to buy from you directly.</p>
+      <div class="svc-name">Full E-Commerce Store</div>
+      <p class="svc-desc">A complete online store with product pages, checkout, and inventory — everything you need to sell directly to customers and leave the marketplace fees behind.</p>
       <div class="svc-price">Custom Build — from $2,500</div>
       <span class="svc-arrow" aria-hidden="true">↗</span>
     </a>
-    <a class="svc-card" href="services.html#business" aria-label="Business Websites">
-      <div class="svc-badge">Multi-Page</div>
-      <div class="svc-name">Business Website</div>
-      <p class="svc-desc">A professional multi-page site covering your services, about, gallery, and contact. Everything a customer needs to trust you before they call.</p>
+    <a class="svc-card r r2" href="custom.html">
+      <div class="svc-badge">Launch Ready</div>
+      <div class="svc-name">Brand &amp; Storefront</div>
+      <p class="svc-desc">A professional multi-page site that makes a brand-new business look established from day one. Built for pre-launch brands who want to start right.</p>
       <div class="svc-price">Template or Custom — from $750</div>
       <span class="svc-arrow" aria-hidden="true">↗</span>
     </a>
-    <a class="svc-card" href="services.html#landing" aria-label="Landing Pages">
+    <a class="svc-card r r3" href="templates.html">
       <div class="svc-badge">Single Page</div>
-      <div class="svc-name">Landing Page</div>
-      <p class="svc-desc">One focused, well-built page for businesses that want a fast, professional online presence without the full site scope.</p>
+      <div class="svc-name">Landing &amp; Link Page</div>
+      <p class="svc-desc">One focused page to anchor your brand — perfect for sending traffic from a TikTok bio, an Instagram link, or a marketplace profile to one place that's yours.</p>
       <div class="svc-price">Starting at $300</div>
       <span class="svc-arrow" aria-hidden="true">↗</span>
     </a>
@@ -383,25 +610,25 @@ footer a:hover{opacity:.7}
 <section class="sec wrap" aria-labelledby="fw-h">
   <div class="eyebrow r">Featured Work</div>
   <h2 class="display r r2" id="fw-h" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:2rem">
-    Real sites. Real businesses.
+    Real stores. Real brands.
   </h2>
   <div class="work-strip" id="featuredStrip">
-    <div class="work-thumb r" onclick="window.open('https://bigboypeps.com','_blank')" role="link" tabindex="0" aria-label="Big Boy Peps — E-Commerce">
-      <iframe src="https://bigboypeps.com" title="Big Boy Peps e-commerce site" loading="lazy" scrolling="no"></iframe>
-      <div class="work-thumb-overlay">
-        <div><div class="work-thumb-type">E-Commerce · Client</div><div class="work-thumb-title">Big Boy Peps</div></div>
+    <div class="work-thumb r" onclick="window.open('https://ctxlabz.com','_blank')" role="link" tabindex="0" aria-label="CTXLabz — E-Commerce">
+      <iframe src="https://ctxlabz.com" title="CTXLabz" loading="lazy" scrolling="no"></iframe>
+      <div class="work-overlay">
+        <div><div class="work-label-type">E-Commerce · Client</div><div class="work-label-title">CTXLabz</div></div>
       </div>
     </div>
-    <div class="work-thumb r r2" onclick="window.open('https://thomas-dylan.github.io/Blackthorne-Vale-LLP/','_blank')" role="link" tabindex="0" aria-label="Blackthorne Vale LLP">
-      <iframe src="https://thomas-dylan.github.io/Blackthorne-Vale-LLP/" title="Blackthorne Vale LLP website" loading="lazy" scrolling="no"></iframe>
-      <div class="work-thumb-overlay">
-        <div><div class="work-thumb-type">Multi-Page · Template</div><div class="work-thumb-title">Blackthorne Vale LLP</div></div>
+    <div class="work-thumb r r2" onclick="window.open('https://956labs.ctxlabz.com','_blank')" role="link" tabindex="0" aria-label="956 Labs — E-Commerce">
+      <iframe src="https://956labs.ctxlabz.com" title="956 Labs" loading="lazy" scrolling="no"></iframe>
+      <div class="work-overlay">
+        <div><div class="work-label-type">E-Commerce · Client</div><div class="work-label-title">956 Labs</div></div>
       </div>
     </div>
-    <div class="work-thumb r r3" onclick="window.open('https://thomas-dylan.github.io/Harbor-And-Ash/','_blank')" role="link" tabindex="0" aria-label="Harbor & Ash">
-      <iframe src="https://thomas-dylan.github.io/Harbor-And-Ash/" title="Harbor and Ash website" loading="lazy" scrolling="no"></iframe>
-      <div class="work-thumb-overlay">
-        <div><div class="work-thumb-type">Multi-Page · Template</div><div class="work-thumb-title">Harbor &amp; Ash</div></div>
+    <div class="work-thumb r r3" onclick="window.open('https://goiwp.com','_blank')" role="link" tabindex="0" aria-label="Impact Wealth Partners">
+      <iframe src="https://goiwp.com" title="Impact Wealth Partners" loading="lazy" scrolling="no"></iframe>
+      <div class="work-overlay">
+        <div><div class="work-label-type">Multi-Page · Client</div><div class="work-label-title">Impact Wealth Partners</div></div>
       </div>
     </div>
   </div>
@@ -410,24 +637,24 @@ footer a:hover{opacity:.7}
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="sec wrap" aria-labelledby="proc-h">
-  <div class="eyebrow r">Process</div>
-  <h2 class="display r r2" id="proc-h" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:2.5rem">
-    Simple from start to finish.
+<!-- WHY DEADWOOD (trust) -->
+<section class="sec wrap" aria-labelledby="trust-h">
+  <div class="eyebrow r">Why Deadwood Digital</div>
+  <h2 class="display r r2" id="trust-h" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:2.5rem">
+    What you actually get.
   </h2>
-  <div class="proc">
+  <div class="proc-grid">
     <div class="proc-item r">
       <span class="proc-num"></span>
-      <div><h3>Choose Your Build</h3><p>Pick a service — e-commerce store, business site, or landing page. Not sure? The contact form handles that too.</p></div>
+      <div><h3>You talk to me directly</h3><p>No account managers, no handoffs. Every email goes to the person who actually builds your store.</p></div>
     </div>
     <div class="proc-item r r2">
       <span class="proc-num"></span>
-      <div><h3>Share Your Details</h3><p>Fill out the form with business info, style direction, and timeline. More detail means a better result.</p></div>
+      <div><h3>Flat, honest pricing</h3><p>The price on the page is the price you pay. No hourly billing that balloons, no surprise invoices.</p></div>
     </div>
     <div class="proc-item r r3">
       <span class="proc-num"></span>
-      <div><h3>Get Your Site</h3><p>Receive a responsive, launch-ready website built to actually represent your business — and sell your products.</p></div>
+      <div><h3>Built to sell</h3><p>Every decision is made around what gets your customers to trust you and check out — not what looks clever.</p></div>
     </div>
   </div>
 </section>
@@ -435,20 +662,16 @@ footer a:hover{opacity:.7}
 <!-- QUALIFICATIONS -->
 <section class="sec wrap" aria-labelledby="qual-h">
   <div class="eyebrow r">Built by</div>
-  <h2 class="display r r2" id="qual-h" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:2rem">
-    Dylan Thomas
-  </h2>
+  <h2 class="display r r2" id="qual-h" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:2rem">Dylan Thomas</h2>
   <div class="qual-home-grid">
-    <div class="qual-home-left r r2">
-      <p class="qual-home-bio">
-        Developer with a certificate in web development and a genuine interest in building things that work. Clean HTML, CSS, and JavaScript — built to last, not to impress other developers.
-      </p>
+    <div class="r r2">
+      <p class="qual-home-bio">Developer with a certificate in web development and a real interest in building things that work. I build e-commerce sites in clean code on infrastructure you own — no monthly platform fees, no rented storefronts.</p>
       <div class="qual-skills">
         <span>HTML</span><span>CSS</span><span>JavaScript</span><span>TypeScript</span>
-        <span>SQL</span><span>Git / GitHub</span><span>SDK Integration</span><span>AI Prompt Engineering</span>
+        <span>SQL</span><span>Supabase</span><span>Git / GitHub</span><span>SDK Integration</span>
       </div>
     </div>
-    <div class="qual-home-right r r3">
+    <div class="r r3">
       <div class="qual-cred">
         <div class="qual-cred-label">Education</div>
         <div class="qual-cred-name">Certificate in Web Development</div>
@@ -457,47 +680,39 @@ footer a:hover{opacity:.7}
       <div class="qual-cred">
         <div class="qual-cred-label">Founded</div>
         <div class="qual-cred-name">Deadwood Digital</div>
-        <div class="qual-cred-org">Web design &amp; development for small businesses · 2026</div>
+        <div class="qual-cred-org">E-commerce websites for marketplace &amp; pre-launch brands · 2026</div>
       </div>
       <div class="qual-cred">
         <div class="qual-cred-label">Location</div>
         <div class="qual-cred-name">Trenton, MO</div>
-        <div class="qual-cred-org">Available remotely</div>
+        <div class="qual-cred-org">Available remotely · responds within 48 hours</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA BAND -->
+<!-- CTA -->
 <div class="wrap" style="padding-bottom:5rem">
   <div class="cta-band r">
-    <h2 class="display" style="font-size:clamp(1.8rem,4vw,3rem);margin-bottom:.9rem">Ready to build?</h2>
+    <h2 class="display" style="font-size:clamp(1.9rem,4vw,3rem);margin-bottom:.85rem">Ready to own your store?</h2>
     <p>Fill out the form and I'll be in touch within 24–48 hours.</p>
     <a class="btn btn-solid" href="contact.html">Start a Project</a>
   </div>
 </div>
 
-</div><script>
-// Scale featured work iframes
-(function(){
-  function scale(){
-    document.querySelectorAll('#featuredStrip .work-thumb').forEach(function(wrap){
-      var iframe=wrap.querySelector('iframe');
-      if(!iframe)return;
-      var s=wrap.offsetWidth/1280;
-      iframe.style.transform='scale('+s+')';
-    });
-  }
-  scale();
-  window.addEventListener('resize',scale);
-})();
-</script>
+</div>
 <footer>
   <div class="wrap">
     <div class="foot-inner">
       <div class="foot-logo">Deadwood<b>.</b>Digital</div>
       <p>© 2026 Deadwood Digital · Trenton, MO</p>
-      <p><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></p>
+      <p style="display:flex;gap:1.25rem;flex-wrap:wrap;justify-content:center">
+        <a href="templates.html">Templates</a>
+        <a href="custom.html">Custom</a>
+        <a href="setup.html">Setup</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a>
+      </p>
     </div>
   </div>
 </footer>
@@ -508,13 +723,23 @@ function toggleMenu(btn){
   btn.classList.toggle('open',open);
   btn.setAttribute('aria-expanded',open);
 }
-// Reveal on scroll
 (function(){
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});
-  },{threshold:.08});
+  },{threshold:.07});
   function init(){document.querySelectorAll('.r').forEach(function(el){io.observe(el);});}
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+})();
+</script>
+<script>
+(function(){
+  function scale(){
+    document.querySelectorAll('#featuredStrip .work-thumb').forEach(function(w){
+      var ifr=w.querySelector('iframe'); if(!ifr)return;
+      ifr.style.transform='scale('+(w.offsetWidth/1280)+')';
+    });
+  }
+  scale(); window.addEventListener('resize',scale);
 })();
 </script>
 </body>

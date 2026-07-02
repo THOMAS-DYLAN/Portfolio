@@ -23,6 +23,7 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Service","name":"Website Maintenance — Deadwood Digital","provider":{"@type":"LocalBusiness","name":"Deadwood Digital"},"description":"Monthly website maintenance and database management for small business e-commerce sites.","hasOfferCatalog":{"@type":"OfferCatalog","itemListElement":[{"@type":"Offer","name":"Site Maintenance","price":"100","priceCurrency":"USD"},{"@type":"Offer","name":"Database Management","price":"150","priceCurrency":"USD"}]}}
   </script>
+<link rel="icon" type="image/png" href="Logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -59,8 +60,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav);padding:0 
   display:flex;align-items:center;justify-content:space-between;
   background:rgba(8,8,7,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
   border-bottom:1px solid var(--border);}
-.nav-logo{font-family:var(--ff-d);font-size:1.2rem;font-weight:500;letter-spacing:.06em;color:var(--cream)}
-.nav-logo b{color:var(--gold);font-weight:400}
+.nav-logo{display:flex;align-items:center}
+.nav-logo-img{height:32px;width:auto}
 .nav-links{display:none;align-items:center;gap:2rem}
 .nav-links a{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);transition:color .2s var(--ease);white-space:nowrap}
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
@@ -342,7 +343,7 @@ footer a:hover{opacity:.7}
 </head>
 <body>
 <nav aria-label="Main navigation">
-  <a class="nav-logo" href="index.html">Deadwood<b>.</b>Digital</a>
+  <a class="nav-logo" href="index.html"><img src="Logo.png" alt="Deadwood Digital" class="nav-logo-img"></a>
   <div class="nav-links">
     <a href="work.html">Work</a>
     <a href="templates.html">Templates</a>

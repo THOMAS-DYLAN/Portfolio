@@ -4,25 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Work — Deadwood Digital | E-Commerce & Business Website Portfolio</title>
-  <meta name="description" content="Portfolio of e-commerce stores and business websites built by Deadwood Digital — Big Boy Peps, ClearStone, Blackthorne Vale LLP, Harbor & Ash, and more. Real sites for real businesses.">
+  <meta name="description" content="Portfolio of e-commerce stores and brand websites built by Deadwood Digital — CTXLabz, 956 Labs, Impact Wealth Partners, and more. Real sites for real businesses.">
   <meta name="robots" content="index,follow">
   <meta name="author" content="Dylan Thomas, Deadwood Digital">
   <meta name="keywords" content="e-commerce website design, online store, small business web design, custom website, Missouri web developer, SEO setup, affordable ecommerce">
   <meta name="geo.region" content="US-MO">
   <meta name="geo.placename" content="Trenton, Missouri">
+  <link rel="sitemap" type="application/xml" href="https://deadwooddigital.digital/sitemap.xml">
   <link rel="canonical" href="https://deadwooddigital.digital/work.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Work — Deadwood Digital | E-Commerce & Business Website Portfolio">
-  <meta property="og:description" content="Portfolio of e-commerce stores and business websites built by Deadwood Digital — Big Boy Peps, ClearStone, Blackthorne Vale LLP, Harbor & Ash, and more. Real sites for real businesses.">
+  <meta property="og:description" content="E-commerce stores and brand websites built by Deadwood Digital — CTXLabz, 956 Labs, Impact Wealth Partners, and more.">
   <meta property="og:url" content="https://deadwooddigital.digital/work.html">
   <meta property="og:image" content="https://deadwooddigital.digital/og.jpg">
   <meta property="og:site_name" content="Deadwood Digital">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Work — Deadwood Digital | E-Commerce & Business Website Portfolio">
-  <meta name="twitter:description" content="Portfolio of e-commerce stores and business websites built by Deadwood Digital — Big Boy Peps, ClearStone, Blackthorne Vale LLP, Harbor & Ash, and more. Real sites for real businesses.">
+  <meta name="twitter:description" content="E-commerce stores and brand websites built by Deadwood Digital — CTXLabz, 956 Labs, Impact Wealth Partners, and more.">
   <meta name="twitter:image" content="https://deadwooddigital.digital/og.jpg">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"CollectionPage","name":"Deadwood Digital — Work","url":"https://deadwooddigital.digital/work.html","description":"Portfolio of e-commerce and business websites built by Deadwood Digital.","hasPart":[{"@type":"WebSite","name":"Big Boy Peps","url":"https://bigboypeps.com"},{"@type":"WebSite","name":"ClearStone","url":"https://thomas-dylan.github.io/ClearStone-Pressure-Washing/"},{"@type":"WebSite","name":"Blackthorne Vale LLP","url":"https://thomas-dylan.github.io/Blackthorne-Vale-LLP/"},{"@type":"WebSite","name":"Harbor and Ash","url":"https://thomas-dylan.github.io/Harbor-And-Ash/"}]}
+  {"@context":"https://schema.org","@type":"CollectionPage","name":"Deadwood Digital — Work","url":"https://deadwooddigital.digital/work.html","description":"Portfolio of e-commerce and business websites built by Deadwood Digital.","hasPart":[{"@type":"WebSite","name":"CTXLabz","url":"https://ctxlabz.com"},{"@type":"WebSite","name":"956 Labs","url":"https://956labs.ctxlabz.com"},{"@type":"WebSite","name":"Impact Wealth Partners","url":"https://goiwp.com"},{"@type":"WebSite","name":"Blackthorne Vale LLP","url":"https://thomas-dylan.github.io/Blackthorne-Vale-LLP/"},{"@type":"WebSite","name":"Harbor and Ash","url":"https://thomas-dylan.github.io/Harbor-And-Ash/"}]}
   </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,138 +31,248 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 
+/* ── TOKENS ── */
 :root{
-  --bg:#080807;--s1:#111110;--s2:#191917;--s3:#232320;
-  --border:#28281f;--border2:#363630;
-  --text:#ddd4c2;--muted:#7a7468;--dim:#4a4840;
-  --gold:#c8a84b;--gold-lt:#dfbe72;--gold-dim:rgba(200,168,75,.12);
-  --cream:#f0e7d4;
-  --ff-d:'Cormorant Garamond',Georgia,serif;
-  --ff-b:'Outfit',system-ui,sans-serif;
-  --nav:58px;
-  --ease:cubic-bezier(.25,.46,.45,.94);
-  --ease-out:cubic-bezier(0,0,.2,1);
+  --bg:      #0d0b08;
+  --s1:      #151210;
+  --s2:      #1d1914;
+  --s3:      #252018;
+  --border:  #2e2820;
+  --border2: #3c3428;
+  --text:    #e5d9c5;
+  --muted:   #8a7d6a;
+  --dim:     #4e4438;
+  --gold:    #cf9532;
+  --gold-lt: #e8b454;
+  --gold-dk: #a87428;
+  --gold-bg: rgba(207,149,50,.10);
+  --cream:   #f5ead6;
+  --red:     #c0392b;
+  --ff-d:    'Cormorant Garamond',Georgia,serif;
+  --ff-b:    'Outfit',system-ui,sans-serif;
+  --nav:     60px;
+  --max:     1200px;
+  --ease:    cubic-bezier(.25,.46,.45,.94);
+  --eout:    cubic-bezier(0,0,.2,1);
 }
+
+/* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--text);font-family:var(--ff-b);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--ff-b);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer;font-family:var(--ff-b);border:none;background:none}
 ul,ol{list-style:none}
 img{max-width:100%;display:block}
 
-/* GRAIN */
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.028;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+/* ── GRAIN ── */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:8000;
+  opacity:.032;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav);padding:0 1.25rem;
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:var(--nav);padding:0 1.25rem;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(8,8,7,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border);}
-.nav-logo{font-family:var(--ff-d);font-size:1.2rem;font-weight:500;letter-spacing:.06em;color:var(--cream)}
+  background:rgba(13,11,8,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:var(--ff-d);font-size:1.25rem;font-weight:500;
+  letter-spacing:.06em;color:var(--cream);
+}
 .nav-logo b{color:var(--gold);font-weight:400}
-.nav-links{display:none;align-items:center;gap:2rem}
-.nav-links a{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);transition:color .2s var(--ease);white-space:nowrap}
+.nav-links{display:none;align-items:center;gap:1.75rem}
+.nav-links a{
+  font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);transition:color .2s var(--ease);white-space:nowrap;
+}
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
-.nav-btn{display:none;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
-  padding:.42rem 1.1rem;border:1px solid var(--gold);color:var(--gold);background:transparent;
-  transition:all .2s var(--ease);cursor:pointer;white-space:nowrap}
-.nav-btn:hover{background:var(--gold);color:var(--bg)}
-.ham{display:flex;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;
-  padding:8px 6px;background:none;border:1px solid var(--border)}
-.ham:hover{border-color:var(--border2)}
-.ham span{width:18px;height:1px;background:var(--text);display:block;transition:all .3s var(--ease)}
-.ham.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-btn{
+  display:none;font-size:.65rem;letter-spacing:.13em;text-transform:uppercase;
+  padding:.5rem 1.25rem;background:var(--gold);color:var(--bg);
+  transition:all .2s var(--ease);cursor:pointer;white-space:nowrap;
+  font-family:var(--ff-b);font-weight:600;
+}
+.nav-btn:hover{background:var(--gold-lt)}
+.ham{
+  display:flex;flex-direction:column;justify-content:center;gap:5px;
+  cursor:pointer;padding:8px 6px;background:none;
+  border:1px solid var(--border);transition:border-color .2s;
+}
+.ham:hover{border-color:var(--gold)}
+.ham span{width:19px;height:1.5px;background:var(--text);display:block;transition:all .3s var(--ease)}
+.ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.ham.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
-/* MOBILE DRAWER */
-.drawer{position:fixed;top:var(--nav);left:0;right:0;z-index:490;
-  background:var(--bg);border-bottom:1px solid var(--border);
-  max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
-.drawer.open{max-height:500px}
-.drawer-inner{padding:1.25rem 1.5rem;display:flex;flex-direction:column;gap:0}
-.drawer-inner a{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;
+/* ── DRAWER ── */
+.drawer{
+  position:fixed;top:var(--nav);left:0;right:0;z-index:490;
+  background:var(--s1);border-bottom:1px solid var(--border);
+  max-height:0;overflow:hidden;transition:max-height .4s var(--ease);
+}
+.drawer.open{max-height:420px}
+.drawer-inner{padding:1.25rem 1.5rem;display:flex;flex-direction:column}
+.drawer-inner a{
+  font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
   color:var(--muted);padding:.8rem 0;border-bottom:1px solid var(--border);
-  transition:color .2s;display:block}
+  display:block;transition:color .2s;
+}
 .drawer-inner a:last-child{border-bottom:none}
 .drawer-inner a.active,.drawer-inner a:hover{color:var(--gold)}
 
-/* LAYOUT */
-.wrap{max-width:1200px;margin:0 auto;padding:0 1.25rem}
+/* ── MOBILE STICKY CTA ── */
+.mobile-cta{
+  display:flex;position:fixed;bottom:0;left:0;right:0;z-index:490;
+  background:rgba(13,11,8,.97);border-top:1px solid var(--border);
+  padding:.75rem 1.25rem;gap:.75rem;align-items:center;justify-content:center;
+  backdrop-filter:blur(12px);
+}
+.mobile-cta a{
+  flex:1;max-width:320px;text-align:center;padding:.8rem;
+  background:var(--gold);color:var(--bg);font-family:var(--ff-b);
+  font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  transition:background .2s;
+}
+.mobile-cta a:hover{background:var(--gold-lt)}
+
+/* ── LAYOUT ── */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
 .pt-nav{padding-top:var(--nav)}
-
-/* REVEAL ANIMATION */
-.r{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.r.vis{opacity:1;transform:none}
-.r2{transition-delay:.12s}
-.r3{transition-delay:.22s}
-.r4{transition-delay:.32s}
-
-/* TYPE UTILS */
-.eyebrow{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
-  display:flex;align-items:center;gap:.65rem;margin-bottom:.9rem}
-.eyebrow::before{content:'';width:22px;height:1px;background:var(--gold);flex-shrink:0}
-.display{font-family:var(--ff-d);font-weight:300;line-height:1.06;color:var(--cream)}
-.body-sm{font-size:.85rem;color:var(--muted);line-height:1.8}
+/* Extra bottom padding on mobile to clear the sticky CTA */
+.pt-nav > .wrap:last-child,
+footer{padding-bottom:calc(2.5rem + 58px)}
+.sec{padding:4rem 0}
 .rule{border:none;border-top:1px solid var(--border)}
 
-/* BUTTONS */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
-  font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;font-family:var(--ff-b);
-  font-weight:500;cursor:pointer;transition:all .2s var(--ease);min-height:44px;padding:.75rem 1.75rem}
-.btn-solid{background:var(--gold);color:var(--bg);border:1px solid var(--gold)}
-.btn-solid:hover{background:var(--gold-lt);border-color:var(--gold-lt)}
-.btn-outline{background:transparent;border:1px solid var(--border2);color:var(--text)}
+/* ── TYPOGRAPHY ── */
+.eyebrow{
+  font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:.65rem;margin-bottom:.85rem;
+}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--gold);flex-shrink:0}
+.display{font-family:var(--ff-d);font-weight:300;line-height:1.06;color:var(--cream)}
+.body-sm{font-size:.9rem;color:var(--muted);line-height:1.82}
+
+/* ── BUTTONS ── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;
+  font-family:var(--ff-b);font-weight:600;cursor:pointer;
+  transition:all .2s var(--ease);min-height:46px;padding:.8rem 1.85rem;border:none;
+}
+.btn-solid{background:var(--gold);color:var(--bg)}
+.btn-solid:hover{background:var(--gold-lt)}
+.btn-outline{
+  background:transparent;border:1px solid var(--border2);color:var(--text);
+}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
-.btn-ghost{background:transparent;border:1px solid transparent;color:var(--muted);padding:.75rem 0}
+.btn-ghost{background:transparent;color:var(--muted);padding:.8rem 0}
 .btn-ghost:hover{color:var(--gold)}
 
-/* MARQUEE */
-.marquee{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:.55rem 0;background:var(--s1)}
-.marquee-track{display:flex;width:max-content;animation:ticker 30s linear infinite}
+/* ── SHARED CARD STYLES ── */
+.note{
+  padding:1.1rem 1.5rem;background:var(--s1);
+  border:1px solid var(--border);border-left:3px solid var(--gold);
+  font-size:.82rem;color:var(--muted);line-height:1.75;
+}
+.note b{color:var(--text);font-weight:500}
+.note a{color:var(--gold)}
+
+/* ── PRICING SHARED ── */
+.price-hero{padding:4.5rem 0 3rem;border-bottom:1px solid var(--border)}
+.price-grid{
+  display:grid;grid-template-columns:1fr;
+  background:var(--border);border:1px solid var(--border);gap:1px;margin-top:2.5rem;
+}
+.price-card{
+  background:var(--s1);padding:2.25rem 2rem;display:flex;flex-direction:column;
+  transition:background .25s var(--ease);position:relative;
+}
+.price-card:hover{background:var(--s2)}
+.price-card.feat{
+  background:var(--s2);outline:1px solid var(--gold);outline-offset:-1px;z-index:2;
+}
+.feat-badge{
+  position:absolute;top:0;right:1.75rem;
+  background:var(--gold);color:var(--bg);
+  font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;padding:.28rem .75rem;
+  font-weight:600;
+}
+.p-tier{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+.p-name{font-family:var(--ff-d);font-size:1.75rem;font-weight:500;color:var(--cream);margin-bottom:.75rem}
+.p-price{font-family:var(--ff-d);font-size:3rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:.2rem}
+.p-scope{font-size:.75rem;color:var(--muted);padding-bottom:1rem;border-bottom:1px solid var(--border);margin-bottom:1rem}
+.p-desc{font-size:.85rem;color:var(--muted);line-height:1.75;margin-bottom:1.25rem}
+.p-feat{flex:1;margin-bottom:1.5rem}
+.p-feat li{
+  font-size:.82rem;color:var(--text);padding:.38rem 0;
+  border-bottom:1px solid rgba(46,40,32,.6);
+  display:flex;align-items:flex-start;gap:.5rem;
+}
+.p-feat li::before{content:'—';color:var(--gold);font-size:.7rem;flex-shrink:0;margin-top:.06rem}
+.p-cta{width:100%;text-align:center}
+
+/* ── MARQUEE ── */
+.marquee{
+  overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:.55rem 0;background:var(--s1);
+}
+.marquee-track{display:flex;width:max-content;animation:ticker 32s linear infinite}
 .marquee-track:hover{animation-play-state:paused}
-.marquee-track span{white-space:nowrap;padding:0 2.5rem;font-size:.6rem;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--dim)}
+.marquee-track span{
+  white-space:nowrap;padding:0 2rem;font-size:.62rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--dim);
+}
 .marquee-track span b{color:var(--gold);font-weight:400}
 @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* SECTION */
-.sec{padding:4rem 0}
-.sec-lg{padding:6rem 0}
+/* ── REVEAL ── */
+.r{opacity:0;transform:translateY(18px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.r.vis{opacity:1;transform:none}
+.r2{transition-delay:.1s}.r3{transition-delay:.18s}.r4{transition-delay:.26s}
 
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:2.25rem 0;margin-top:4rem}
-.foot-inner{display:flex;flex-direction:column;gap:.75rem;text-align:center}
-.foot-logo{font-family:var(--ff-d);font-size:1.05rem;color:var(--cream);letter-spacing:.06em}
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--border);padding:2.5rem 0;margin-top:0;
+}
+.foot-inner{
+  display:flex;flex-direction:column;gap:.75rem;text-align:center;
+}
+.foot-logo{font-family:var(--ff-d);font-size:1.1rem;color:var(--cream);letter-spacing:.06em}
 .foot-logo b{color:var(--gold);font-weight:400}
-footer p{font-size:.7rem;color:var(--dim)}
+footer p{font-size:.72rem;color:var(--dim)}
 footer a{color:var(--gold);transition:opacity .2s}
 footer a:hover{opacity:.7}
 
-/* TABLET */
+/* ── RESPONSIVE ── */
 @media(min-width:640px){
   nav{padding:0 2rem}
   .wrap{padding:0 2rem}
-  .drawer-inner{padding:1.5rem 2rem}
-  .sec{padding:5rem 0}
-  .sec-lg{padding:7rem 0}
+  .sec{padding:5.5rem 0}
   .foot-inner{flex-direction:row;justify-content:space-between;text-align:left}
+  .price-grid{grid-template-columns:repeat(2,1fr)}
+  footer{padding-bottom:2.5rem}
 }
-
-/* DESKTOP */
 @media(min-width:1024px){
   nav{padding:0 3rem}
   .wrap{padding:0 3rem}
   .nav-links{display:flex}
   .nav-btn{display:inline-block}
   .ham{display:none}
-  .sec{padding:6rem 0}
-  .sec-lg{padding:8rem 0}
+  .mobile-cta{display:none}
+  .sec{padding:7rem 0}
+  .price-grid{grid-template-columns:repeat(3,1fr)}
+  .pt-nav > .wrap:last-child,footer{padding-bottom:2.5rem}
 }
-
 
 .work-hero{padding:5rem 0 3rem;border-bottom:1px solid var(--border)}
 .proj-list{display:flex;flex-direction:column;gap:1px;background:var(--border);
@@ -210,7 +321,6 @@ footer a:hover{opacity:.7}
 @media(min-width:1024px){
   .proj-card.featured .proj-preview{height:400px}
 }
-
 </style>
 </head>
 <body>
@@ -224,7 +334,7 @@ footer a:hover{opacity:.7}
     <a href="setup.html">Setup & Launch</a>
     <a href="maintenance.html">Maintenance</a>
   </div>
-  <a class="nav-btn btn" href="contact.html">Start a Project</a>
+  <a class="nav-btn" href="contact.html">Start a Project</a>
   <button class="ham" id="ham" aria-label="Menu" aria-expanded="false" onclick="toggleMenu(this)">
     <span></span><span></span><span></span>
   </button>
@@ -239,6 +349,10 @@ footer a:hover{opacity:.7}
   <a href="maintenance.html">Maintenance</a>
   </div>
 </div>
+<div class="mobile-cta" aria-hidden="true">
+  <a href="contact.html">Start a Project →</a>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -252,29 +366,69 @@ footer a:hover{opacity:.7}
     Real work.<br>Real businesses.
   </h1>
   <p class="body-sm r r3" style="max-width:480px">
-    Sites designed, coded, and deployed. Hover any card to preview — click to visit the live site.
+    Stores and brand sites designed, coded, and deployed. Hover any card to preview — click to visit the live site.
   </p>
 </header>
 
 <div class="wrap" style="padding-bottom:5rem">
   <div class="proj-list" role="list" aria-label="Portfolio projects">
     <article class="proj-card featured r">
-      <div class="proj-preview" onclick="window.open('https://bigboypeps.com','_blank')" role="link" tabindex="0"
-           aria-label="Open Big Boy Peps website">
-        <iframe src="https://bigboypeps.com" title="Big Boy Peps website preview" loading="lazy" scrolling="no"></iframe>
+      <div class="proj-preview" onclick="window.open('https://ctxlabz.com','_blank')" role="link" tabindex="0"
+           aria-label="Open CTXLabz website">
+        <iframe src="https://ctxlabz.com" title="CTXLabz website preview" loading="lazy" scrolling="no"></iframe>
         <div class="preview-overlay">
-          <button class="preview-btn" onclick="event.stopPropagation();window.open('https://bigboypeps.com','_blank')">
+          <button class="preview-btn" onclick="event.stopPropagation();window.open('https://ctxlabz.com','_blank')">
             Visit Site ↗
           </button>
         </div>
       </div>
       <div class="proj-body">
         <div class="proj-type">E-Commerce · Client Build</div>
-        <h2 class="proj-title">Big Boy Peps</h2>
-        <p class="proj-desc">A full e-commerce website built for Big Boy Peps — product listings, checkout flow, and inventory management built on a custom stack.</p>
+        <h2 class="proj-title">CTXLabz</h2>
+        <p class="proj-desc">A full e-commerce website built for CTXLabz — product listings, checkout flow, and inventory management on a custom Supabase stack. Built to sell directly, with no marketplace fees.</p>
         <div class="proj-footer">
           <div class="proj-tags"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JavaScript</span><span class="proj-tag">Supabase</span></div>
-          <a class="proj-link" href="https://bigboypeps.com" target="_blank" rel="noopener">Live Site ↗</a>
+          <a class="proj-link" href="https://ctxlabz.com" target="_blank" rel="noopener">Live Site ↗</a>
+        </div>
+      </div>
+    </article>
+    <article class="proj-card r">
+      <div class="proj-preview" onclick="window.open('https://956labs.ctxlabz.com','_blank')" role="link" tabindex="0"
+           aria-label="Open 956 Labs website">
+        <iframe src="https://956labs.ctxlabz.com" title="956 Labs website preview" loading="lazy" scrolling="no"></iframe>
+        <div class="preview-overlay">
+          <button class="preview-btn" onclick="event.stopPropagation();window.open('https://956labs.ctxlabz.com','_blank')">
+            Visit Site ↗
+          </button>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">E-Commerce · Client Build</div>
+        <h2 class="proj-title">956 Labs</h2>
+        <p class="proj-desc">A dedicated storefront for 956 Labs, running on a shared backend with full product management and checkout. A second brand launched under the same custom infrastructure.</p>
+        <div class="proj-footer">
+          <div class="proj-tags"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JavaScript</span><span class="proj-tag">Supabase</span></div>
+          <a class="proj-link" href="https://956labs.ctxlabz.com" target="_blank" rel="noopener">Live Site ↗</a>
+        </div>
+      </div>
+    </article>
+    <article class="proj-card r">
+      <div class="proj-preview" onclick="window.open('https://goiwp.com','_blank')" role="link" tabindex="0"
+           aria-label="Open Impact Wealth Partners website">
+        <iframe src="https://goiwp.com" title="Impact Wealth Partners website preview" loading="lazy" scrolling="no"></iframe>
+        <div class="preview-overlay">
+          <button class="preview-btn" onclick="event.stopPropagation();window.open('https://goiwp.com','_blank')">
+            Visit Site ↗
+          </button>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Multi-Page · Professional Site</div>
+        <h2 class="proj-title">Impact Wealth Partners</h2>
+        <p class="proj-desc">A polished, credibility-focused website for Impact Wealth Partners — a financial services firm. Clean structure, clear messaging, and a professional presence built to earn client trust.</p>
+        <div class="proj-footer">
+          <div class="proj-tags"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JavaScript</span></div>
+          <a class="proj-link" href="https://goiwp.com" target="_blank" rel="noopener">Live Site ↗</a>
         </div>
       </div>
     </article>
@@ -300,8 +454,8 @@ footer a:hover{opacity:.7}
     </article>
     <article class="proj-card r">
       <div class="proj-preview" onclick="window.open('https://thomas-dylan.github.io/Harbor-And-Ash/','_blank')" role="link" tabindex="0"
-           aria-label="Open Harbor & Ash website">
-        <iframe src="https://thomas-dylan.github.io/Harbor-And-Ash/" title="Harbor & Ash website preview" loading="lazy" scrolling="no"></iframe>
+           aria-label="Open Harbor &amp; Ash website">
+        <iframe src="https://thomas-dylan.github.io/Harbor-And-Ash/" title="Harbor &amp; Ash website preview" loading="lazy" scrolling="no"></iframe>
         <div class="preview-overlay">
           <button class="preview-btn" onclick="event.stopPropagation();window.open('https://thomas-dylan.github.io/Harbor-And-Ash/','_blank')">
             Visit Site ↗
@@ -349,20 +503,15 @@ footer a:hover{opacity:.7}
         </div>
       </div>
       <div class="proj-body">
-        <div class="proj-type">Personal Project</div>
+        <div class="proj-type">Single-Page · In-House</div>
         <h2 class="proj-title">Deadwood Digital</h2>
-        <p class="proj-desc">The Deadwood Digital portfolio site — this one. Built to showcase services and attract the right clients.</p>
+        <p class="proj-desc">This very site — designed and built in-house as the studio's own portfolio and storefront.</p>
         <div class="proj-footer">
           <div class="proj-tags"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JavaScript</span></div>
           <a class="proj-link" href="https://deadwooddigital.digital" target="_blank" rel="noopener">Live Site ↗</a>
         </div>
       </div>
     </article>
-  </div>
-
-  <div style="margin-top:3rem;text-align:center">
-    <p class="body-sm" style="margin-bottom:1.25rem">Want your project on this list?</p>
-    <a class="btn btn-solid" href="contact.html">Start a Project</a>
   </div>
 </div>
 </div><script>
@@ -384,7 +533,13 @@ footer a:hover{opacity:.7}
     <div class="foot-inner">
       <div class="foot-logo">Deadwood<b>.</b>Digital</div>
       <p>© 2026 Deadwood Digital · Trenton, MO</p>
-      <p><a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a></p>
+      <p style="display:flex;gap:1.25rem;flex-wrap:wrap;justify-content:center">
+        <a href="templates.html">Templates</a>
+        <a href="custom.html">Custom</a>
+        <a href="setup.html">Setup</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="mailto:dylant5323@gmail.com">dylant5323@gmail.com</a>
+      </p>
     </div>
   </div>
 </footer>
@@ -395,13 +550,15 @@ function toggleMenu(btn){
   btn.classList.toggle('open',open);
   btn.setAttribute('aria-expanded',open);
 }
-// Reveal on scroll
 (function(){
   var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});
-  },{threshold:.08});
+    es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}
+    });
+  },{threshold:.07});
   function init(){document.querySelectorAll('.r').forEach(function(el){io.observe(el);});}
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}
+  else{init();}
 })();
 </script>
 </body>
